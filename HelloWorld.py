@@ -18,3 +18,4 @@ print "Bij Roland"
 print "Bij Hugo werkt alles ook!"
 >>>>>>> origin/master
 >>>>>>> origin/master
+print "Bij Andre werkt dit half"
