@@ -6,7 +6,7 @@ print ["Element 1, 3 en 5"] + [L[0:5:2]]
 print ["De lijst omgekeerd"] + [L[::-1]]
 print "Bij Mitchell werkt alles"
 <<<<<<< HEAD
-print "Bij Roland"
+print "Bij Roland (2.0)"
 =======
 print "Bij Hugo werkt alles ook!"
 >>>>>>> origin/master
