@@ -5,3 +5,4 @@ print ["Eerste 4 elementen"] + [L[:4]]
 print ["Element 1, 3 en 5"] + [L[0:5:2]]
 print ["De lijst omgekeerd"] + [L[::-1]]
 print "Bij Mitchell werkt alles"
+print "Bij Roland"
