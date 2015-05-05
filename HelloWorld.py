@@ -19,4 +19,8 @@ print "Bij Roland"
 >>>>>>> origin/master
 =======
 >>>>>>> origin/master
+<<<<<<< HEAD
 print "Bij Hugo werkt alles ook!"
+=======
+print "Bij Andre werkt dit half"
+>>>>>>> e3a61997ec6215e7cb9a8dae70a06a3daba3fa85
