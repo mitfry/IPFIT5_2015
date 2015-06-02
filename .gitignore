@@ -41,5 +41,9 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+workspace.xml
+.idea
+idea/workspace.xml
 .idea/workspace.xml
-.idea/workspace.xml
+..idea/workspace.xml

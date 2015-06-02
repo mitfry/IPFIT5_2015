@@ -126,6 +126,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def printTekst6(self):
         print "Hallo Mitchell?!"		
 
+    #Het is niet te geloven dames!
+
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     ex = Ui_MainWindow()
