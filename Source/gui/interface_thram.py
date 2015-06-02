@@ -86,12 +86,12 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
-        self.pushButton_2.setText(_translate("MainWindow", "PushButton", None))
         self.pushButton.setText(_translate("MainWindow", "PushButton", None))
-        self.pushButton_4.setText(_translate("MainWindow", "PushButton", None))
-        self.pushButton_3.setText(_translate("MainWindow", "PushButton", None))
-        self.pushButton_5.setText(_translate("MainWindow", "PushButton", None))
-        self.pushButton_6.setText(_translate("MainWindow", "PushButton", None))
+        self.pushButton_2.setText(_translate("MainWindow", "Tim", None))        
+        self.pushButton_4.setText(_translate("MainWindow", "Hugo", None))
+        self.pushButton_3.setText(_translate("MainWindow", "Roland", None))
+        self.pushButton_5.setText(_translate("MainWindow", "Andre", None))
+        self.pushButton_6.setText(_translate("MainWindow", "Mitchell", None))
         self.menuBestand.setTitle(_translate("MainWindow", "Bestand", None))
         self.menuOpties.setTitle(_translate("MainWindow", "Opties", None))
         self.actionNieuw.setText(_translate("MainWindow", "Nieuw...", None))
