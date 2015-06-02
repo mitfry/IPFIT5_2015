@@ -100,7 +100,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.actionOpslaan.setText(_translate("MainWindow", "Opslaan...", None))
         self.actionFuncties.setText(_translate("MainWindow", "Functies", None))
 
-        #Eigen functies
+    #Eigen functies
         self.pushButton.clicked.connect(self.printTekst)
         self.pushButton_2.clicked.connect(self.printTekst2)
         self.pushButton_3.clicked.connect(self.printTekst3)
