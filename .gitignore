@@ -1,4 +1,4 @@
-# Windows image file caches
+﻿# Windows image file caches
 Thumbs.db
 ehthumbs.db
 
@@ -42,8 +42,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-workspace.xml
 .idea
 idea/workspace.xml
-.idea/workspace.xml
-..idea/workspace.xml
