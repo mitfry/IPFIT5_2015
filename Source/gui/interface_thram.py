@@ -9,6 +9,7 @@
 
 from PyQt4 import QtCore, QtGui
 import sys
+from Modules import Hardware
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -88,7 +89,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.pushButton.setText(_translate("MainWindow", "PushButton", None))
-        self.pushButton_2.setText(_translate("MainWindow", "Tim", None))        
+        self.pushButton_2.setText(_translate("MainWindow", "Tim", None))
         self.pushButton_4.setText(_translate("MainWindow", "Hugo", None))
         self.pushButton_3.setText(_translate("MainWindow", "Roland", None))
         self.pushButton_5.setText(_translate("MainWindow", "Andre", None))
@@ -101,15 +102,12 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.actionFuncties.setText(_translate("MainWindow", "Functies", None))
 
         # Eigen functies
-        self.pushButton.clicked.connect(self.printTekst)
+        self.pushButton.clicked.connect(Hardware.printTekst)
         self.pushButton_2.clicked.connect(self.printTekst2)
         self.pushButton_3.clicked.connect(self.printTekst3)
         self.pushButton_4.clicked.connect(self.printTekst4)
         self.pushButton_5.clicked.connect(self.printTekst5)
         self.pushButton_6.clicked.connect(self.printTekst6)
-
-    def printTekst(self):
-        print "Hallo henk?!"
 
     def printTekst2(self):
         print "Hallo Tim?!"
