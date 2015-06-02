@@ -18,6 +18,7 @@ except AttributeError:
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
+
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
@@ -28,7 +29,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
-		
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(755, 477)
@@ -98,31 +99,35 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.actionOpen.setText(_translate("MainWindow", "Open...", None))
         self.actionOpslaan.setText(_translate("MainWindow", "Opslaan...", None))
         self.actionFuncties.setText(_translate("MainWindow", "Functies", None))
-		
-	#Eigen functies
-	self.pushButton.clicked.connect(self.printTekst)
-	self.pushButton_2.clicked.connect(self.printTekst2)
-	self.pushButton_3.clicked.connect(self.printTekst3)
-	self.pushButton_4.clicked.connect(self.printTekst4)
-	self.pushButton_5.clicked.connect(self.printTekst5)
-	self.pushButton_6.clicked.connect(self.printTekst6)
-		
+
+        #Eigen functies
+        self.pushButton.clicked.connect(self.printTekst)
+        self.pushButton_2.clicked.connect(self.printTekst2)
+        self.pushButton_3.clicked.connect(self.printTekst3)
+        self.pushButton_4.clicked.connect(self.printTekst4)
+        self.pushButton_5.clicked.connect(self.printTekst5)
+        self.pushButton_6.clicked.connect(self.printTekst6)
+
     def printTekst(self):
-		print "Hallo henk?!"
+        print "Hallo henk?!"
+
     def printTekst2(self):
-		print "Hallo Tim?!"
+        print "Hallo Tim?!"
+
     def printTekst3(self):
-		print "Hallo Roland?!"
+        print "Hallo Roland?!"
+
     def printTekst4(self):
-		print "Hallo Hugo?!"
+        print "Hallo Hugo?!"
+
     def printTekst5(self):
-		print "Hallo Andre?!"
+        print "Hallo Andre?!"
+
     def printTekst6(self):
-		print "Hallo Mitchell?!"		
-				
+        print "Hallo Mitchell?!"		
+
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     ex = Ui_MainWindow()
     ex.show()
-    sys.exit(app.exec_())		
-
+    sys.exit(app.exec_())
