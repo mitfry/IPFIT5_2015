@@ -1,8 +1,21 @@
 from source.modules import wmi
 
+w = wmi.WMI(".")
 
-def test():
-    w = wmi.WMI()
-    for p in w.Win32_Product():
-        if 'Box, Inc.' == p.Vendor and p.Caption and 'Box Sync' in p.Caption:
-            print 'Installed {}'.format(p.Version)
+
+# Function for generating a list of running processes on the target pc
+def processes():
+    for process in w.Win32_Process():
+        print process.ProcessId, process.Name
+
+
+
+def services():
+    # stopped_services = w.Win32_Service(State="Stopped")
+    running_services = w.Win32_Service(State="Running")
+
+    # for ss in stopped_services:
+    #     print ss.Caption, "service is not running"
+
+    for rs in running_services:
+        print rs.ProcessId, rs.Caption, "service is running"

@@ -1,5 +1,4 @@
-
-#!/usr/bin/env python
+# !/usr/bin/env python
 
 # IPFIT5 imports
 import sys
@@ -26,6 +25,7 @@ except AttributeError:
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
+
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
@@ -37,7 +37,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
-        
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(755, 477)
@@ -74,7 +74,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.progressBar = QtGui.QProgressBar(self.centralwidget)
         self.progressBar.setProperty("value", 0)
         self.progressBar.setObjectName(_fromUtf8("progressBar"))
-        self.gridLayout_3.addWidget(self.progressBar, 3, 2, 1, 1, QtCore.Qt.AlignRight|QtCore.Qt.AlignBottom)
+        self.gridLayout_3.addWidget(self.progressBar, 3, 2, 1, 1, QtCore.Qt.AlignRight | QtCore.Qt.AlignBottom)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 755, 21))
@@ -121,7 +121,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.actionFuncties.setText(_translate("MainWindow", "Functies", None))
 
 
-       # IPFIT5 functions and other code
+        # IPFIT5 functions and other code
         self.btn_Test.clicked.connect(Hardware.printTekst)
         self.btn_Processen.clicked.connect(Software.processes)
         self.btn_Services.clicked.connect(Software.services)
@@ -130,6 +130,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Progressbar.clicked.connect(self.update_progress)
 
         self._active = False
+
     def update_progress(self):
         if not self._active:
             self._active = True
@@ -150,7 +151,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
             self.progressBar.setValue(value)
             QtGui.qApp.processEvents()
             if (not self._active or
-                value >= self.progressBar.maximum()):
+                        value >= self.progressBar.maximum()):
                 break
         self.btn_Progressbar.setText('Start')
         self._active = False

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>755</width>
+    <height>477</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="2">
+     <widget class="QPushButton" name="btn_Services">
+      <property name="text">
+       <string>Services</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="btn_Progressbar">
+      <property name="text">
+       <string>Start</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="btn_Processen">
+      <property name="text">
+       <string>Processen</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="btn_Test">
+      <property name="text">
+       <string>Test mijn functie</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="hash_Btn">
+      <property name="text">
+       <string>Hash...</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>540</width>
+         <height>358</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="3" column="2" alignment="Qt::AlignRight|Qt::AlignBottom">
+     <widget class="QProgressBar" name="progressBar">
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>755</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuBestand">
+    <property name="title">
+     <string>Bestand</string>
+    </property>
+    <addaction name="actionNieuw"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionOpslaan"/>
+   </widget>
+   <widget class="QMenu" name="menuOpties">
+    <property name="title">
+     <string>Opties</string>
+    </property>
+    <addaction name="actionFuncties"/>
+   </widget>
+   <addaction name="menuBestand"/>
+   <addaction name="menuOpties"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNieuw">
+   <property name="text">
+    <string>Nieuw...</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open...</string>
+   </property>
+  </action>
+  <action name="actionOpslaan">
+   <property name="text">
+    <string>Opslaan...</string>
+   </property>
+  </action>
+  <action name="actionFuncties">
+   <property name="text">
+    <string>Functies</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
