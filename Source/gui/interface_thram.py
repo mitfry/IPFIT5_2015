@@ -9,7 +9,9 @@
 
 from PyQt4 import QtCore, QtGui
 import sys
-from Modules import Hardware
+
+from source.functions import Software
+from source.functions import Hardware
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -25,6 +27,7 @@ try:
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
+
 
 class Ui_MainWindow(QtGui.QMainWindow):
     def __init__(self):
@@ -103,7 +106,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
         # Eigen functies
         self.pushButton.clicked.connect(Hardware.printTekst)
-        self.pushButton_2.clicked.connect(self.printTekst2)
+        self.pushButton_2.clicked.connect(Software.test)
         self.pushButton_3.clicked.connect(self.printTekst3)
         self.pushButton_4.clicked.connect(self.printTekst4)
         self.pushButton_5.clicked.connect(self.printTekst5)
@@ -122,9 +125,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
         print "Hallo Andre?!"
 
     def printTekst6(self):
-        print "Hallo Mitchell?!"		
+        print "Hallo Mitchell?!"
 
-    #Het is niet te geloven dames!
+        # Het is niet te geloven dames!
+
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
