@@ -4,8 +4,17 @@
 # IPFIT5 imports
 import sys
 import time
-from source.functions import Software
-from source.functions import Hardware
+
+
+sys.path.append(sys.path[0]+"/../functions")
+
+
+
+import Hardware
+import Software
+# from source.functions import Software
+# from source.functions import Hardware
+
 
 # -*- coding: utf-8 -*-
 

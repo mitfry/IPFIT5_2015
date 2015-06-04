@@ -1,4 +1,13 @@
-from source.modules import wmi
+
+# Built-in
+import sys
+
+# Custom
+# Add folder "modules" to the locations to import from
+sys.path.append(sys.path[0]+"/../modules")
+import wmi
+
+
 
 w = wmi.WMI(".")
 

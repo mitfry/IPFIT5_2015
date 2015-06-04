@@ -1,6 +1,7 @@
 # Generate python file from UI file
 # pyuic4 -o interface_thram.py interface_thram.ui
 
+# DO NOT TOUCH ANYTHING UNTIL LINE 30
 import sys
 import os.path
 import time
@@ -22,11 +23,17 @@ while count < 1:
 beginningLines = '''
 #!/usr/bin/env python
 
+# Add folder "functions" to the locations to import from
+sys.path.append(sys.path[0]+"/../functions")
+
 # IPFIT5 imports
+# Built-in
 import sys
 import time
-from source.functions import Software
-from source.functions import Hardware
+
+# Custom
+import Software
+import Hardware
 
 '''
 
