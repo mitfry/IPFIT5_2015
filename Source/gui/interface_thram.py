@@ -2,25 +2,22 @@
 #!/usr/bin/env python
 
 # IPFIT5 imports
+# Built-in
 import sys
 import time
 
-
+# Add folder "functions" to the locations to import from
 sys.path.append(sys.path[0]+"/../functions")
 
-
-
-import Hardware
+# Custom
 import Software
-# from source.functions import Software
-# from source.functions import Hardware
-
+import Hardware
 
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'C:\Development\School\IPFIT5_2015\source\gui\gui_maken\interface_thram.ui'
 #
-# Created: Thu Jun 04 01:47:06 2015
+# Created: Thu Jun 04 22:24:27 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -57,33 +54,29 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Services = QtGui.QPushButton(self.centralwidget)
         self.btn_Services.setObjectName(_fromUtf8("btn_Services"))
         self.gridLayout_3.addWidget(self.btn_Services, 0, 2, 1, 1)
-        self.pushButton_5 = QtGui.QPushButton(self.centralwidget)
-        self.pushButton_5.setObjectName(_fromUtf8("pushButton_5"))
-        self.gridLayout_3.addWidget(self.pushButton_5, 2, 1, 1, 1)
-        self.btn_Progressbar = QtGui.QPushButton(self.centralwidget)
-        self.btn_Progressbar.setObjectName(_fromUtf8("btn_Progressbar"))
-        self.gridLayout_3.addWidget(self.btn_Progressbar, 2, 2, 1, 1)
         self.btn_Processen = QtGui.QPushButton(self.centralwidget)
         self.btn_Processen.setObjectName(_fromUtf8("btn_Processen"))
         self.gridLayout_3.addWidget(self.btn_Processen, 0, 1, 1, 1)
         self.btn_Test = QtGui.QPushButton(self.centralwidget)
         self.btn_Test.setObjectName(_fromUtf8("btn_Test"))
         self.gridLayout_3.addWidget(self.btn_Test, 0, 0, 1, 1)
+        self.btn_Progressbar = QtGui.QPushButton(self.centralwidget)
+        self.btn_Progressbar.setObjectName(_fromUtf8("btn_Progressbar"))
+        self.gridLayout_3.addWidget(self.btn_Progressbar, 2, 2, 1, 1)
+        self.btn_Software = QtGui.QPushButton(self.centralwidget)
+        self.btn_Software.setObjectName(_fromUtf8("btn_Software"))
+        self.gridLayout_3.addWidget(self.btn_Software, 2, 1, 1, 1)
         self.hash_Btn = QtGui.QPushButton(self.centralwidget)
         self.hash_Btn.setObjectName(_fromUtf8("hash_Btn"))
         self.gridLayout_3.addWidget(self.hash_Btn, 2, 0, 1, 1)
-        self.scrollArea = QtGui.QScrollArea(self.centralwidget)
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
-        self.scrollAreaWidgetContents = QtGui.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 540, 358))
-        self.scrollAreaWidgetContents.setObjectName(_fromUtf8("scrollAreaWidgetContents"))
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.gridLayout_3.addWidget(self.scrollArea, 3, 0, 1, 1)
         self.progressBar = QtGui.QProgressBar(self.centralwidget)
         self.progressBar.setProperty("value", 0)
         self.progressBar.setObjectName(_fromUtf8("progressBar"))
         self.gridLayout_3.addWidget(self.progressBar, 3, 2, 1, 1, QtCore.Qt.AlignRight|QtCore.Qt.AlignBottom)
+        self.treeWidget = QtGui.QTreeWidget(self.centralwidget)
+        self.treeWidget.setAlternatingRowColors(False)
+        self.treeWidget.setObjectName(_fromUtf8("treeWidget"))
+        self.gridLayout_3.addWidget(self.treeWidget, 3, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 755, 21))
@@ -117,11 +110,13 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.btn_Services.setText(_translate("MainWindow", "Services", None))
-        self.pushButton_5.setText(_translate("MainWindow", "PushButton", None))
-        self.btn_Progressbar.setText(_translate("MainWindow", "Start", None))
         self.btn_Processen.setText(_translate("MainWindow", "Processen", None))
         self.btn_Test.setText(_translate("MainWindow", "Test mijn functie", None))
+        self.btn_Progressbar.setText(_translate("MainWindow", "Start", None))
+        self.btn_Software.setText(_translate("MainWindow", "Software", None))
         self.hash_Btn.setText(_translate("MainWindow", "Hash...", None))
+        self.treeWidget.headerItem().setText(0, _translate("MainWindow", "ProcesID", None))
+        self.treeWidget.headerItem().setText(1, _translate("MainWindow", "Naam", None))
         self.menuBestand.setTitle(_translate("MainWindow", "Bestand", None))
         self.menuOpties.setTitle(_translate("MainWindow", "Opties", None))
         self.actionNieuw.setText(_translate("MainWindow", "Nieuw...", None))
@@ -135,7 +130,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Processen.clicked.connect(Software.processes)
         self.btn_Services.clicked.connect(Software.services)
         self.hash_Btn.clicked.connect(self.printTekst4)
-        self.pushButton_5.clicked.connect(self.printTekst5)
+        self.btn_Software.clicked.connect(Software.software_installed)
         self.btn_Progressbar.clicked.connect(self.update_progress)
 
         self._active = False

@@ -22,20 +22,6 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
-     <widget class="QPushButton" name="btn_Progressbar">
-      <property name="text">
-       <string>Start</string>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="1">
      <widget class="QPushButton" name="btn_Processen">
       <property name="text">
@@ -50,6 +36,20 @@
       </property>
      </widget>
     </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="btn_Progressbar">
+      <property name="text">
+       <string>Start</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="btn_Software">
+      <property name="text">
+       <string>Software</string>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="0">
      <widget class="QPushButton" name="hash_Btn">
       <property name="text">
@@ -57,28 +57,28 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="QScrollArea" name="scrollArea">
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>540</width>
-         <height>358</height>
-        </rect>
-       </property>
-      </widget>
-     </widget>
-    </item>
     <item row="3" column="2" alignment="Qt::AlignRight|Qt::AlignBottom">
      <widget class="QProgressBar" name="progressBar">
       <property name="value">
        <number>0</number>
       </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QTreeWidget" name="treeWidget">
+      <property name="alternatingRowColors">
+       <bool>false</bool>
+      </property>
+      <column>
+       <property name="text">
+        <string>ProcesID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Naam</string>
+       </property>
+      </column>
      </widget>
     </item>
    </layout>

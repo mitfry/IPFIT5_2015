@@ -23,13 +23,13 @@ while count < 1:
 beginningLines = '''
 #!/usr/bin/env python
 
-# Add folder "functions" to the locations to import from
-sys.path.append(sys.path[0]+"/../functions")
-
 # IPFIT5 imports
 # Built-in
 import sys
 import time
+
+# Add folder "functions" to the locations to import from
+sys.path.append(sys.path[0]+"/../functions")
 
 # Custom
 import Software
@@ -43,7 +43,7 @@ finalLines = '''
         self.btn_Processen.clicked.connect(Software.processes)
         self.btn_Services.clicked.connect(Software.services)
         self.hash_Btn.clicked.connect(self.printTekst4)
-        self.pushButton_5.clicked.connect(self.printTekst5)
+        self.btn_Software.clicked.connect(Software.software_installed)
         self.btn_Progressbar.clicked.connect(self.update_progress)
 
         self._active = False
