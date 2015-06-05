@@ -4,15 +4,24 @@ import sys
 # Custom
 # Add folder "modules" to the locations to import from
 sys.path.append(sys.path[0] + "/../modules")
+
 import wmi
+
 
 w = wmi.WMI(".")
 
 # Generating a list of running processes on the target pc
 def processes():
+    processList = []
     for process in w.Win32_Process():
         if process.Caption is not None:
-            print "ID: ", process.ProcessId, " Name: ", process.Name
+            # print "ID: ", process.ProcessId, " Name: ", process.Name
+            # interface_thram.treeWidget.addTopLevelItems(process.Caption)  # add everything to the tree
+            processList.append(process.Caption)
+    return processList
+
+
+
 
 
 # Software installed with any windows installer
