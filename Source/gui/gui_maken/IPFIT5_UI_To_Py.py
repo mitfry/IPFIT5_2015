@@ -38,15 +38,15 @@ import Hardware
 '''
 
 finalLines = '''
-       # IPFIT5 functions and other code
+        # IPFIT5 functions and other code
         self.btn_Test.clicked.connect(Hardware.printTekst)
         self.btn_Processen.clicked.connect(Software.processes)
         self.btn_Services.clicked.connect(Software.services)
-        self.hash_Btn.clicked.connect(self.printTekst4)
+        self.btn_Hash.clicked.connect(self.printTekst4)
         self.btn_Software.clicked.connect(Software.software_installed)
         self.btn_Progressbar.clicked.connect(self.update_progress)
-
         self._active = False
+
     def update_progress(self):
         if not self._active:
             self._active = True

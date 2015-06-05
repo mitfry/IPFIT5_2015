@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>755</width>
-    <height>477</height>
+    <width>720</width>
+    <height>567</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,70 +15,156 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
-    <item row="0" column="2">
-     <widget class="QPushButton" name="btn_Services">
-      <property name="text">
-       <string>Services</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="btn_Processen">
-      <property name="text">
-       <string>Processen</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="btn_Test">
-      <property name="text">
-       <string>Test mijn functie</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
-     <widget class="QPushButton" name="btn_Progressbar">
-      <property name="text">
-       <string>Start</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="btn_Software">
-      <property name="text">
-       <string>Software</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QPushButton" name="hash_Btn">
-      <property name="text">
-       <string>Hash...</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2" alignment="Qt::AlignRight|Qt::AlignBottom">
+    <item row="1" column="0">
      <widget class="QProgressBar" name="progressBar">
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
       <property name="value">
        <number>0</number>
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="QTreeWidget" name="treeWidget">
-      <property name="alternatingRowColors">
-       <bool>false</bool>
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tab_Menu">
+      <property name="currentIndex">
+       <number>0</number>
       </property>
-      <column>
-       <property name="text">
-        <string>ProcesID</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Naam</string>
-       </property>
-      </column>
+      <widget class="QWidget" name="tab_Project">
+       <attribute name="title">
+        <string>Project</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="btn_Test">
+          <property name="text">
+           <string>Test mijn functie</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="btn_Progressbar">
+          <property name="text">
+           <string>Start</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_System">
+       <attribute name="title">
+        <string>Systeem</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="btn_Hardware">
+          <property name="text">
+           <string>Hardware Info</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_Software">
+       <attribute name="title">
+        <string>Software</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="btn_Processen">
+          <property name="text">
+           <string>Processen</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="btn_Services">
+          <property name="text">
+           <string>Services</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="btn_Software">
+          <property name="text">
+           <string>Software</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="3">
+         <widget class="QTreeWidget" name="treeWidget">
+          <property name="alternatingRowColors">
+           <bool>false</bool>
+          </property>
+          <column>
+           <property name="text">
+            <string>ProcesID</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Naam</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_Internet">
+       <attribute name="title">
+        <string>Internet</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="btn_Internet_History">
+          <property name="text">
+           <string>Internetgeschiedenis</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_Email">
+       <attribute name="title">
+        <string>E-mail</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="btn_Email">
+          <property name="text">
+           <string>E-mail</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_Files">
+       <attribute name="title">
+        <string>Bestanden</string>
+       </attribute>
+       <layout class="QFormLayout" name="formLayout">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+        </property>
+        <item row="1" column="1">
+         <widget class="QLabel" name="lbl_Live_Search">
+          <property name="text">
+           <string>Live Search...</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="txt_Live_Search"/>
+        </item>
+        <item row="4" column="1">
+         <widget class="QPushButton" name="btn_Hash">
+          <property name="text">
+           <string>Hash...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -88,7 +174,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>755</width>
+     <width>720</width>
      <height>21</height>
     </rect>
    </property>
@@ -106,8 +192,17 @@
     </property>
     <addaction name="actionFuncties"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionInfo"/>
+    <addaction name="actionTechnical_manual"/>
+    <addaction name="actionOver"/>
+   </widget>
    <addaction name="menuBestand"/>
    <addaction name="menuOpties"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionNieuw">
@@ -128,6 +223,21 @@
   <action name="actionFuncties">
    <property name="text">
     <string>Functies</string>
+   </property>
+  </action>
+  <action name="actionInfo">
+   <property name="text">
+    <string>Gebruikershandleiding</string>
+   </property>
+  </action>
+  <action name="actionTechnical_manual">
+   <property name="text">
+    <string>Technische handleiding</string>
+   </property>
+  </action>
+  <action name="actionOver">
+   <property name="text">
+    <string>Over</string>
    </property>
   </action>
  </widget>
