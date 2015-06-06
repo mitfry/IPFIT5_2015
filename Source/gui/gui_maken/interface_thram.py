@@ -5,6 +5,7 @@
 # Built-in
 import sys
 import time
+from PyQt4.QtGui import QTreeWidgetItem
 
 # Add folder "functions" to the locations to import from
 sys.path.append(sys.path[0]+"/../functions")
@@ -17,7 +18,7 @@ import Hardware
 
 # Form implementation generated from reading ui file 'C:\Development\School\IPFIT5_2015\source\gui\gui_maken\interface_thram.ui'
 #
-# Created: Fri Jun 05 19:23:43 2015
+# Created: Sat Jun 06 23:04:51 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -90,10 +91,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Software = QtGui.QPushButton(self.tab_Software)
         self.btn_Software.setObjectName(_fromUtf8("btn_Software"))
         self.gridLayout.addWidget(self.btn_Software, 0, 2, 1, 1)
-        self.treeWidget = QtGui.QTreeWidget(self.tab_Software)
-        self.treeWidget.setAlternatingRowColors(False)
-        self.treeWidget.setObjectName(_fromUtf8("treeWidget"))
-        self.gridLayout.addWidget(self.treeWidget, 1, 0, 1, 3)
+        self.treew_Software = QtGui.QTreeWidget(self.tab_Software)
+        self.treew_Software.setAlternatingRowColors(False)
+        self.treew_Software.setObjectName(_fromUtf8("treew_Software"))
+        self.gridLayout.addWidget(self.treew_Software, 1, 0, 1, 3)
         self.tab_Menu.addTab(self.tab_Software, _fromUtf8(""))
         self.tab_Internet = QtGui.QWidget()
         self.tab_Internet.setObjectName(_fromUtf8("tab_Internet"))
@@ -167,7 +168,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tab_Menu.setCurrentIndex(0)
+        self.tab_Menu.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -180,8 +181,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Processen.setText(_translate("MainWindow", "Processen", None))
         self.btn_Services.setText(_translate("MainWindow", "Services", None))
         self.btn_Software.setText(_translate("MainWindow", "Software", None))
-        self.treeWidget.headerItem().setText(0, _translate("MainWindow", "ProcesID", None))
-        self.treeWidget.headerItem().setText(1, _translate("MainWindow", "Naam", None))
+        self.treew_Software.headerItem().setText(0, _translate("MainWindow", "ProcesID", None))
+        self.treew_Software.headerItem().setText(1, _translate("MainWindow", "Naam", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Software), _translate("MainWindow", "Software", None))
         self.btn_Internet_History.setText(_translate("MainWindow", "Internetgeschiedenis", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Internet), _translate("MainWindow", "Internet", None))
@@ -202,15 +203,26 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.actionOver.setText(_translate("MainWindow", "Over", None))
 
 
-       # IPFIT5 functions and other code
+        # IPFIT5 functions and other code
         self.btn_Test.clicked.connect(Hardware.printTekst)
-        self.btn_Processen.clicked.connect(Software.processes)
-        self.btn_Services.clicked.connect(Software.services)
+        self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
+        self.btn_Services.clicked.connect(lambda: self.fill_software_treewidget(Software.services()))
         self.btn_Hash.clicked.connect(self.printTekst4)
-        self.btn_Software.clicked.connect(Software.software_installed)
+        self.btn_Software.clicked.connect(lambda: self.fill_software_treewidget(Software.software_installed()))
         self.btn_Progressbar.clicked.connect(self.update_progress)
-
         self._active = False
+
+    def fill_software_treewidget(self, passed_list):
+        row_number = 0
+        self.treew_Software.clear()
+        for row in passed_list:
+            item = QTreeWidgetItem()
+            item.setText(0, unicode(row[0]))
+            item.setText(1, unicode(row[1]))
+            self.treew_Software.insertTopLevelItem(row_number, item)
+            row_number += 1
+            QtGui.qApp.processEvents()
+
     def update_progress(self):
         if not self._active:
             self._active = True

@@ -27,6 +27,7 @@ beginningLines = '''
 # Built-in
 import sys
 import time
+from PyQt4.QtGui import QTreeWidgetItem
 
 # Add folder "functions" to the locations to import from
 sys.path.append(sys.path[0]+"/../functions")
@@ -40,12 +41,23 @@ import Hardware
 finalLines = '''
         # IPFIT5 functions and other code
         self.btn_Test.clicked.connect(Hardware.printTekst)
-        self.btn_Processen.clicked.connect(Software.processes)
-        self.btn_Services.clicked.connect(Software.services)
+        self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
+        self.btn_Services.clicked.connect(lambda: self.fill_software_treewidget(Software.services()))
         self.btn_Hash.clicked.connect(self.printTekst4)
-        self.btn_Software.clicked.connect(Software.software_installed)
+        self.btn_Software.clicked.connect(lambda: self.fill_software_treewidget(Software.software_installed()))
         self.btn_Progressbar.clicked.connect(self.update_progress)
         self._active = False
+
+    def fill_software_treewidget(self, passed_list):
+        row_number = 0
+        self.treew_Software.clear()
+        for row in passed_list:
+            item = QTreeWidgetItem()
+            item.setText(0, unicode(row[0]))
+            item.setText(1, unicode(row[1]))
+            self.treew_Software.insertTopLevelItem(row_number, item)
+            row_number += 1
+            QtGui.qApp.processEvents()
 
     def update_progress(self):
         if not self._active:

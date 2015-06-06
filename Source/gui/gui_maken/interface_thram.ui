@@ -28,7 +28,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tab_Menu">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_Project">
        <attribute name="title">
@@ -92,7 +92,7 @@
          </widget>
         </item>
         <item row="1" column="0" colspan="3">
-         <widget class="QTreeWidget" name="treeWidget">
+         <widget class="QTreeWidget" name="treew_Software">
           <property name="alternatingRowColors">
            <bool>false</bool>
           </property>
