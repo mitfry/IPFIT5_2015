@@ -1,12 +1,11 @@
+
 #!/usr/bin/env python
 
 # IPFIT5 imports
 # Built-in
 import sys
 import time
-
 from PyQt4.QtGui import QTreeWidgetItem
-
 
 # Add folder "functions" to the locations to import from
 sys.path.append(sys.path[0]+"/../functions")
@@ -17,9 +16,9 @@ import Hardware
 
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Development\School\IPFIT5_2015\source\gui\gui_maken\interface_thram.ui'
+# Form implementation generated from reading ui file 'C:\Users\Andre\Documents\Ipfit5\THRAM\Source\gui\gui_maken\interface_thram.ui'
 #
-# Created: Sat Jun 06 23:04:51 2015
+# Created: Sun Jun 07 17:33:36 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -50,15 +49,17 @@ class Ui_MainWindow(QtGui.QMainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(720, 567)
         self.centralwidget = QtGui.QWidget(MainWindow)
+        self.centralwidget.setEnabled(True)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout_3 = QtGui.QGridLayout(self.centralwidget)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
         self.progressBar = QtGui.QProgressBar(self.centralwidget)
-        self.progressBar.setMouseTracking(True)
+        self.progressBar.setMouseTracking(False)
         self.progressBar.setProperty("value", 0)
         self.progressBar.setObjectName(_fromUtf8("progressBar"))
         self.gridLayout_3.addWidget(self.progressBar, 1, 0, 1, 1)
         self.tab_Menu = QtGui.QTabWidget(self.centralwidget)
+        self.tab_Menu.setEnabled(True)
         self.tab_Menu.setObjectName(_fromUtf8("tab_Menu"))
         self.tab_Project = QtGui.QWidget()
         self.tab_Project.setObjectName(_fromUtf8("tab_Project"))
@@ -115,18 +116,38 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.tab_Menu.addTab(self.tab_Email, _fromUtf8(""))
         self.tab_Files = QtGui.QWidget()
         self.tab_Files.setObjectName(_fromUtf8("tab_Files"))
-        self.formLayout = QtGui.QFormLayout(self.tab_Files)
-        self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout.setObjectName(_fromUtf8("formLayout"))
-        self.lbl_Live_Search = QtGui.QLabel(self.tab_Files)
-        self.lbl_Live_Search.setObjectName(_fromUtf8("lbl_Live_Search"))
-        self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.lbl_Live_Search)
+        self.gridLayout_7 = QtGui.QGridLayout(self.tab_Files)
+        self.gridLayout_7.setObjectName(_fromUtf8("gridLayout_7"))
         self.txt_Live_Search = QtGui.QLineEdit(self.tab_Files)
         self.txt_Live_Search.setObjectName(_fromUtf8("txt_Live_Search"))
-        self.formLayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.txt_Live_Search)
+        self.gridLayout_7.addWidget(self.txt_Live_Search, 5, 0, 1, 1)
         self.btn_Hash = QtGui.QPushButton(self.tab_Files)
         self.btn_Hash.setObjectName(_fromUtf8("btn_Hash"))
-        self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.btn_Hash)
+        self.gridLayout_7.addWidget(self.btn_Hash, 6, 0, 1, 1)
+        self.treew_Bestanden = QtGui.QTreeWidget(self.tab_Files)
+        self.treew_Bestanden.setEnabled(True)
+        self.treew_Bestanden.setAutoFillBackground(False)
+        self.treew_Bestanden.setAutoScroll(True)
+        self.treew_Bestanden.setTabKeyNavigation(False)
+        self.treew_Bestanden.setAlternatingRowColors(True)
+        self.treew_Bestanden.setObjectName(_fromUtf8("treew_Bestanden"))
+        self.treew_Bestanden.header().setCascadingSectionResizes(True)
+        self.treew_Bestanden.header().setDefaultSectionSize(100)
+        self.treew_Bestanden.header().setHighlightSections(True)
+        self.treew_Bestanden.header().setSortIndicatorShown(True)
+        self.gridLayout_7.addWidget(self.treew_Bestanden, 7, 0, 1, 1)
+        self.pushButton = QtGui.QPushButton(self.tab_Files)
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.gridLayout_7.addWidget(self.pushButton, 1, 0, 1, 1)
+        self.label = QtGui.QLabel(self.tab_Files)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.gridLayout_7.addWidget(self.label, 2, 0, 1, 1)
+        self.lbl_Live_Search = QtGui.QLabel(self.tab_Files)
+        self.lbl_Live_Search.setObjectName(_fromUtf8("lbl_Live_Search"))
+        self.gridLayout_7.addWidget(self.lbl_Live_Search, 4, 0, 1, 1)
+        self.label_2 = QtGui.QLabel(self.tab_Files)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.gridLayout_7.addWidget(self.label_2, 3, 0, 1, 1)
         self.tab_Menu.addTab(self.tab_Files, _fromUtf8(""))
         self.gridLayout_3.addWidget(self.tab_Menu, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -141,6 +162,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.menuHelp.setObjectName(_fromUtf8("menuHelp"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
+        self.statusbar.setEnabled(True)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         MainWindow.setStatusBar(self.statusbar)
         self.actionNieuw = QtGui.QAction(MainWindow)
@@ -169,7 +191,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tab_Menu.setCurrentIndex(2)
+        self.tab_Menu.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -189,8 +211,18 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Internet), _translate("MainWindow", "Internet", None))
         self.btn_Email.setText(_translate("MainWindow", "E-mail", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Email), _translate("MainWindow", "E-mail", None))
-        self.lbl_Live_Search.setText(_translate("MainWindow", "Live Search...", None))
         self.btn_Hash.setText(_translate("MainWindow", "Hash...", None))
+        self.treew_Bestanden.headerItem().setText(0, _translate("MainWindow", "Bestand", None))
+        self.treew_Bestanden.headerItem().setText(1, _translate("MainWindow", "Locatie", None))
+        self.treew_Bestanden.headerItem().setText(2, _translate("MainWindow", "Bestandsgrootte", None))
+        self.treew_Bestanden.headerItem().setText(3, _translate("MainWindow", "Aangepast op", None))
+        self.treew_Bestanden.headerItem().setText(4, _translate("MainWindow", "Laatst geopend op", None))
+        self.treew_Bestanden.headerItem().setText(5, _translate("MainWindow", "Aangemaakt op", None))
+        self.treew_Bestanden.headerItem().setText(6, _translate("MainWindow", "Eigenaar", None))
+        self.pushButton.setText(_translate("MainWindow", "Zoeken vanaf:", None))
+        self.label.setText(_translate("MainWindow", "U zoekt vanaf:", None))
+        self.lbl_Live_Search.setText(_translate("MainWindow", "Zoeken naar:", None))
+        self.label_2.setText(_translate("MainWindow", "TextLabel", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Files), _translate("MainWindow", "Bestanden", None))
         self.menuBestand.setTitle(_translate("MainWindow", "Bestand", None))
         self.menuOpties.setTitle(_translate("MainWindow", "Opties", None))

@@ -14,11 +14,14 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <layout class="QGridLayout" name="gridLayout_3">
     <item row="1" column="0">
      <widget class="QProgressBar" name="progressBar">
       <property name="mouseTracking">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="value">
        <number>0</number>
@@ -27,8 +30,11 @@
     </item>
     <item row="0" column="0">
      <widget class="QTabWidget" name="tab_Menu">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_Project">
        <attribute name="title">
@@ -142,24 +148,108 @@
        <attribute name="title">
         <string>Bestanden</string>
        </attribute>
-       <layout class="QFormLayout" name="formLayout">
-        <property name="fieldGrowthPolicy">
-         <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-        </property>
-        <item row="1" column="1">
-         <widget class="QLabel" name="lbl_Live_Search">
-          <property name="text">
-           <string>Live Search...</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
+       <layout class="QGridLayout" name="gridLayout_7">
+        <item row="5" column="0">
          <widget class="QLineEdit" name="txt_Live_Search"/>
         </item>
-        <item row="4" column="1">
+        <item row="6" column="0">
          <widget class="QPushButton" name="btn_Hash">
           <property name="text">
            <string>Hash...</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0">
+         <widget class="QTreeWidget" name="treew_Bestanden">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="autoScroll">
+           <bool>true</bool>
+          </property>
+          <property name="tabKeyNavigation">
+           <bool>false</bool>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <attribute name="headerCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="headerDefaultSectionSize">
+           <number>100</number>
+          </attribute>
+          <attribute name="headerHighlightSections">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="headerShowSortIndicator" stdset="0">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Bestand</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Locatie</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Bestandsgrootte</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Aangepast op</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Laatst geopend op</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Aangemaakt op</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Eigenaar</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Zoeken vanaf:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>U zoekt vanaf:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="lbl_Live_Search">
+          <property name="text">
+           <string>Zoeken naar:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>TextLabel</string>
           </property>
          </widget>
         </item>
@@ -204,7 +294,11 @@
    <addaction name="menuOpties"/>
    <addaction name="menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+  </widget>
   <action name="actionNieuw">
    <property name="text">
     <string>Nieuw...</string>
