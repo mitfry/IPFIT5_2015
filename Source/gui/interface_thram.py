@@ -18,7 +18,7 @@ import Hardware
 
 # Form implementation generated from reading ui file 'C:\Users\Andre\Documents\Ipfit5\THRAM\Source\gui\gui_maken\interface_thram.ui'
 #
-# Created: Sun Jun 07 17:33:36 2015
+# Created: Sun Jun 07 17:44:28 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -136,18 +136,19 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.treew_Bestanden.header().setHighlightSections(True)
         self.treew_Bestanden.header().setSortIndicatorShown(True)
         self.gridLayout_7.addWidget(self.treew_Bestanden, 7, 0, 1, 1)
-        self.pushButton = QtGui.QPushButton(self.tab_Files)
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.gridLayout_7.addWidget(self.pushButton, 1, 0, 1, 1)
-        self.label = QtGui.QLabel(self.tab_Files)
-        self.label.setObjectName(_fromUtf8("label"))
-        self.gridLayout_7.addWidget(self.label, 2, 0, 1, 1)
+        self.btn_Search_From = QtGui.QPushButton(self.tab_Files)
+        self.btn_Search_From.setObjectName(_fromUtf8("btn_Search_From"))
+        self.gridLayout_7.addWidget(self.btn_Search_From, 1, 0, 1, 1)
+        self.info_Search_From = QtGui.QLabel(self.tab_Files)
+        self.info_Search_From.setObjectName(_fromUtf8("info_Search_From"))
+        self.gridLayout_7.addWidget(self.info_Search_From, 2, 0, 1, 1)
         self.lbl_Live_Search = QtGui.QLabel(self.tab_Files)
         self.lbl_Live_Search.setObjectName(_fromUtf8("lbl_Live_Search"))
         self.gridLayout_7.addWidget(self.lbl_Live_Search, 4, 0, 1, 1)
-        self.label_2 = QtGui.QLabel(self.tab_Files)
-        self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.gridLayout_7.addWidget(self.label_2, 3, 0, 1, 1)
+        self.show_Search_From = QtGui.QLineEdit(self.tab_Files)
+        self.show_Search_From.setEnabled(False)
+        self.show_Search_From.setObjectName(_fromUtf8("show_Search_From"))
+        self.gridLayout_7.addWidget(self.show_Search_From, 3, 0, 1, 1)
         self.tab_Menu.addTab(self.tab_Files, _fromUtf8(""))
         self.gridLayout_3.addWidget(self.tab_Menu, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -219,10 +220,9 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.treew_Bestanden.headerItem().setText(4, _translate("MainWindow", "Laatst geopend op", None))
         self.treew_Bestanden.headerItem().setText(5, _translate("MainWindow", "Aangemaakt op", None))
         self.treew_Bestanden.headerItem().setText(6, _translate("MainWindow", "Eigenaar", None))
-        self.pushButton.setText(_translate("MainWindow", "Zoeken vanaf:", None))
-        self.label.setText(_translate("MainWindow", "U zoekt vanaf:", None))
+        self.btn_Search_From.setText(_translate("MainWindow", "Zoeken vanaf:", None))
+        self.info_Search_From.setText(_translate("MainWindow", "U zoekt vanaf:", None))
         self.lbl_Live_Search.setText(_translate("MainWindow", "Zoeken naar:", None))
-        self.label_2.setText(_translate("MainWindow", "TextLabel", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Files), _translate("MainWindow", "Bestanden", None))
         self.menuBestand.setTitle(_translate("MainWindow", "Bestand", None))
         self.menuOpties.setTitle(_translate("MainWindow", "Opties", None))
