@@ -238,14 +238,15 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
 
         # IPFIT5 functions and other code
-        self.btn_Test.clicked.connect(Hardware.printTekst)
+        self.btn_Test.clicked.connect(self.printTekst4)
         self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
         self.btn_Services.clicked.connect(lambda: self.fill_software_treewidget(Software.services()))
-        hello = self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
-        self.btn_Hash.clicked.connect(lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(self.get_searchbar(hello))))
+        self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
+        self.btn_Hash.clicked.connect(lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(TekstJONGEN)))
         self.btn_Software.clicked.connect(lambda: self.fill_software_treewidget(Software.software_installed()))
         self.btn_Progressbar.clicked.connect(self.update_progress)
         self._active = False
+
 
     def fill_software_treewidget(self, passed_list):
         row_number = 0
@@ -259,9 +260,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
             QtGui.qApp.processEvents()
 
     def fill_searchbar(self, output):
+        global TekstJONGEN
         self.show_Search_From.clear()
         self.show_Search_From.insert(str(output))
-        self.get_searchbar(str(output))
+        TekstJONGEN = output
 
     def fill_hash_treewidget(self, passed_list):
         row_number = 0
@@ -313,6 +315,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     def printTekst4(self):
         print "Hallo Hugo?!"
+        print TekstJONGEN
 
     def printTekst5(self):
         print "Hallo Andre?!"
@@ -321,6 +324,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         print "Hallo Mitchell?!"
 
         # Het is niet te geloven dames!
+
 
 # IPFIT5 constructor
 if __name__ == "__main__":
