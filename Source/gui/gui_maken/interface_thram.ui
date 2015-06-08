@@ -200,6 +200,16 @@
           </column>
           <column>
            <property name="text">
+            <string>Hashvorm</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Hashwaarde</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
             <string>Bestandsgrootte</string>
            </property>
           </column>
@@ -216,11 +226,6 @@
           <column>
            <property name="text">
             <string>Aangemaakt op</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Eigenaar</string>
            </property>
           </column>
          </widget>

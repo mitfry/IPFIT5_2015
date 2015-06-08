@@ -18,7 +18,7 @@ import Hardware
 
 # Form implementation generated from reading ui file 'C:\Users\Andre\Documents\Ipfit5\THRAM\Source\gui\gui_maken\interface_thram.ui'
 #
-# Created: Sun Jun 07 17:44:28 2015
+# Created: Mon Jun 08 14:01:25 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -215,11 +215,12 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Hash.setText(_translate("MainWindow", "Hash...", None))
         self.treew_Bestanden.headerItem().setText(0, _translate("MainWindow", "Bestand", None))
         self.treew_Bestanden.headerItem().setText(1, _translate("MainWindow", "Locatie", None))
-        self.treew_Bestanden.headerItem().setText(2, _translate("MainWindow", "Bestandsgrootte", None))
-        self.treew_Bestanden.headerItem().setText(3, _translate("MainWindow", "Aangepast op", None))
-        self.treew_Bestanden.headerItem().setText(4, _translate("MainWindow", "Laatst geopend op", None))
-        self.treew_Bestanden.headerItem().setText(5, _translate("MainWindow", "Aangemaakt op", None))
-        self.treew_Bestanden.headerItem().setText(6, _translate("MainWindow", "Eigenaar", None))
+        self.treew_Bestanden.headerItem().setText(2, _translate("MainWindow", "Hashvorm", None))
+        self.treew_Bestanden.headerItem().setText(3, _translate("MainWindow", "Hashwaarde", None))
+        self.treew_Bestanden.headerItem().setText(4, _translate("MainWindow", "Bestandsgrootte", None))
+        self.treew_Bestanden.headerItem().setText(5, _translate("MainWindow", "Aangepast op", None))
+        self.treew_Bestanden.headerItem().setText(6, _translate("MainWindow", "Laatst geopend op", None))
+        self.treew_Bestanden.headerItem().setText(7, _translate("MainWindow", "Aangemaakt op", None))
         self.btn_Search_From.setText(_translate("MainWindow", "Zoeken vanaf:", None))
         self.info_Search_From.setText(_translate("MainWindow", "U zoekt vanaf:", None))
         self.lbl_Live_Search.setText(_translate("MainWindow", "Zoeken naar:", None))

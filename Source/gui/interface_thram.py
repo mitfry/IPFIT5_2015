@@ -13,12 +13,13 @@ sys.path.append(sys.path[0]+"/../functions")
 # Custom
 import Software
 import Hardware
+import Hash
 
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'C:\Users\Andre\Documents\Ipfit5\THRAM\Source\gui\gui_maken\interface_thram.ui'
 #
-# Created: Sun Jun 07 17:44:28 2015
+# Created: Mon Jun 08 14:01:25 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -215,11 +216,12 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Hash.setText(_translate("MainWindow", "Hash...", None))
         self.treew_Bestanden.headerItem().setText(0, _translate("MainWindow", "Bestand", None))
         self.treew_Bestanden.headerItem().setText(1, _translate("MainWindow", "Locatie", None))
-        self.treew_Bestanden.headerItem().setText(2, _translate("MainWindow", "Bestandsgrootte", None))
-        self.treew_Bestanden.headerItem().setText(3, _translate("MainWindow", "Aangepast op", None))
-        self.treew_Bestanden.headerItem().setText(4, _translate("MainWindow", "Laatst geopend op", None))
-        self.treew_Bestanden.headerItem().setText(5, _translate("MainWindow", "Aangemaakt op", None))
-        self.treew_Bestanden.headerItem().setText(6, _translate("MainWindow", "Eigenaar", None))
+        self.treew_Bestanden.headerItem().setText(2, _translate("MainWindow", "Hashvorm", None))
+        self.treew_Bestanden.headerItem().setText(3, _translate("MainWindow", "Hashwaarde", None))
+        self.treew_Bestanden.headerItem().setText(4, _translate("MainWindow", "Bestandsgrootte", None))
+        self.treew_Bestanden.headerItem().setText(5, _translate("MainWindow", "Aangepast op", None))
+        self.treew_Bestanden.headerItem().setText(6, _translate("MainWindow", "Laatst geopend op", None))
+        self.treew_Bestanden.headerItem().setText(7, _translate("MainWindow", "Aangemaakt op", None))
         self.btn_Search_From.setText(_translate("MainWindow", "Zoeken vanaf:", None))
         self.info_Search_From.setText(_translate("MainWindow", "U zoekt vanaf:", None))
         self.lbl_Live_Search.setText(_translate("MainWindow", "Zoeken naar:", None))
@@ -240,7 +242,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Test.clicked.connect(Hardware.printTekst)
         self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
         self.btn_Services.clicked.connect(lambda: self.fill_software_treewidget(Software.services()))
-        self.btn_Hash.clicked.connect(self.printTekst4)
+        hello = self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
+        self.btn_Hash.clicked.connect(lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(self.get_searchbar(hello))))
         self.btn_Software.clicked.connect(lambda: self.fill_software_treewidget(Software.software_installed()))
         self.btn_Progressbar.clicked.connect(self.update_progress)
         self._active = False
@@ -253,6 +256,28 @@ class Ui_MainWindow(QtGui.QMainWindow):
             item.setText(0, unicode(row[0]))
             item.setText(1, unicode(row[1]))
             self.treew_Software.insertTopLevelItem(row_number, item)
+            row_number += 1
+            QtGui.qApp.processEvents()
+
+    def fill_searchbar(self, output):
+        self.show_Search_From.clear()
+        self.show_Search_From.insert(str(output))
+        self.get_searchbar(str(output))
+
+    def fill_hash_treewidget(self, passed_list):
+        row_number = 0
+        self.treew_Bestanden.clear()
+        for row in passed_list:
+            item = QTreeWidgetItem()
+            item.setText(0, unicode(row[0]))
+            item.setText(1, unicode(row[1]))
+            item.setText(2, unicode(row[2]))
+            item.setText(3, unicode(row[3]))
+            item.setText(4, unicode(row[4]))
+            item.setText(5, unicode(row[5]))
+            item.setText(6, unicode(row[6]))
+            item.setText(7, unicode(row[7]))
+            self.treew_Bestanden.insertTopLevelItem(row_number, item)
             row_number += 1
             QtGui.qApp.processEvents()
 
