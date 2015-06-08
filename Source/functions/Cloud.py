@@ -54,82 +54,123 @@ class CloudSearch():
 
     def csearch_dropbox(self):
         if os.path.exists("%s\\Dropbox" % programfiles):
-            print "Dropbox installation found"
+            dropboxres = "Dropbox installation found"
         elif os.path.exists("%s\\AppData\\Roaming\\Dropbox" % homefolder):
-            print "Dropbox installation found"
+            dropboxres = "Dropbox installation found"
         else:
-            pass
+            dropboxres = "Dropbox installation not found"
 
         if os.path.exists("%s\\Dropbox" % homefolder):
-            print "Dropbox folder found"
+            dropboxres2 = "Dropbox folder found"
         else:
-            pass
+            dropboxres2 = "Dpr[bpx fp;der mpt found"
+
+        dropboxresultaat = []
+        dropboxresultaat[0] = dropboxres
+        dropboxresultaat[1] = dropboxres2
+        return dropboxresultaat
 
     def csearch_box(self):
         if os.path.exists("%s\\Box\\Box Sync" % programfiles):
-            print "Box installation found"
+            boxres = "Box installation found"
         else:
-            pass
+            boxres = "Box installation not found"
 
         if os.path.exists("%s\\Box Sync" % homefolder):
-            print "Box folder found"
+            boxres2 = "Box folder found"
         else:
-            pass
+            boxres2 = "Box folder found"
+
+        boxresultaat = []
+        boxresultaat[0] = boxres
+        boxresultaat[1] = boxres2
+
+        return boxresultaat
 
     def csearch_googled(self):
        if os.path.exists("%s\\Google\\Drive" % programfiles):
-            print "Google Drive installation found"
+            gores = "Google Drive installation found"
        else:
-           pass
+           gores = "Google Drive installation not found"
 
        if os.path.exists("%s\\Google Drive" % homefolder):
-            print "Google Drive folder found"
+            gores2 = "Google Drive folder found"
        else:
-            pass
+           gores2 = "Google Drive folder not found"
+
+       googleresultaat = []
+       googleresultaat[0] = gores
+       googleresultaat[1] = gores2
+
+       return googleresultaat
 
     def csearch_oned(self):
         if os.path.exists("%s\\Microsoft OneDrive" % programfiles):
-            print "OneDrive installation found"
+            oneres = "OneDrive installation found"
         else:
-            pass
+            oneres = "OneDrive installation not found"
 
         if os.path.exists("%s\\OneDrive" % homefolder):
-            print "OneDrive folder found"
+            oneres2 = "OneDrive folder found"
         else:
-            pass
+            oneres2 = "OneDrive folder not found"
+
+        oneresultaat = []
+        oneresultaat.append()[0] = oneres
+        oneresultaat[1] = oneres2
+
+        return oneresultaat
 
     def csearch_spidero(self):
         if os.path.exists("%s\\SpiderOak" % programfiles):
-            print "SpideOak installation found"
+            spires = "SpideOak installation found"
         else:
-            pass
+            spires = "SpiderOak installation not found"
 
         if os.path.exists("%s\\Desktop\\SpiderOak Hive.*" % homefolder):
-            print "SpiderOak folder found"
+            spires2 = "SpiderOak folder found"
         else:
-            pass
+            spires2 = "SpiderOak folder not found"
+
+        spiderresultaat = []
+        spiderresultaat[0] = spires
+        spiderresultaat[1] = spires2
+
+        return spiderresultaat
 
     def csearch_mega(self):
         if os.path.exists("%s\\AppData\\Local\\MEGAsync" % homefolder):
-            print "Mega installation found"
+            meres = "Mega installation found"
         else:
-            pass
+            meres = "Mega installation not found"
 
         if os.path.exists("%s\\Desktop\\MEGAsync.*" % homefolder):
-            print "Mega folder found"
+            meres2 = "Mega folder found"
         else:
-            pass
+            meres2 = "Mega folder not found"
+
+        megaresultaat = []
+        megaresultaat[0] = meres2
+        megaresultaat[1] = meres
+
+        return megaresultaat
 
     def csearch_copy(self):
         if os.path.exists("%s\\AppData\\Roaming\\Copy" % homefolder):
-            print "Copy installation found"
+            cores = "Copy installation found"
         else:
-            pass
+            cores = "Copy installation not found"
 
         if os.path.exists("%s\\Copy" % homefolder):
-            print "Copy folder found"
+            cores2 = "Copy folder found"
         else:
-            pass
+            cores2 = "Copy folder not found"
+
+        copyresultaat = []
+        copyresultaat[0] = cores
+        copyresultaat[1] = cores2
+
+        return copyresultaat
 
     def process_search(self):
         w = wmi.WMI(".")
