@@ -25,6 +25,7 @@ def calculate_hash_from_multiplee_files(full_path):
     for root, dirs, files in os.walk(full_path):
         for file_name in files:
             count += 1
+            print count, file_name
             size = os.stat(root + '/' + file_name)
             (mode, ino, dev, nlink, uid, gid, size, atime,
              mtime, ctime) = os.stat(root + '/' + file_name)

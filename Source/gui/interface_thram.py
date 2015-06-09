@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 
 # IPFIT5 imports
@@ -18,7 +19,7 @@ import Hash
 
 # Form implementation generated from reading ui file 'C:\Users\Andre\Documents\Ipfit5\THRAM\Source\gui\gui_maken\interface_thram.ui'
 #
-# Created: Mon Jun 08 14:01:25 2015
+# Created: Tue Jun 09 02:21:21 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -122,6 +123,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.txt_Live_Search.setObjectName(_fromUtf8("txt_Live_Search"))
         self.gridLayout_7.addWidget(self.txt_Live_Search, 5, 0, 1, 1)
         self.btn_Hash = QtGui.QPushButton(self.tab_Files)
+        self.btn_Hash.setEnabled(False)
         self.btn_Hash.setObjectName(_fromUtf8("btn_Hash"))
         self.gridLayout_7.addWidget(self.btn_Hash, 6, 0, 1, 1)
         self.treew_Bestanden = QtGui.QTreeWidget(self.tab_Files)
@@ -137,6 +139,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.treew_Bestanden.header().setSortIndicatorShown(True)
         self.gridLayout_7.addWidget(self.treew_Bestanden, 7, 0, 1, 1)
         self.btn_Search_From = QtGui.QPushButton(self.tab_Files)
+        self.btn_Search_From.setCheckable(False)
         self.btn_Search_From.setObjectName(_fromUtf8("btn_Search_From"))
         self.gridLayout_7.addWidget(self.btn_Search_From, 1, 0, 1, 1)
         self.info_Search_From = QtGui.QLabel(self.tab_Files)
@@ -212,16 +215,16 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Internet), _translate("MainWindow", "Internet", None))
         self.btn_Email.setText(_translate("MainWindow", "E-mail", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Email), _translate("MainWindow", "E-mail", None))
-        self.btn_Hash.setText(_translate("MainWindow", "Hash...", None))
+        self.btn_Hash.setText(_translate("MainWindow", "Geef een externe doelmap op:", None))
         self.treew_Bestanden.headerItem().setText(0, _translate("MainWindow", "Bestand", None))
         self.treew_Bestanden.headerItem().setText(1, _translate("MainWindow", "Locatie", None))
         self.treew_Bestanden.headerItem().setText(2, _translate("MainWindow", "Hashvorm", None))
         self.treew_Bestanden.headerItem().setText(3, _translate("MainWindow", "Hashwaarde", None))
-        self.treew_Bestanden.headerItem().setText(4, _translate("MainWindow", "Bestandsgrootte", None))
+        self.treew_Bestanden.headerItem().setText(4, _translate("MainWindow", "Bestandsgrootte in kb", None))
         self.treew_Bestanden.headerItem().setText(5, _translate("MainWindow", "Aangepast op", None))
         self.treew_Bestanden.headerItem().setText(6, _translate("MainWindow", "Laatst geopend op", None))
         self.treew_Bestanden.headerItem().setText(7, _translate("MainWindow", "Aangemaakt op", None))
-        self.btn_Search_From.setText(_translate("MainWindow", "Zoeken vanaf:", None))
+        self.btn_Search_From.setText(_translate("MainWindow", "Geef een hoofdmap op:", None))
         self.info_Search_From.setText(_translate("MainWindow", "U zoekt vanaf:", None))
         self.lbl_Live_Search.setText(_translate("MainWindow", "Zoeken naar:", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Files), _translate("MainWindow", "Bestanden", None))
@@ -238,7 +241,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
 
         # IPFIT5 functions and other code
-        self.btn_Test.clicked.connect(self.printTekst4)
+        self.btn_Test.clicked.connect(Hardware.printTekst)
         self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
         self.btn_Services.clicked.connect(lambda: self.fill_software_treewidget(Software.services()))
         self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
@@ -246,7 +249,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Software.clicked.connect(lambda: self.fill_software_treewidget(Software.software_installed()))
         self.btn_Progressbar.clicked.connect(self.update_progress)
         self._active = False
-
 
     def fill_software_treewidget(self, passed_list):
         row_number = 0
@@ -263,23 +265,18 @@ class Ui_MainWindow(QtGui.QMainWindow):
         global TekstJONGEN
         self.show_Search_From.clear()
         self.show_Search_From.insert(str(output))
+        self.btn_Hash.setEnabled(True)
         TekstJONGEN = output
 
     def fill_hash_treewidget(self, passed_list):
-        row_number = 0
         self.treew_Bestanden.clear()
         for row in passed_list:
+            row_number = 0
             item = QTreeWidgetItem()
-            item.setText(0, unicode(row[0]))
-            item.setText(1, unicode(row[1]))
-            item.setText(2, unicode(row[2]))
-            item.setText(3, unicode(row[3]))
-            item.setText(4, unicode(row[4]))
-            item.setText(5, unicode(row[5]))
-            item.setText(6, unicode(row[6]))
-            item.setText(7, unicode(row[7]))
-            self.treew_Bestanden.insertTopLevelItem(row_number, item)
-            row_number += 1
+            while row_number < 8:
+                item.setText(row_number, unicode(row[row_number]))
+                self.treew_Bestanden.insertTopLevelItem(row_number, item)
+                row_number += 1
             QtGui.qApp.processEvents()
 
     def update_progress(self):
@@ -315,7 +312,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     def printTekst4(self):
         print "Hallo Hugo?!"
-        print TekstJONGEN
 
     def printTekst5(self):
         print "Hallo Andre?!"
@@ -324,7 +320,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
         print "Hallo Mitchell?!"
 
         # Het is niet te geloven dames!
-
 
 # IPFIT5 constructor
 if __name__ == "__main__":
