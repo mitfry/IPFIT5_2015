@@ -63,11 +63,11 @@ class CloudSearch():
         if os.path.exists("%s\\Dropbox" % homefolder):
             dropboxres2 = "Dropbox folder found"
         else:
-            dropboxres2 = "Dpr[bpx fp;der mpt found"
+            dropboxres2 = "Dropbox folder not found"
 
         dropboxresultaat = []
-        dropboxresultaat[0] = dropboxres
-        dropboxresultaat[1] = dropboxres2
+        dropboxresultaat.append(dropboxres)
+        dropboxresultaat.append(dropboxres2)
         return dropboxresultaat
 
     def csearch_box(self):
@@ -82,8 +82,8 @@ class CloudSearch():
             boxres2 = "Box folder found"
 
         boxresultaat = []
-        boxresultaat[0] = boxres
-        boxresultaat[1] = boxres2
+        boxresultaat.append(boxres)
+        boxresultaat.append(boxres2)
 
         return boxresultaat
 
@@ -99,8 +99,8 @@ class CloudSearch():
            gores2 = "Google Drive folder not found"
 
        googleresultaat = []
-       googleresultaat[0] = gores
-       googleresultaat[1] = gores2
+       googleresultaat.append(gores)
+       googleresultaat.append(gores2)
 
        return googleresultaat
 
@@ -116,8 +116,8 @@ class CloudSearch():
             oneres2 = "OneDrive folder not found"
 
         oneresultaat = []
-        oneresultaat.append()[0] = oneres
-        oneresultaat[1] = oneres2
+        oneresultaat.append(oneres)
+        oneresultaat.append(oneres2)
 
         return oneresultaat
 
@@ -133,8 +133,8 @@ class CloudSearch():
             spires2 = "SpiderOak folder not found"
 
         spiderresultaat = []
-        spiderresultaat[0] = spires
-        spiderresultaat[1] = spires2
+        spiderresultaat.append(spires)
+        spiderresultaat.append(spires2)
 
         return spiderresultaat
 
@@ -150,8 +150,8 @@ class CloudSearch():
             meres2 = "Mega folder not found"
 
         megaresultaat = []
-        megaresultaat[0] = meres2
-        megaresultaat[1] = meres
+        megaresultaat.append(meres2)
+        megaresultaat.append(meres)
 
         return megaresultaat
 
@@ -167,8 +167,8 @@ class CloudSearch():
             cores2 = "Copy folder not found"
 
         copyresultaat = []
-        copyresultaat[0] = cores
-        copyresultaat[1] = cores2
+        copyresultaat.append(cores)
+        copyresultaat.append(cores2)
 
         return copyresultaat
 
