@@ -27,10 +27,10 @@ Het zal zoeken naar de volgende diensten:
 -Copy
 """
 
-import sys
-import os.path
+    import sys
+    import os.path
 
-sys.path.append(sys.path[0]+"/../modules")
+    sys.path.append(sys.path[0]+"/../modules")
 
 import wmi
 
