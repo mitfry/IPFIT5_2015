@@ -20,13 +20,13 @@ def write():
     #writing the entered content to the file we just created
 
     target.write(Case_Name)
-    target.write("n")
+    target.write(" ")
     target.write(Investigator)
-    target.write("n")
+    target.write(" ")
     target.write(Organization)
-    target.write("n")
+    target.write(" ")
     target.write(Contact)
-    target.write("n")
+    target.write(" ")
 
     target.close()
 
