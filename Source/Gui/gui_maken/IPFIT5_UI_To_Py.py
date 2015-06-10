@@ -1,3 +1,4 @@
+__author__ = 'Mitchell'
 # Generate python file from UI file
 # pyuic4 -o interface_thram.py interface_thram.ui
 
@@ -22,6 +23,7 @@ while count < 1:
 
 beginningLines = '''
 #!/usr/bin/env python
+__author__ = 'Mitchell'
 
 # IPFIT5 imports
 # Built-in
@@ -41,16 +43,21 @@ import Hash
 
 finalLines = '''
         # IPFIT5 functions and other code
-        self.btn_Test.clicked.connect(Hardware.printTekst)
+        self.btn_Test.clicked.connect(self.test_mijn_functie)
+        self.btn_Processen.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
+        self.btn_Services.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Services.clicked.connect(lambda: self.fill_software_treewidget(Software.services()))
-        self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
-        self.btn_Hash.clicked.connect(lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(TekstJONGEN)))
         self.btn_Software.clicked.connect(lambda: self.fill_software_treewidget(Software.software_installed()))
+        self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
+        self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
+        self.btn_Hash.clicked.connect(
+            lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(output_list)))
+
         self.btn_Progressbar.clicked.connect(self.update_progress)
-        self._active = False
 
     def fill_software_treewidget(self, passed_list):
+
         row_number = 0
         self.treew_Software.clear()
         for row in passed_list:
@@ -62,11 +69,11 @@ finalLines = '''
             QtGui.qApp.processEvents()
 
     def fill_searchbar(self, output):
-        global TekstJONGEN
+        global output_list
         self.show_Search_From.clear()
         self.show_Search_From.insert(str(output))
         self.btn_Hash.setEnabled(True)
-        TekstJONGEN = output
+        output_list = output
 
     def fill_hash_treewidget(self, passed_list):
         self.treew_Bestanden.clear()
@@ -99,27 +106,39 @@ finalLines = '''
             self.progressBar.setValue(value)
             QtGui.qApp.processEvents()
             if (not self._active or
-                value >= self.progressBar.maximum()):
+                        value >= self.progressBar.maximum()):
                 break
         self.btn_Progressbar.setText('Start')
         self._active = False
 
-    def printTekst2(self):
-        print "Hallo Tim?!"
+    # Het is niet te geloven dames!
 
-    def printTekst3(self):
-        print "Hallo Roland?!"
+    global x
+    x = 0
 
-    def printTekst4(self):
-        print "Hallo Hugo?!"
+    def status_bar(self, message, time_in_mills):
+        self.statusbar.showMessage(message, time_in_mills)
 
-    def printTekst5(self):
-        print "Hallo Andre?!"
+    def test_mijn_functie(self):
+        global x
+        if x < 2:
+            print "Pauper"
+        elif x < 5:
+            print "Pauperr!"
+        elif x < 9:
+            print "Wat klik je nou nog?!"
+        elif x < 12:
+            print "Noob alert: Application soon exiting..."
+            for i in range(0, 5):
+                i = 5 - i
+                self.status_bar("Exiting in: " + str(i) + " seconds... =3", 0)
+                time.sleep(1)
 
-    def printTekst6(self):
-        print "Hallo Mitchell?!"
-
-        # Het is niet te geloven dames!
+            print "Laatsnorr.."
+            self.status_bar("Laatsnorr...", 0)
+            time.sleep(1)
+            sys.exit()
+        x += 1
 
 # IPFIT5 constructor
 if __name__ == "__main__":
@@ -140,6 +159,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
+        self._active = False
         '''
 
 f = open(sys.path[0] + "\interface_thram.py", 'w')
