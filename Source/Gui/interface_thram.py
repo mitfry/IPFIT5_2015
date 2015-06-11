@@ -6,14 +6,15 @@ __author__ = 'Mitchell'
 # Built-in
 import sys
 import time
+
 from PyQt4.QtGui import QTreeWidgetItem
+
 
 # Add folder "functions" to the locations to import from
 sys.path.append(sys.path[0]+"/../functions")
 
 # Custom
 import Software
-import Hardware
 import Hash
 
 # -*- coding: utf-8 -*-
