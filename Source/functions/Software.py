@@ -54,7 +54,7 @@ class WorkerThread(threading.Thread):
             if service.Caption is not None:
                 # print "ID: ", service.ProcessId, " Name: ", service.Caption, " Service state:", service.State
                 list_services.append([service.ProcessId, service.Caption, service.State])
-        print 'Finished gathering information! (3/3)\nSoftware Tab ready for use :)'
+        print 'Finished gathering information! (3/3)\n\nSoftware Tab ready for use :)'
 
 
 WorkerThread().start()
