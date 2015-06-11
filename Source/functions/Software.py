@@ -10,9 +10,10 @@ sys.path.append(sys.path[0] + "/../modules")
 
 import wmi
 
-list_processes = []
-list_software = []
-list_services = []
+# Submitt column titles for TreeWidget on Software tab. MAX 10!
+list_processes = [["Proces ID", "Naam", ""]]
+list_software = [["Naam", "Versie", ""]]
+list_services = [["Proces ID", "Naam", "Status"]]
 
 
 def processes():
@@ -42,6 +43,7 @@ class WorkerThread(threading.Thread):
                 # print "ID: ", process.ProcessId, " Name: ", process.Name
                 list_processes.append([process.ProcessID, process.Name])
         print 'Process list complete! (1/3)\n'
+
         # Software installed with any windows installer
         # List is incomplete imo
         for software in w.Win32_Product():
@@ -49,12 +51,14 @@ class WorkerThread(threading.Thread):
                 # print "Name: ", software.Caption.replace(u"\u2122", ''), "on version ", software.Version
                 list_software.append([software.Caption.replace(u"\u2122", ''), software.Version])
         print 'Software list complete! (2/3)\n'
+
         # Generating a list of services on the target pc
         for service in w.Win32_Service():
             if service.Caption is not None:
                 # print "ID: ", service.ProcessId, " Name: ", service.Caption, " Service state:", service.State
                 list_services.append([service.ProcessId, service.Caption, service.State])
-        print 'Finished gathering information! (3/3)\n\nSoftware Tab ready for use :)'
+        print 'Service list complete! (3/3)\n'
+        print 'Finished gathering information!\n\nSoftware Tab ready for use :)'
 
 
 WorkerThread().start()

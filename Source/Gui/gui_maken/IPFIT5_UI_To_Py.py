@@ -43,6 +43,7 @@ import Hash
 
 finalLines = '''
         # IPFIT5 functions and other code
+        self.setWindowTitle(_translate("MainWindow", "THRAM" + u'\u2122' + "- The Ultimate Triage Solution", None))
         self.btn_Test.clicked.connect(self.test_mijn_functie)
         self.btn_Processen.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
@@ -57,16 +58,22 @@ finalLines = '''
         self.btn_Progressbar.clicked.connect(self.update_progress)
 
     def fill_software_treewidget(self, passed_list):
-
-        row_number = 0
         self.treew_Software.clear()
-        for row in passed_list:
+        passed_list_number = 0
+
+        for title in passed_list[0]:
+            self.treew_Software.headerItem().setText(passed_list_number, _translate("MainWindow", title, None))
+            passed_list_number += 1
+
+        passed_list_number = 0
+        for row in passed_list[1:]:
             item = QTreeWidgetItem()
-            item.setText(0, unicode(row[0]))
-            item.setText(1, unicode(row[1]))
-            self.treew_Software.insertTopLevelItem(row_number, item)
-            row_number += 1
+            for row_nr in range(0, len(row)):
+                item.setText(row_nr, unicode(row[row_nr]))
+
+            self.treew_Software.insertTopLevelItem(passed_list_number, item)
             QtGui.qApp.processEvents()
+            passed_list_number += 1
 
     def fill_searchbar(self, output):
         global output_list
