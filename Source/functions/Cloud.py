@@ -27,10 +27,10 @@ Het zal zoeken naar de volgende diensten:
 -Copy
 """
 
-    import sys
-    import os.path
+import sys
+import os.path
 
-    sys.path.append(sys.path[0]+"/../modules")
+sys.path.append(sys.path[0]+"/../modules")
 
 import wmi
 
@@ -41,7 +41,7 @@ homefolder = os.path.expanduser("~")
 programfiles = os.environ['PROGRAMFILES']
 
 class CloudSearch():
-    def __init__(self):
+    def __init__(self, setstatus):
 
         self.csearch_dropbox()
         self.csearch_box()

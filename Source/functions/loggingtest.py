@@ -1,42 +1,53 @@
 __author__ = 'Tim Duysens'
 """
 Last edited: 9-6-15
-Testclasse die alle prints opvangt en logt.
 
 Deze class zal bij het starten van het programma worden aangeroepen.
-Hierna wordt alles wat in het console komt eveneens in een text bestand.
+Hierna wordt alles wat in het console komt eveneens in een text bestand opgeslagen.
 
 """
 
+import os
+import glob
 import logging
-import sys
+import logging.handlers
+import time
 
-class LoggingStart():
-    def __init__(self, logger, log_level=logging.INFO):
-        self.logger = logger
-        self.log_level = log_level
-        self.linebuf = ''
+LOG_FILENAME = 'THRAM Logboek'
 
-    def write(self, buf):
-        for line in buf.rstrip().splitlines():
-            self.logger.log(self.log_level, line.rstrip())
+formatter = '%(asctime)s - %(name)s - [%(levelname)s] - %(message)s'
+formatlog = '%(message)s'
 
-    def testlog(self):
-        print "lol"
-        print "lol1"
-        print "lol2"
+# Set up a specific logger with our desired output level
+logger = logging.getLogger('THRAM')
+logger.setLevel(logging.INFO)
 
-logging.basicConfig(
-   level=logging.DEBUG,
-   format='%(asctime)s:%(levelname)s:%(name)s:%(message)s',
-   filename="out.log",
-   filemode='a'
-)
+# Check if log exists and should therefore be rolled
+needRoll = os.path.isfile(LOG_FILENAME)
 
-stdout_logger = logging.getLogger('STDOUT')
-sl = LoggingStart(stdout_logger, logging.INFO)
-sys.stdout = sl
+# Add the log message handler to the logger
+handler = logging.handlers.RotatingFileHandler(LOG_FILENAME, backupCount=50)
 
-stderr_logger = logging.getLogger('STDERR')
-sl = LoggingStart(stderr_logger, logging.ERROR)
-sys.stderr = sl
+forhand = logging.StreamHandler()
+
+forhand.setFormatter(formatlog)
+
+logger.addHandler(handler)
+logger.addHandler(forhand)
+
+# This is a stale log, so roll it
+if needRoll:
+    # Add timestamp
+    logger.info('\n---------\nLog gesloten op %s.\n---------\n' % time.asctime())
+
+    # Roll over on application start
+    logger.handlers[0].doRollover()
+
+# Add timestamp
+logger.info('\n---------\nLog gestart op %s.\n---------\n' % time.asctime())
+
+logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG, format=formatter)
+
+
+startter = logging.getLogger("THRAM - Start")
+startter.info("Programma is gestart, let the search begin!")
