@@ -7,9 +7,10 @@
 
 # Imports
 import sqlite3
+import os.path
 
 # Connectie maken met de database
-conn = sqlite3.connect('E:\Bibliotheken\python\Internet_geschiedenis\History')
+conn = sqlite3.connect(os.path.expanduser('~/AppData/Local/Google/Chrome/'))
 
 # Deze variable gebruik je verder
 c = conn.cursor()
