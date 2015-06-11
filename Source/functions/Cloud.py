@@ -1,6 +1,6 @@
 __author__ = 'Tim Duysens'
 """
-Last edited = 4-6-15
+Last edited = 9-6-15
 Deze classes zoeken naar sporen die duiden op het gebruik van Cloudgebruik.
 
 Samenwerkende files: Software.py - Mitchell*
