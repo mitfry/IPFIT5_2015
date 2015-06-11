@@ -1,69 +1,40 @@
 __author__ = 'Roland'
 
-import sys, os
+import os
 
 def write():
 
-    #providing name for the file to be created
-    Case_File = raw_input("Give name for the Case File: ")
-    target = open (Case_File, 'a') ## a will append, w will over-write
+    print 'Creating a new case'
 
-    #providing the content for the file
-    print "Fill in the following information for the New Case"
-    print ""
-    Case_Name = raw_input("Enter Case Name: ");
-    Investigator = raw_input("Enter Investigator's name: ");
-    Organization = raw_input("Enter Organization: ");
-    Contact = raw_input("Enter Contact Details: ");
-    print ""
+    # providing name for the file to be created
+    case_file = open(raw_input("Type a name for the Case File: ")+'.txt', 'w')  # a will append, w will over-write
 
-    #writing the entered content to the file we just created
+    # providing the content for the file
 
-    target.write(Case_Name)
-    target.write(" ")
-    target.write(Investigator)
-    target.write(" ")
-    target.write(Organization)
-    target.write(" ")
-    target.write(Contact)
-    target.write(" ")
+    case_name = raw_input("Enter Case Name: ")
+    investigator = raw_input("Enter investigator's name: ")
+    organization = raw_input("Enter organization: ")
+    contact = raw_input("Enter contact Details: ")
+    print "\n"
 
-    target.close()
+    # writing the entered content to the file we just created
 
-     # Here do I make a folder named "The given Case_File name" & Show the path where this is made.
-    path = os.path.join(os.path.expanduser('~'), 'Documents', 'Cases', Case_File)+'.txt' # Path to the folder for any user / +'.txt' Name of text file coerced with +.txt
-    os.makedirs(path) # Make the folder
-    print (path) # Show the folder path
+    case_file.write("Case Name:             " + case_name)
+    case_file.write("\n")
+    case_file.write("\n")
+    case_file.write("Investigator:          " + investigator)
+    case_file.write("\n")
+    case_file.write("Organization:          " + organization)
+    case_file.write("\n")
+    case_file.write("Contact Details:       " + contact)
+    case_file.write("\n")
+
+    case_file.close()
+
+# Here do I make a folder named "The given case_file name" & Show the path where this is made.
+# path = os.path.join(os.path.expanduser('~'), 'Documents', 'Cases', case_file)  # Cr. path to the folder for any user
+# os.makedirs(path)  # Make the folder
+# print (path)  # Show the folder path
 
 write()
 
-
-'''print "New Case"
-
-print "Case_Name: ", Case_Name
-print "Investigator: ", Investigator
-print "Organization: ", Organization
-print "Contact Details: ", Contact
-
-
-
-
-mode = 'a' if os.path.exists(writepath) else 'w'
-with open(writepath, mode) as f:
-    f.write('Hello, world!\n')
-
-
-def write():
-    print('Creating new text file')
-
-    name = input('Enter name of text file: ')+'.txt'  # Name of text file coerced with +.txt
-
-    try:
-        file = open(name,'a')   # Trying to create a new file or open one
-        file.close()
-
-    except:
-        print('Something went wrong! Can\'t tell what?')
-        sys.exit(0) # quit Python
-
-write()'''
