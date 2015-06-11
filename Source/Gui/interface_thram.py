@@ -1,5 +1,6 @@
 
 #!/usr/bin/env python
+__author__ = 'Mitchell'
 
 # IPFIT5 imports
 # Built-in
@@ -17,9 +18,9 @@ import Hash
 
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\Andre\Documents\Ipfit5\THRAM\Source\gui\gui_maken\interface_thram.ui'
+# Form implementation generated from reading ui file 'C:\Development\School\IPFIT5_2015\Source\gui\gui_maken\interface_thram.ui'
 #
-# Created: Tue Jun 09 10:24:29 2015
+# Created: Thu Jun 11 11:58:01 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -45,20 +46,18 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
+        self._active = False
         
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(720, 567)
+        MainWindow.setWindowModality(QtCore.Qt.NonModal)
+        MainWindow.setEnabled(True)
+        MainWindow.resize(960, 563)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setEnabled(True)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout_3 = QtGui.QGridLayout(self.centralwidget)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
-        self.progressBar = QtGui.QProgressBar(self.centralwidget)
-        self.progressBar.setMouseTracking(False)
-        self.progressBar.setProperty("value", 0)
-        self.progressBar.setObjectName(_fromUtf8("progressBar"))
-        self.gridLayout_3.addWidget(self.progressBar, 1, 0, 1, 1)
         self.tab_Menu = QtGui.QTabWidget(self.centralwidget)
         self.tab_Menu.setEnabled(True)
         self.tab_Menu.setObjectName(_fromUtf8("tab_Menu"))
@@ -94,18 +93,61 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Software = QtGui.QPushButton(self.tab_Software)
         self.btn_Software.setObjectName(_fromUtf8("btn_Software"))
         self.gridLayout.addWidget(self.btn_Software, 0, 2, 1, 1)
+        self.btn_Cloud = QtGui.QPushButton(self.tab_Software)
+        self.btn_Cloud.setObjectName(_fromUtf8("btn_Cloud"))
+        self.gridLayout.addWidget(self.btn_Cloud, 0, 3, 1, 1)
         self.treew_Software = QtGui.QTreeWidget(self.tab_Software)
         self.treew_Software.setAlternatingRowColors(False)
         self.treew_Software.setObjectName(_fromUtf8("treew_Software"))
-        self.gridLayout.addWidget(self.treew_Software, 1, 0, 1, 3)
+        self.gridLayout.addWidget(self.treew_Software, 1, 0, 1, 4)
         self.tab_Menu.addTab(self.tab_Software, _fromUtf8(""))
         self.tab_Internet = QtGui.QWidget()
         self.tab_Internet.setObjectName(_fromUtf8("tab_Internet"))
         self.gridLayout_5 = QtGui.QGridLayout(self.tab_Internet)
         self.gridLayout_5.setObjectName(_fromUtf8("gridLayout_5"))
-        self.btn_Internet_History = QtGui.QPushButton(self.tab_Internet)
-        self.btn_Internet_History.setObjectName(_fromUtf8("btn_Internet_History"))
-        self.gridLayout_5.addWidget(self.btn_Internet_History, 0, 0, 1, 1)
+        self.chk_Mozilla_FireFox = QtGui.QCheckBox(self.tab_Internet)
+        self.chk_Mozilla_FireFox.setObjectName(_fromUtf8("chk_Mozilla_FireFox"))
+        self.gridLayout_5.addWidget(self.chk_Mozilla_FireFox, 2, 0, 1, 1)
+        self.btn_Load_Internet_History = QtGui.QPushButton(self.tab_Internet)
+        self.btn_Load_Internet_History.setObjectName(_fromUtf8("btn_Load_Internet_History"))
+        self.gridLayout_5.addWidget(self.btn_Load_Internet_History, 6, 0, 1, 1)
+        self.lbl_Search_Internet_History = QtGui.QLabel(self.tab_Internet)
+        self.lbl_Search_Internet_History.setObjectName(_fromUtf8("lbl_Search_Internet_History"))
+        self.gridLayout_5.addWidget(self.lbl_Search_Internet_History, 0, 4, 1, 1)
+        self.chk_Internet_History_Search_Capital_Letter = QtGui.QCheckBox(self.tab_Internet)
+        self.chk_Internet_History_Search_Capital_Letter.setObjectName(_fromUtf8("chk_Internet_History_Search_Capital_Letter"))
+        self.gridLayout_5.addWidget(self.chk_Internet_History_Search_Capital_Letter, 1, 4, 1, 1)
+        self.lbl_Internet_History_Amount = QtGui.QLabel(self.tab_Internet)
+        self.lbl_Internet_History_Amount.setObjectName(_fromUtf8("lbl_Internet_History_Amount"))
+        self.gridLayout_5.addWidget(self.lbl_Internet_History_Amount, 1, 3, 1, 1)
+        self.chk_Internet_Explorer = QtGui.QCheckBox(self.tab_Internet)
+        self.chk_Internet_Explorer.setObjectName(_fromUtf8("chk_Internet_Explorer"))
+        self.gridLayout_5.addWidget(self.chk_Internet_Explorer, 1, 0, 1, 1)
+        self.btn_Show_Internet_History = QtGui.QPushButton(self.tab_Internet)
+        self.btn_Show_Internet_History.setObjectName(_fromUtf8("btn_Show_Internet_History"))
+        self.gridLayout_5.addWidget(self.btn_Show_Internet_History, 6, 3, 1, 1)
+        self.btn_Search_Internet_History = QtGui.QPushButton(self.tab_Internet)
+        self.btn_Search_Internet_History.setObjectName(_fromUtf8("btn_Search_Internet_History"))
+        self.gridLayout_5.addWidget(self.btn_Search_Internet_History, 6, 4, 1, 1)
+        self.lbl_Internet_History_Most_Visited = QtGui.QLabel(self.tab_Internet)
+        self.lbl_Internet_History_Most_Visited.setObjectName(_fromUtf8("lbl_Internet_History_Most_Visited"))
+        self.gridLayout_5.addWidget(self.lbl_Internet_History_Most_Visited, 0, 3, 1, 1)
+        self.lbl_Browsers = QtGui.QLabel(self.tab_Internet)
+        self.lbl_Browsers.setMinimumSize(QtCore.QSize(298, 0))
+        self.lbl_Browsers.setObjectName(_fromUtf8("lbl_Browsers"))
+        self.gridLayout_5.addWidget(self.lbl_Browsers, 0, 0, 1, 1)
+        self.txt_Internet_History_Search = QtGui.QLineEdit(self.tab_Internet)
+        self.txt_Internet_History_Search.setObjectName(_fromUtf8("txt_Internet_History_Search"))
+        self.gridLayout_5.addWidget(self.txt_Internet_History_Search, 2, 4, 1, 1)
+        self.treeWidget = QtGui.QTreeWidget(self.tab_Internet)
+        self.treeWidget.setObjectName(_fromUtf8("treeWidget"))
+        self.gridLayout_5.addWidget(self.treeWidget, 7, 0, 1, 5)
+        self.chk_Google_Chrome = QtGui.QCheckBox(self.tab_Internet)
+        self.chk_Google_Chrome.setObjectName(_fromUtf8("chk_Google_Chrome"))
+        self.gridLayout_5.addWidget(self.chk_Google_Chrome, 3, 0, 1, 1)
+        self.txt_Internet_History_Amount = QtGui.QLineEdit(self.tab_Internet)
+        self.txt_Internet_History_Amount.setObjectName(_fromUtf8("txt_Internet_History_Amount"))
+        self.gridLayout_5.addWidget(self.txt_Internet_History_Amount, 2, 3, 1, 1)
         self.tab_Menu.addTab(self.tab_Internet, _fromUtf8(""))
         self.tab_Email = QtGui.QWidget()
         self.tab_Email.setObjectName(_fromUtf8("tab_Email"))
@@ -153,10 +195,15 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.show_Search_From.setObjectName(_fromUtf8("show_Search_From"))
         self.gridLayout_7.addWidget(self.show_Search_From, 3, 0, 1, 1)
         self.tab_Menu.addTab(self.tab_Files, _fromUtf8(""))
-        self.gridLayout_3.addWidget(self.tab_Menu, 0, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.tab_Menu, 2, 0, 1, 1)
+        self.progressBar = QtGui.QProgressBar(self.centralwidget)
+        self.progressBar.setMouseTracking(False)
+        self.progressBar.setProperty("value", 0)
+        self.progressBar.setObjectName(_fromUtf8("progressBar"))
+        self.gridLayout_3.addWidget(self.progressBar, 3, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 720, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 960, 21))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuBestand = QtGui.QMenu(self.menubar)
         self.menuBestand.setObjectName(_fromUtf8("menuBestand"))
@@ -199,7 +246,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
+        MainWindow.setWindowTitle(_translate("MainWindow", "THRAM - Triage Solution", None))
         self.btn_Test.setText(_translate("MainWindow", "Test mijn functie", None))
         self.btn_Progressbar.setText(_translate("MainWindow", "Start", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Project), _translate("MainWindow", "Project", None))
@@ -208,10 +255,26 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Processen.setText(_translate("MainWindow", "Processen", None))
         self.btn_Services.setText(_translate("MainWindow", "Services", None))
         self.btn_Software.setText(_translate("MainWindow", "Software", None))
+        self.btn_Cloud.setText(_translate("MainWindow", "Cloud", None))
         self.treew_Software.headerItem().setText(0, _translate("MainWindow", "ProcesID", None))
         self.treew_Software.headerItem().setText(1, _translate("MainWindow", "Naam", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Software), _translate("MainWindow", "Software", None))
-        self.btn_Internet_History.setText(_translate("MainWindow", "Internetgeschiedenis", None))
+        self.chk_Mozilla_FireFox.setText(_translate("MainWindow", "Mozilla FireFox", None))
+        self.btn_Load_Internet_History.setText(_translate("MainWindow", "Load data", None))
+        self.lbl_Search_Internet_History.setText(_translate("MainWindow", "Zoeken", None))
+        self.chk_Internet_History_Search_Capital_Letter.setText(_translate("MainWindow", "Hoofdletter gevoelig", None))
+        self.lbl_Internet_History_Amount.setText(_translate("MainWindow", "Aantal:", None))
+        self.chk_Internet_Explorer.setText(_translate("MainWindow", "Internet Explorer", None))
+        self.btn_Show_Internet_History.setText(_translate("MainWindow", "Internetgeschiedenis tonen", None))
+        self.btn_Search_Internet_History.setText(_translate("MainWindow", "Zoeken", None))
+        self.lbl_Internet_History_Most_Visited.setText(_translate("MainWindow", "Meest bezocht", None))
+        self.lbl_Browsers.setText(_translate("MainWindow", "Browsers", None))
+        self.treeWidget.headerItem().setText(0, _translate("MainWindow", "Browser", None))
+        self.treeWidget.headerItem().setText(1, _translate("MainWindow", "Titel", None))
+        self.treeWidget.headerItem().setText(2, _translate("MainWindow", "Aantal keer", None))
+        self.treeWidget.headerItem().setText(3, _translate("MainWindow", "Laatst bezocht", None))
+        self.treeWidget.headerItem().setText(4, _translate("MainWindow", "URL", None))
+        self.chk_Google_Chrome.setText(_translate("MainWindow", "Google Chrome", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Internet), _translate("MainWindow", "Internet", None))
         self.btn_Email.setText(_translate("MainWindow", "E-mail", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Email), _translate("MainWindow", "E-mail", None))
@@ -241,16 +304,21 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
 
         # IPFIT5 functions and other code
-        self.btn_Test.clicked.connect(Hardware.printTekst)
+        self.btn_Test.clicked.connect(self.test_mijn_functie)
+        self.btn_Processen.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
+        self.btn_Services.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Services.clicked.connect(lambda: self.fill_software_treewidget(Software.services()))
-        self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
-        self.btn_Hash.clicked.connect(lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(TekstJONGEN)))
         self.btn_Software.clicked.connect(lambda: self.fill_software_treewidget(Software.software_installed()))
+        self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
+        self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
+        self.btn_Hash.clicked.connect(
+            lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(output_list)))
+
         self.btn_Progressbar.clicked.connect(self.update_progress)
-        self._active = False
 
     def fill_software_treewidget(self, passed_list):
+
         row_number = 0
         self.treew_Software.clear()
         for row in passed_list:
@@ -262,11 +330,11 @@ class Ui_MainWindow(QtGui.QMainWindow):
             QtGui.qApp.processEvents()
 
     def fill_searchbar(self, output):
-        global TekstJONGEN
+        global output_list
         self.show_Search_From.clear()
         self.show_Search_From.insert(str(output))
         self.btn_Hash.setEnabled(True)
-        TekstJONGEN = output
+        output_list = output
 
     def fill_hash_treewidget(self, passed_list):
         self.treew_Bestanden.clear()
@@ -299,27 +367,39 @@ class Ui_MainWindow(QtGui.QMainWindow):
             self.progressBar.setValue(value)
             QtGui.qApp.processEvents()
             if (not self._active or
-                value >= self.progressBar.maximum()):
+                        value >= self.progressBar.maximum()):
                 break
         self.btn_Progressbar.setText('Start')
         self._active = False
 
-    def printTekst2(self):
-        print "Hallo Tim?!"
+    # Het is niet te geloven dames!
 
-    def printTekst3(self):
-        print "Hallo Roland?!"
+    global x
+    x = 0
 
-    def printTekst4(self):
-        print "Hallo Hugo?!"
+    def status_bar(self, message, time_in_mills):
+        self.statusbar.showMessage(message, time_in_mills)
 
-    def printTekst5(self):
-        print "Hallo Andre?!"
+    def test_mijn_functie(self):
+        global x
+        if x < 2:
+            print "Pauper"
+        elif x < 5:
+            print "Pauperr!"
+        elif x < 9:
+            print "Wat klik je nou nog?!"
+        elif x < 12:
+            print "Noob alert: Application soon exiting..."
+            for i in range(0, 5):
+                i = 5 - i
+                self.status_bar("Exiting in: " + str(i) + " seconds... =3", 0)
+                time.sleep(1)
 
-    def printTekst6(self):
-        print "Hallo Mitchell?!"
-
-        # Het is niet te geloven dames!
+            print "Laatsnorr.."
+            self.status_bar("Laatsnorr...", 0)
+            time.sleep(1)
+            sys.exit()
+        x += 1
 
 # IPFIT5 constructor
 if __name__ == "__main__":
