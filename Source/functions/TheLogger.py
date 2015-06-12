@@ -49,5 +49,3 @@ logger.info('\n---------\nLog gestart op %s.\n---------\n' % time.asctime())
 logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG, format=formatter)
 
 
-startter = logging.getLogger("THRAM - Start")
-startter.info("Programma is gestart, let the search begin!")

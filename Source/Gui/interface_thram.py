@@ -6,6 +6,7 @@ __author__ = 'Mitchell'
 # Built-in
 import sys
 import time
+import logging
 
 from PyQt4.QtGui import QTreeWidgetItem
 
@@ -17,12 +18,13 @@ sys.path.append(sys.path[0]+"/../functions")
 import Software
 import Hash
 import Cloud
+import TheLogger
 
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Development\School\IPFIT5_2015\source\Gui\gui_maken\interface_thram.ui'
+# Form implementation generated from reading ui file 'C:\Development\School\IPFIT5_2015\Source\gui\gui_maken\interface_thram.ui'
 #
-# Created: Thu Jun 11 16:14:23 2015
+# Created: Thu Jun 11 11:58:01 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -48,17 +50,14 @@ class Ui_MainWindow(QtGui.QMainWindow):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
         self._active = False
-        self.setstatus()
+        mainlogger = logging.getLogger("THRAM - Main")
+        mainlogger.info("Program has started, let the search begin!")
         
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.setWindowModality(QtCore.Qt.NonModal)
         MainWindow.setEnabled(True)
-        MainWindow.resize(960, 550)
-        MainWindow.setMinimumSize(QtCore.QSize(960, 0))
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("Logo/THRAM_Logo_Geen_Tekst.PNG")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        MainWindow.setWindowIcon(icon)
+        MainWindow.resize(960, 563)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setEnabled(True)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
@@ -66,7 +65,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
         self.tab_Menu = QtGui.QTabWidget(self.centralwidget)
         self.tab_Menu.setEnabled(True)
-        self.tab_Menu.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         self.tab_Menu.setObjectName(_fromUtf8("tab_Menu"))
         self.tab_Project = QtGui.QWidget()
         self.tab_Project.setObjectName(_fromUtf8("tab_Project"))
@@ -253,7 +251,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate("MainWindow", "THRAM - The Ultimate Triage Solution", None))
+        MainWindow.setWindowTitle(_translate("MainWindow", "THRAM - Triage Solution", None))
         self.btn_Test.setText(_translate("MainWindow", "Test mijn functie", None))
         self.btn_Progressbar.setText(_translate("MainWindow", "Start", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Project), _translate("MainWindow", "Project", None))
@@ -263,16 +261,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Services.setText(_translate("MainWindow", "Services", None))
         self.btn_Software.setText(_translate("MainWindow", "Software", None))
         self.btn_Cloud.setText(_translate("MainWindow", "Cloud", None))
-        self.treew_Software.headerItem().setText(0, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(1, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(2, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(3, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(4, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(5, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(6, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(7, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(8, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(9, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(0, _translate("MainWindow", "ProcesID", None))
+        self.treew_Software.headerItem().setText(1, _translate("MainWindow", "Naam", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Software), _translate("MainWindow", "Software", None))
         self.chk_Mozilla_FireFox.setText(_translate("MainWindow", "Mozilla FireFox", None))
         self.btn_Load_Internet_History.setText(_translate("MainWindow", "Load data", None))
@@ -319,7 +309,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
 
         # IPFIT5 functions and other code
-        self.setWindowTitle(_translate("MainWindow", "THRAM" + u'\u2122' + "- The Ultimate Triage Solution", None))
         self.btn_Test.clicked.connect(self.test_mijn_functie)
         self.btn_Processen.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
@@ -334,22 +323,16 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Progressbar.clicked.connect(self.update_progress)
 
     def fill_software_treewidget(self, passed_list):
+
+        row_number = 0
         self.treew_Software.clear()
-        passed_list_number = 0
-
-        for title in passed_list[0]:
-            self.treew_Software.headerItem().setText(passed_list_number, _translate("MainWindow", title, None))
-            passed_list_number += 1
-
-        passed_list_number = 0
-        for row in passed_list[1:]:
+        for row in passed_list:
             item = QTreeWidgetItem()
-            for row_nr in range(0, len(row)):
-                item.setText(row_nr, unicode(row[row_nr]))
-
-            self.treew_Software.insertTopLevelItem(passed_list_number, item)
+            item.setText(0, unicode(row[0]))
+            item.setText(1, unicode(row[1]))
+            self.treew_Software.insertTopLevelItem(row_number, item)
+            row_number += 1
             QtGui.qApp.processEvents()
-            passed_list_number += 1
 
     def fill_searchbar(self, output):
         global output_list
