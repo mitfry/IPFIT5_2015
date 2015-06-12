@@ -33,18 +33,7 @@ outputListSorted = []
 def loadData(internetExplorer, firefox, chrome):
 
     pathPart1 = expanduser("~")
-
-    firefoxFolder =  os.listdir(pathPart1 + '/AppData/Roaming/Mozilla/Firefox/Profiles')
-
-    # Making the connection with the history database
-
-    # connectionFirefox = sqlite3.connect("E:\Bibliotheken\python\Firefox\places.sqlite")
-
-
-    # Setting the cursor. This is the variable we use to execute the SQL query.
-
-
-
+    
     outputList = []  # List for the output. All history entries are stored in here.
 
     # Executing the SQL query and storing the results. Only importing the browsers that the user selected
@@ -55,6 +44,7 @@ def loadData(internetExplorer, firefox, chrome):
             listT = ["Chrome", str(row[0]), row[1], str(row[2]), row[3]]  # Storing each result in a list.
             outputList.append(listT)  # Storing the list with results in the output list.
     if firefox == 1:
+        firefoxFolder = os.listdir(pathPart1 + '/AppData/Roaming/Mozilla/Firefox/Profiles')
         connectionFirefox = sqlite3.connect(pathPart1 + '/AppData/Roaming/Mozilla/Firefox/Profiles/' + firefoxFolder[0] + '/places.sqlite')
         cursorFireFox = connectionFirefox.cursor()
         for row in cursorFireFox.execute(sqlSelectFirefox):
