@@ -41,7 +41,7 @@ class WorkerThread(threading.Thread):
         for process in w.Win32_Process():
             if process.Caption is not None:
                 # print "ID: ", process.ProcessId, " Name: ", process.Name
-                list_processes.append([process.ProcessID, process.Name])
+                list_processes.append([process.ProcessID, str(process.Name)])
         print 'Process list complete! (1/3)\n'
 
         # Software installed with any windows installer

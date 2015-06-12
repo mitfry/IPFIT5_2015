@@ -29,13 +29,18 @@ Het zal zoeken naar de volgende diensten:
 
 import sys
 import os.path
-
+from Software import processes
 
 
 
 # Get homefolder of user
 homefolder = os.path.expanduser("~")
 programfiles = os.environ['PROGRAMFILES']
+list_cloud_storage_services = [["Cloud Dienst", "Locatie", "", ""]]
+
+
+def cloud():
+    return list_cloud_storage_services
 
 
 class CloudSearch():
@@ -66,6 +71,7 @@ class CloudSearch():
         dropboxresultaat = []
         dropboxresultaat.append(dropboxres)
         dropboxresultaat.append(dropboxres2)
+        list_cloud_storage_services.append([str(dropboxresultaat[0]), str(dropboxresultaat[1])])
         return dropboxresultaat
 
     def csearch_box(self):
@@ -171,34 +177,31 @@ class CloudSearch():
         return copyresultaat
 
     def process_search(self):
-        from Software import processes
-        teller = 0
-        print processes()
-        for process in processes()[teller]:
-            if process == 'DropBox.exe':
-                print "Dropbox is active as process"
+        for process in processes():
+            for proc in process:
+                if proc == 'Dropbox.exe':
+                    print "Dropbox is active as process"
 
-            elif process == "BoxSync.exe":
-                print "Box is active as process"
+                elif proc == "BoxSync.exe":
+                    print "Box is active as process"
 
-            elif process == "googledrivesync.exe":
-                print "Google Drive is active as process"
+                elif proc == "googledrivesync.exe":
+                    print "Google Drive is active as process"
 
-            elif process == "OneDrive.exe":
-                print "OneDrive is active as process"
+                elif proc == "OneDrive.exe" or proc == "SkyDrive.exe":
+                    print "OneDrive and/or SkyDrive is active as process"
 
-            elif process == "SpiderOak.exe":
-                print "SpiderOak is active as process"
+                elif proc == "SpiderOak.exe":
+                    print "SpiderOak is active as process"
 
-            elif process == "MEGAsync.exe":
-                print "Mega is active as process"
+                elif proc == "MEGAsync.exe":
+                    print "Mega is active as process"
 
-            elif process == "CopyAgent.exe":
-                print "Copy is active as process"
+                elif proc == "CopyAgent.exe":
+                    print "Copy is active as process"
 
-            else:
-                print "Geen resultaten"
-            teller += 1
+                    # print homefolder
+                    # print programfiles
 
-    # print homefolder
-    # print programfiles
+
+CloudSearch()
