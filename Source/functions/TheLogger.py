@@ -8,7 +8,6 @@ Hierna wordt alles wat in het console komt eveneens in een text bestand opgeslag
 """
 
 import os
-import glob
 import logging
 import logging.handlers
 import time
