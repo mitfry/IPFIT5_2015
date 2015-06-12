@@ -38,24 +38,38 @@ sys.path.append(sys.path[0]+"/../functions")
 import Software
 import Hardware
 import Hash
+import Cloud
 
 '''
 
 finalLines = '''
-        # IPFIT5 functions and other code
+        # IPFIT5 Buttons, Methods and other code
         self.setWindowTitle(_translate("MainWindow", "THRAM" + u'\u2122' + "- The Ultimate Triage Solution", None))
+
+        # Tab Project:
         self.btn_Test.clicked.connect(self.test_mijn_functie)
+        self.btn_Progressbar.clicked.connect(self.update_progress)
+
+        # Tab Systeem:
+
+        # Tab Software:
         self.btn_Processen.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
         self.btn_Services.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Services.clicked.connect(lambda: self.fill_software_treewidget(Software.services()))
+        self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Software.clicked.connect(lambda: self.fill_software_treewidget(Software.software_installed()))
         self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
+        self.btn_Cloud.clicked.connect(lambda: Cloud.CloudSearch())
+
+        # Tab Internet:
+
+        # Tab E-maail:
+
+        # Tab Bestanden:
         self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
         self.btn_Hash.clicked.connect(
             lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(output_list)))
-
-        self.btn_Progressbar.clicked.connect(self.update_progress)
 
     def fill_software_treewidget(self, passed_list):
         self.treew_Software.clear()
@@ -152,6 +166,10 @@ if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     ex = Ui_MainWindow()
     ex.show()
+
+    # Starting threads for generating information
+    Software.WorkerThread().start()
+
     sys.exit(app.exec_())
 '''
 

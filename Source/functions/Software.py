@@ -11,9 +11,9 @@ sys.path.append(sys.path[0] + "/../modules")
 import wmi
 
 # Submitt column titles for TreeWidget on Software tab. MAX 10!
-list_processes = [["Proces ID", "Naam", ""]]
-list_software = [["Naam", "Versie", ""]]
-list_services = [["Proces ID", "Naam", "Status"]]
+list_processes = [["Proces ID", "Naam", "", ""]]
+list_software = [["Naam", "Versie", "", ""]]
+list_services = [["Proces ID", "Naam", "Status", ""]]
 
 
 def processes():
@@ -59,6 +59,3 @@ class WorkerThread(threading.Thread):
                 list_services.append([service.ProcessId, service.Caption, service.State])
         print 'Service list complete! (3/3)\n'
         print 'Finished gathering information!\n\nSoftware Tab ready for use :)'
-
-
-WorkerThread().start()

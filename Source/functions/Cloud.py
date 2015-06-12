@@ -30,18 +30,16 @@ Het zal zoeken naar de volgende diensten:
 import sys
 import os.path
 
-sys.path.append(sys.path[0]+"/../modules")
 
-import wmi
 
-w = wmi.WMI(".")
 
 # Get homefolder of user
 homefolder = os.path.expanduser("~")
 programfiles = os.environ['PROGRAMFILES']
 
+
 class CloudSearch():
-    def __init__(self, setstatus):
+    def __init__(self):
 
         self.csearch_dropbox()
         self.csearch_box()
@@ -88,21 +86,21 @@ class CloudSearch():
         return boxresultaat
 
     def csearch_googled(self):
-       if os.path.exists("%s\\Google\\Drive" % programfiles):
+        if os.path.exists("%s\\Google\\Drive" % programfiles):
             gores = "Google Drive installation found"
-       else:
-           gores = "Google Drive installation not found"
+        else:
+            gores = "Google Drive installation not found"
 
-       if os.path.exists("%s\\Google Drive" % homefolder):
+        if os.path.exists("%s\\Google Drive" % homefolder):
             gores2 = "Google Drive folder found"
-       else:
-           gores2 = "Google Drive folder not found"
+        else:
+            gores2 = "Google Drive folder not found"
 
-       googleresultaat = []
-       googleresultaat.append(gores)
-       googleresultaat.append(gores2)
+        googleresultaat = []
+        googleresultaat.append(gores)
+        googleresultaat.append(gores2)
 
-       return googleresultaat
+        return googleresultaat
 
     def csearch_oned(self):
         if os.path.exists("%s\\Microsoft OneDrive" % programfiles):
@@ -173,33 +171,34 @@ class CloudSearch():
         return copyresultaat
 
     def process_search(self):
-        w = wmi.WMI(".")
-        for process in w.Win32_Process():
-            if process.Name == "Dropbox.exe":
+        from Software import processes
+        teller = 0
+        print processes()
+        for process in processes()[teller]:
+            if process == 'DropBox.exe':
                 print "Dropbox is active as process"
 
-            elif process.Name == "BoxSync.exe":
+            elif process == "BoxSync.exe":
                 print "Box is active as process"
 
-            elif process.Name == "googledrivesync.exe":
+            elif process == "googledrivesync.exe":
                 print "Google Drive is active as process"
 
-            elif process.Name == "OneDrive.exe":
+            elif process == "OneDrive.exe":
                 print "OneDrive is active as process"
 
-            elif process.Name == "SpiderOak.exe":
+            elif process == "SpiderOak.exe":
                 print "SpiderOak is active as process"
 
-            elif process.Name == "MEGAsync.exe":
+            elif process == "MEGAsync.exe":
                 print "Mega is active as process"
 
-            elif process.Name == "CopyAgent.exe":
+            elif process == "CopyAgent.exe":
                 print "Copy is active as process"
 
             else:
-                pass
+                print "Geen resultaten"
+            teller += 1
 
-if __name__ == '__main__':
-    CloudSearch()
-    print homefolder
-    print programfiles
+    # print homefolder
+    # print programfiles
