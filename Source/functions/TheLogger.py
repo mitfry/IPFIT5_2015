@@ -1,3 +1,4 @@
+@@ -1,51 +0,0 @@
 __author__ = 'Tim Duysens'
 """
 Last edited: 9-6-15
@@ -48,6 +49,4 @@ logger.info('\n---------\nLog gestart op %s.\n---------\n' % time.asctime())
 
 logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG, format=formatter)
 
-
-startter = logging.getLogger("THRAM - Start")
-startter.info("Programma is gestart, let the search begin!")
+__author__ = 'Tim D'
