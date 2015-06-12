@@ -39,6 +39,7 @@ import Software
 import Hardware
 import Hash
 import Cloud
+import Internetgeschiedenis
 
 '''
 
@@ -63,8 +64,11 @@ finalLines = '''
         self.btn_Cloud.clicked.connect(lambda: Cloud.CloudSearch())
 
         # Tab Internet:
+        self.btn_Load_Internet_History.clicked.connect(lambda: self.fillBrowserTreewidget())
+        self.btn_Show_Internet_History.clicked.connect(lambda: self.zoekBrowser())
+        self.btn_Search_Internet_History.clicked.connect(lambda: self.zoekWoord())
 
-        # Tab E-maail:
+        # Tab E-mail:
 
         # Tab Bestanden:
         self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
@@ -88,6 +92,96 @@ finalLines = '''
             self.treew_Software.insertTopLevelItem(passed_list_number, item)
             QtGui.qApp.processEvents()
             passed_list_number += 1
+
+    def fillBrowserTreewidget(self):
+
+        getInternetExplorer = 0
+        getFirefox = 0
+        getChrome = 0
+
+        if self.chk_Internet_Explorer.isChecked():
+            getInternetExplorer = 1
+        if self.chk_Mozilla_FireFox.isChecked():
+            getFirefox = 1
+        if self.chk_Google_Chrome.isChecked():
+            getChrome = 1
+
+        historyList = Internetgeschiedenis.loadData(getInternetExplorer, getFirefox, getChrome)
+
+        self.browserTreeWidget.clear()
+        rowNumber = 0
+        for row in historyList:
+            item = QTreeWidgetItem()
+            item.setText(0, unicode(row[0]))
+            item.setText(1, unicode(row[4]))
+            item.setText(2, unicode(row[2]))
+            item.setText(3, unicode(row[1]))
+            item.setText(4, unicode(row[3]))
+            self.browserTreeWidget.insertTopLevelItem(rowNumber, item)
+            rowNumber += 1
+            QtGui.qApp.processEvents()
+
+    def zoekBrowser(self):
+
+        getInternetExplorer = 0
+        getFirefox = 0
+        getChrome = 0
+
+        if self.chk_Internet_Explorer.isChecked():
+            getInternetExplorer = 1
+        if self.chk_Mozilla_FireFox.isChecked():
+            getFirefox = 1
+        if self.chk_Google_Chrome.isChecked():
+            getChrome = 1
+
+        numberOfResults = int(self.txt_Internet_History_Amount.text())
+
+        mostvisited = Internetgeschiedenis.showMostVisited(Internetgeschiedenis.loadData(getInternetExplorer, getFirefox, getChrome), numberOfResults)
+
+        self.browserTreeWidget.clear()
+        rowNumber = 0
+        for row in mostvisited:
+            item = QTreeWidgetItem()
+            item.setText(0, unicode(row[0]))
+            item.setText(1, unicode(row[4]))
+            item.setText(2, unicode(row[2]))
+            item.setText(3, unicode(row[1]))
+            item.setText(4, unicode(row[3]))
+            self.browserTreeWidget.insertTopLevelItem(rowNumber, item)
+            rowNumber += 1
+            QtGui.qApp.processEvents()
+
+    def zoekWoord(self):
+
+        getInternetExplorer = 0
+        getFirefox = 0
+        getChrome = 0
+
+        searchWord = self.txt_Internet_History_Search.text()
+
+        if self.chk_Internet_Explorer.isChecked():
+            getInternetExplorer = 1
+        if self.chk_Mozilla_FireFox.isChecked():
+            getFirefox = 1
+        if self.chk_Google_Chrome.isChecked():
+            getChrome = 1
+        if self.chk_Internet_History_Search_Capital_Letter.isChecked() == False:
+            searchWord = str(searchWord).lower()
+
+        searchResults = Internetgeschiedenis.searchData(Internetgeschiedenis.loadData(getInternetExplorer, getFirefox, getChrome), searchWord)
+
+        self.browserTreeWidget.clear()
+        rowNumber = 0
+        for row in searchResults:
+            item = QTreeWidgetItem()
+            item.setText(0, unicode(row[0]))
+            item.setText(1, unicode(row[4]))
+            item.setText(2, unicode(row[2]))
+            item.setText(3, unicode(row[1]))
+            item.setText(4, unicode(row[3]))
+            self.browserTreeWidget.insertTopLevelItem(rowNumber, item)
+            rowNumber += 1
+            QtGui.qApp.processEvents()
 
     def fill_searchbar(self, output):
         global output_list
