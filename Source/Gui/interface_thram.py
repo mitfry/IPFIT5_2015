@@ -6,15 +6,19 @@ __author__ = 'Mitchell'
 # Built-in
 import sys
 import time
+import logging
+
 from PyQt4.QtGui import QTreeWidgetItem
+
 
 # Add folder "functions" to the locations to import from
 sys.path.append(sys.path[0]+"/../functions")
 
 # Custom
 import Software
-import Hardware
 import Hash
+import Cloud
+import TheLogger
 
 # -*- coding: utf-8 -*-
 
@@ -41,12 +45,13 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-
 class Ui_MainWindow(QtGui.QMainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
         self._active = False
+        mainlogger = logging.getLogger("THRAM - Main")
+        mainlogger.info("Program has started, let the search begin!")
         
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
@@ -400,6 +405,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
             time.sleep(1)
             sys.exit()
         x += 1
+
+    def setstatus(self, setstatus="Klaar, Let the search begin"):
+
+        self.statusBar().showMessage(setstatus)
 
 # IPFIT5 constructor
 if __name__ == "__main__":

@@ -29,6 +29,7 @@ __author__ = 'Mitchell'
 # Built-in
 import sys
 import time
+import logging
 from PyQt4.QtGui import QTreeWidgetItem
 
 # Add folder "functions" to the locations to import from
@@ -38,7 +39,8 @@ sys.path.append(sys.path[0]+"/../functions")
 import Software
 import Hardware
 import Hash
-
+import Cloud
+import TheLogger
 '''
 
 finalLines = '''
@@ -139,6 +141,10 @@ finalLines = '''
             time.sleep(1)
             sys.exit()
         x += 1
+
+    def setstatus(self, setstatus="Klaar, Let the search begin"):
+
+        self.statusBar().showMessage(setstatus)
 
 # IPFIT5 constructor
 if __name__ == "__main__":

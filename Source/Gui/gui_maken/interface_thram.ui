@@ -13,11 +13,21 @@
     <x>0</x>
     <y>0</y>
     <width>960</width>
-    <height>563</height>
+    <height>550</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>960</width>
+    <height>0</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>THRAM - Triage Solution</string>
+   <string>THRAM - The Ultimate Triage Solution</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>Logo/THRAM_Logo_Geen_Tekst.PNG</normaloff>Logo/THRAM_Logo_Geen_Tekst.PNG</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="enabled">
@@ -28,6 +38,9 @@
      <widget class="QTabWidget" name="tab_Menu">
       <property name="enabled">
        <bool>true</bool>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::NoContextMenu</enum>
       </property>
       <property name="currentIndex">
        <number>0</number>
@@ -107,12 +120,52 @@
           </property>
           <column>
            <property name="text">
-            <string>ProcesID</string>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Naam</string>
+            <string> </string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string> </string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string> </string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string> </string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string> </string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string> </string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string> </string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string> </string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string> </string>
            </property>
           </column>
          </widget>
