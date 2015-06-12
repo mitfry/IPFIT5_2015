@@ -1,5 +1,4 @@
-@@ -1,51 +0,0 @@
-__author__ = 'Tim Duysens'
+x__author__ = 'Tim Duysens'
 """
 Last edited: 9-6-15
 
@@ -14,7 +13,7 @@ import logging
 import logging.handlers
 import time
 
-LOG_FILENAME = 'THRAM Logboek'
+LOG_FILENAME = 'THRAM Log'
 
 formatter = '%(asctime)s - %(name)s - [%(levelname)s] - %(message)s'
 formatlog = '%(message)s'
@@ -39,14 +38,19 @@ logger.addHandler(forhand)
 # This is a stale log, so roll it
 if needRoll:
     # Add timestamp
-    logger.info('\n---------\nLog gesloten op %s.\n---------\n' % time.asctime())
+    logger.info('\n---------\nLog closed on %s.\n---------\n' % time.asctime())
+
 
     # Roll over on application start
     logger.handlers[0].doRollover()
 
 # Add timestamp
-logger.info('\n---------\nLog gestart op %s.\n---------\n' % time.asctime())
+logger.info('\n---------\nLog started on %s.\n---------\n' % time.asctime())
 
 logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG, format=formatter)
 
-__author__ = 'Tim D'
+
+mainlog = logging.getLogger("THRAM - Main")
+mainlog.info("Program has started, Let the search begin")
+mainlog.info("Do something")
+mainlog.info("Program is closed, The search has ended") 
