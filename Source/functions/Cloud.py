@@ -29,19 +29,22 @@ Het zal zoeken naar de volgende diensten:
 
 import sys
 import os.path
+from Software import processes
 
-sys.path.append(sys.path[0]+"/../modules")
 
-import wmi
-
-w = wmi.WMI(".")
 
 # Get homefolder of user
 homefolder = os.path.expanduser("~")
 programfiles = os.environ['PROGRAMFILES']
+list_cloud_storage_services = [["Cloud Dienst", "Locatie", "", ""]]
+
+
+def cloud():
+    return list_cloud_storage_services
+
 
 class CloudSearch():
-    def __init__(self, setstatus):
+    def __init__(self):
 
         self.csearch_dropbox()
         self.csearch_box()
@@ -68,6 +71,7 @@ class CloudSearch():
         dropboxresultaat = []
         dropboxresultaat.append(dropboxres)
         dropboxresultaat.append(dropboxres2)
+        list_cloud_storage_services.append([str(dropboxresultaat[0]), str(dropboxresultaat[1])])
         return dropboxresultaat
 
     def csearch_box(self):
@@ -88,21 +92,21 @@ class CloudSearch():
         return boxresultaat
 
     def csearch_googled(self):
-       if os.path.exists("%s\\Google\\Drive" % programfiles):
+        if os.path.exists("%s\\Google\\Drive" % programfiles):
             gores = "Google Drive installation found"
-       else:
-           gores = "Google Drive installation not found"
+        else:
+            gores = "Google Drive installation not found"
 
-       if os.path.exists("%s\\Google Drive" % homefolder):
+        if os.path.exists("%s\\Google Drive" % homefolder):
             gores2 = "Google Drive folder found"
-       else:
-           gores2 = "Google Drive folder not found"
+        else:
+            gores2 = "Google Drive folder not found"
 
-       googleresultaat = []
-       googleresultaat.append(gores)
-       googleresultaat.append(gores2)
+        googleresultaat = []
+        googleresultaat.append(gores)
+        googleresultaat.append(gores2)
 
-       return googleresultaat
+        return googleresultaat
 
     def csearch_oned(self):
         if os.path.exists("%s\\Microsoft OneDrive" % programfiles):
@@ -173,33 +177,31 @@ class CloudSearch():
         return copyresultaat
 
     def process_search(self):
-        w = wmi.WMI(".")
-        for process in w.Win32_Process():
-            if process.Name == "Dropbox.exe":
-                print "Dropbox is active as process"
+        for process in processes():
+            for proc in process:
+                if proc == 'Dropbox.exe':
+                    print "Dropbox is active as process"
 
-            elif process.Name == "BoxSync.exe":
-                print "Box is active as process"
+                elif proc == "BoxSync.exe":
+                    print "Box is active as process"
 
-            elif process.Name == "googledrivesync.exe":
-                print "Google Drive is active as process"
+                elif proc == "googledrivesync.exe":
+                    print "Google Drive is active as process"
 
-            elif process.Name == "OneDrive.exe":
-                print "OneDrive is active as process"
+                elif proc == "OneDrive.exe" or proc == "SkyDrive.exe":
+                    print "OneDrive and/or SkyDrive is active as process"
 
-            elif process.Name == "SpiderOak.exe":
-                print "SpiderOak is active as process"
+                elif proc == "SpiderOak.exe":
+                    print "SpiderOak is active as process"
 
-            elif process.Name == "MEGAsync.exe":
-                print "Mega is active as process"
+                elif proc == "MEGAsync.exe":
+                    print "Mega is active as process"
 
-            elif process.Name == "CopyAgent.exe":
-                print "Copy is active as process"
+                elif proc == "CopyAgent.exe":
+                    print "Copy is active as process"
 
-            else:
-                pass
+                    # print homefolder
+                    # print programfiles
 
-if __name__ == '__main__':
-    CloudSearch()
-    print homefolder
-    print programfiles
+
+CloudSearch()

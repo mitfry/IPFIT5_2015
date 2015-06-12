@@ -120,52 +120,52 @@
           </property>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
          </widget>
@@ -257,7 +257,7 @@
          <widget class="QLineEdit" name="txt_Internet_History_Search"/>
         </item>
         <item row="7" column="0" colspan="5">
-         <widget class="QTreeWidget" name="treeWidget">
+         <widget class="QTreeWidget" name="browserTreeWidget">
           <column>
            <property name="text">
             <string>Browser</string>

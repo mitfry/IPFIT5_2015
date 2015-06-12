@@ -15,12 +15,14 @@ sys.path.append(sys.path[0]+"/../functions")
 import Software
 import Hardware
 import Hash
+import Cloud
+import Internetgeschiedenis
 
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Development\School\IPFIT5_2015\source\Gui\gui_maken\interface_thram.ui'
+# Form implementation generated from reading ui file 'E:\Bibliotheken\python\THRAM\Source\Gui\gui_maken\interface_thram.ui'
 #
-# Created: Thu Jun 11 16:14:23 2015
+# Created: Fri Jun 12 13:04:01 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -144,9 +146,9 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.txt_Internet_History_Search = QtGui.QLineEdit(self.tab_Internet)
         self.txt_Internet_History_Search.setObjectName(_fromUtf8("txt_Internet_History_Search"))
         self.gridLayout_5.addWidget(self.txt_Internet_History_Search, 2, 4, 1, 1)
-        self.treeWidget = QtGui.QTreeWidget(self.tab_Internet)
-        self.treeWidget.setObjectName(_fromUtf8("treeWidget"))
-        self.gridLayout_5.addWidget(self.treeWidget, 7, 0, 1, 5)
+        self.browserTreeWidget = QtGui.QTreeWidget(self.tab_Internet)
+        self.browserTreeWidget.setObjectName(_fromUtf8("browserTreeWidget"))
+        self.gridLayout_5.addWidget(self.browserTreeWidget, 7, 0, 1, 5)
         self.chk_Google_Chrome = QtGui.QCheckBox(self.tab_Internet)
         self.chk_Google_Chrome.setObjectName(_fromUtf8("chk_Google_Chrome"))
         self.gridLayout_5.addWidget(self.chk_Google_Chrome, 3, 0, 1, 1)
@@ -261,16 +263,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Services.setText(_translate("MainWindow", "Services", None))
         self.btn_Software.setText(_translate("MainWindow", "Software", None))
         self.btn_Cloud.setText(_translate("MainWindow", "Cloud", None))
-        self.treew_Software.headerItem().setText(0, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(1, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(2, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(3, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(4, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(5, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(6, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(7, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(8, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(9, _translate("MainWindow", " ", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Software), _translate("MainWindow", "Software", None))
         self.chk_Mozilla_FireFox.setText(_translate("MainWindow", "Mozilla FireFox", None))
         self.btn_Load_Internet_History.setText(_translate("MainWindow", "Load data", None))
@@ -282,11 +274,11 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Search_Internet_History.setText(_translate("MainWindow", "Zoeken", None))
         self.lbl_Internet_History_Most_Visited.setText(_translate("MainWindow", "Meest bezocht", None))
         self.lbl_Browsers.setText(_translate("MainWindow", "Browsers", None))
-        self.treeWidget.headerItem().setText(0, _translate("MainWindow", "Browser", None))
-        self.treeWidget.headerItem().setText(1, _translate("MainWindow", "Titel", None))
-        self.treeWidget.headerItem().setText(2, _translate("MainWindow", "Aantal keer", None))
-        self.treeWidget.headerItem().setText(3, _translate("MainWindow", "Laatst bezocht", None))
-        self.treeWidget.headerItem().setText(4, _translate("MainWindow", "URL", None))
+        self.browserTreeWidget.headerItem().setText(0, _translate("MainWindow", "Browser", None))
+        self.browserTreeWidget.headerItem().setText(1, _translate("MainWindow", "Titel", None))
+        self.browserTreeWidget.headerItem().setText(2, _translate("MainWindow", "Aantal keer", None))
+        self.browserTreeWidget.headerItem().setText(3, _translate("MainWindow", "Laatst bezocht", None))
+        self.browserTreeWidget.headerItem().setText(4, _translate("MainWindow", "URL", None))
         self.chk_Google_Chrome.setText(_translate("MainWindow", "Google Chrome", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Internet), _translate("MainWindow", "Internet", None))
         self.btn_Email.setText(_translate("MainWindow", "E-mail", None))
@@ -316,20 +308,36 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.actionOver.setText(_translate("MainWindow", "Over", None))
 
 
-        # IPFIT5 functions and other code
+        # IPFIT5 Buttons, Methods and other code
         self.setWindowTitle(_translate("MainWindow", "THRAM" + u'\u2122' + "- The Ultimate Triage Solution", None))
+
+        # Tab Project:
         self.btn_Test.clicked.connect(self.test_mijn_functie)
+        self.btn_Progressbar.clicked.connect(self.update_progress)
+
+        # Tab Systeem:
+
+        # Tab Software:
         self.btn_Processen.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
         self.btn_Services.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Services.clicked.connect(lambda: self.fill_software_treewidget(Software.services()))
+        self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Software.clicked.connect(lambda: self.fill_software_treewidget(Software.software_installed()))
         self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
+        self.btn_Cloud.clicked.connect(lambda: Cloud.CloudSearch())
+
+        # Tab Internet:
+        self.btn_Load_Internet_History.clicked.connect(lambda: self.fillBrowserTreewidget())
+        self.btn_Show_Internet_History.clicked.connect(lambda: self.zoekBrowser())
+        self.btn_Search_Internet_History.clicked.connect(lambda: self.zoekWoord())
+
+        # Tab E-mail:
+
+        # Tab Bestanden:
         self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
         self.btn_Hash.clicked.connect(
             lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(output_list)))
-
-        self.btn_Progressbar.clicked.connect(self.update_progress)
 
     def fill_software_treewidget(self, passed_list):
         self.treew_Software.clear()
@@ -348,6 +356,96 @@ class Ui_MainWindow(QtGui.QMainWindow):
             self.treew_Software.insertTopLevelItem(passed_list_number, item)
             QtGui.qApp.processEvents()
             passed_list_number += 1
+
+    def fillBrowserTreewidget(self):
+
+        getInternetExplorer = 0
+        getFirefox = 0
+        getChrome = 0
+
+        if self.chk_Internet_Explorer.isChecked():
+            getInternetExplorer = 1
+        if self.chk_Mozilla_FireFox.isChecked():
+            getFirefox = 1
+        if self.chk_Google_Chrome.isChecked():
+            getChrome = 1
+
+        historyList = Internetgeschiedenis.loadData(getInternetExplorer, getFirefox, getChrome)
+
+        self.browserTreeWidget.clear()
+        rowNumber = 0
+        for row in historyList:
+            item = QTreeWidgetItem()
+            item.setText(0, unicode(row[0]))
+            item.setText(1, unicode(row[4]))
+            item.setText(2, unicode(row[2]))
+            item.setText(3, unicode(row[1]))
+            item.setText(4, unicode(row[3]))
+            self.browserTreeWidget.insertTopLevelItem(rowNumber, item)
+            rowNumber += 1
+            QtGui.qApp.processEvents()
+
+    def zoekBrowser(self):
+
+        getInternetExplorer = 0
+        getFirefox = 0
+        getChrome = 0
+
+        if self.chk_Internet_Explorer.isChecked():
+            getInternetExplorer = 1
+        if self.chk_Mozilla_FireFox.isChecked():
+            getFirefox = 1
+        if self.chk_Google_Chrome.isChecked():
+            getChrome = 1
+
+        numberOfResults = int(self.txt_Internet_History_Amount.text())
+
+        mostvisited = Internetgeschiedenis.showMostVisited(Internetgeschiedenis.loadData(getInternetExplorer, getFirefox, getChrome), numberOfResults)
+
+        self.browserTreeWidget.clear()
+        rowNumber = 0
+        for row in mostvisited:
+            item = QTreeWidgetItem()
+            item.setText(0, unicode(row[0]))
+            item.setText(1, unicode(row[4]))
+            item.setText(2, unicode(row[2]))
+            item.setText(3, unicode(row[1]))
+            item.setText(4, unicode(row[3]))
+            self.browserTreeWidget.insertTopLevelItem(rowNumber, item)
+            rowNumber += 1
+            QtGui.qApp.processEvents()
+
+    def zoekWoord(self):
+
+        getInternetExplorer = 0
+        getFirefox = 0
+        getChrome = 0
+
+        searchWord = self.txt_Internet_History_Search.text()
+
+        if self.chk_Internet_Explorer.isChecked():
+            getInternetExplorer = 1
+        if self.chk_Mozilla_FireFox.isChecked():
+            getFirefox = 1
+        if self.chk_Google_Chrome.isChecked():
+            getChrome = 1
+        if self.chk_Internet_History_Search_Capital_Letter.isChecked() == False:
+            searchWord = str(searchWord).lower()
+
+        searchResults = Internetgeschiedenis.searchData(Internetgeschiedenis.loadData(getInternetExplorer, getFirefox, getChrome), searchWord)
+
+        self.browserTreeWidget.clear()
+        rowNumber = 0
+        for row in searchResults:
+            item = QTreeWidgetItem()
+            item.setText(0, unicode(row[0]))
+            item.setText(1, unicode(row[4]))
+            item.setText(2, unicode(row[2]))
+            item.setText(3, unicode(row[1]))
+            item.setText(4, unicode(row[3]))
+            self.browserTreeWidget.insertTopLevelItem(rowNumber, item)
+            rowNumber += 1
+            QtGui.qApp.processEvents()
 
     def fill_searchbar(self, output):
         global output_list
@@ -426,4 +524,8 @@ if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     ex = Ui_MainWindow()
     ex.show()
+
+    # Starting threads for generating information
+    Software.WorkerThread().start()
+
     sys.exit(app.exec_())

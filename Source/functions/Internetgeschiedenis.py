@@ -4,47 +4,75 @@
 
 # Informatie over de chrome database
 # http://lowmanio.co.uk/blog/entries/how-google-chrome-stores-web-history/
+# Firefox
+# http://lowmanio.co.uk/blog/entries/how-firefox-stores-web-history/
+# Internet Explorer
+# http://www.lowmanio.co.uk/blog/entries/how-internet-explorer-stores-web-history/
 
 # Imports
-import sqlite3
-import os.path
+import sqlite3  # This library is used to read the history files.
+from os.path import expanduser  # This library is used to find the location of the history files.
+import os
 
-# Connectie maken met de database
-conn = sqlite3.connect(os.path.expanduser('~/AppData/Local/Google/Chrome/'))
-
-# Deze variable gebruik je verder
-c = conn.cursor()
-
-f = open('workfile.txt', 'w')
-x = 0
-
-# SQL query
-sql_select = """ SELECT datetime(last_visit_time/1000000-11644473600,'unixepoch','localtime'),
-                        visit_count, url
+# SQL query's
+sqlSelectChrome = """ SELECT datetime(last_visit_time/1000000-11644473600,'unixepoch','localtime'),
+                        visit_count, url, title
                  FROM urls
                  ORDER BY last_visit_time DESC
              """
 
-urlList = []
+sqlSelectFirefox = """ SELECT datetime(last_visit_date/1000000-11644473600,'unixepoch','localtime'),
+                        visit_count, url, title
+                 FROM moz_places
+                 ORDER BY last_visit_date DESC
+             """
 
-# SQL query uitvoeren en resultaten opslaan in een list.
-for row in c.execute(sql_select):
-    if x < 1000:
-        output = '[Tijd] ' + row[0] + ' [Aantal keer bezocht] ' + str(row[1]) + ' [URL] ' + row[2]
-        # print(output)
-        # f.write(output + '\n')
-        listT = [str(row[0]), row[1], str(row[2])]
-        urlList.append(listT)
-    x += 1
+outputListSorted = []
 
-sorted_by_second = sorted(urlList, key=lambda tup: tup[1], reverse=True)
+# Loading all the history data into a list
+def loadData(internetExplorer, firefox, chrome):
 
-y = 0
+    pathPart1 = expanduser("~")
 
-# List wegschrijven naar een txt bestand.
-for item in sorted_by_second:
-    if y < 100:
-        output = '[Tijd] ' + item[0] + ' [Aantal keer bezocht] ' + str(item[1]) + ' [URL] ' + item[2]
-        f.write(output + '\n')
-        y += 1
-f.close()
+    outputList = []  # List for the output. All history entries are stored in here.
+
+    # Executing the SQL query and storing the results. Only importing the browsers that the user selected
+    if chrome == 1:
+        connectionChrome = sqlite3.connect(pathPart1 + '\AppData\Local\Google\Chrome\User Data\Default\history')
+        cursorChrome = connectionChrome.cursor()
+        for row in cursorChrome.execute(sqlSelectChrome):
+            listT = ["Chrome", str(row[0]), row[1], str(row[2]), row[3]]  # Storing each result in a list.
+            outputList.append(listT)  # Storing the list with results in the output list.
+    if firefox == 1:
+        firefoxFolder = os.listdir(pathPart1 + '/AppData/Roaming/Mozilla/Firefox/Profiles')
+        connectionFirefox = sqlite3.connect(pathPart1 + '/AppData/Roaming/Mozilla/Firefox/Profiles/' + firefoxFolder[0] + '/places.sqlite')
+        cursorFireFox = connectionFirefox.cursor()
+        for row in cursorFireFox.execute(sqlSelectFirefox):
+            listT = ["Firefox", str(row[0]), row[1], str(row[2]), row[3]]  # Storing each result in a list.
+            outputList.append(listT)  # Storing the list with results in the output list.
+    outputListSorted = sorted(outputList, key=lambda tup: tup[2], reverse=True)  # Sorting the list by date and storing it.
+    return outputListSorted
+
+# Showing the most visited websites. The user specifies how many.
+def showMostVisited(outputListSorted, numberOfResults):
+    searchResults = []
+    for item in outputListSorted:
+        if numberOfResults > 0:
+            searchResults.append(item)
+            numberOfResults -= 1
+    return searchResults
+
+# The user can enter a search word, which the program will search for in the urls and website titles. Case-sensitive.
+def searchData(outputListSorted, searchWord):
+    searchResults = []
+
+    for searchResult in outputListSorted:
+        try:
+            if searchResult[4].find(searchWord) != -1:
+                searchResults.append(searchResult)
+            elif searchResult[3].find(searchWord) != -1:
+                searchResults.append(searchResult)
+        except AttributeError:
+            pass  # It's possible for a field to be empty. This try statement makes the program skip the entry.
+    return searchResults
+
