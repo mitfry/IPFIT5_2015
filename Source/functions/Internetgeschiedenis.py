@@ -33,7 +33,7 @@ outputListSorted = []
 def loadData(internetExplorer, firefox, chrome):
 
     pathPart1 = expanduser("~")
-    
+
     outputList = []  # List for the output. All history entries are stored in here.
 
     # Executing the SQL query and storing the results. Only importing the browsers that the user selected
