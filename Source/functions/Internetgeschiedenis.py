@@ -37,22 +37,26 @@ def loadData(internetExplorer, firefox, chrome):
     firefoxFolder =  os.listdir(pathPart1 + '/AppData/Roaming/Mozilla/Firefox/Profiles')
 
     # Making the connection with the history database
-    connectionChrome = sqlite3.connect(pathPart1 + '\AppData\Local\Google\Chrome\User Data\Default\history')
+
     # connectionFirefox = sqlite3.connect("E:\Bibliotheken\python\Firefox\places.sqlite")
-    connectionFirefox = sqlite3.connect(pathPart1 + '/AppData/Roaming/Mozilla/Firefox/Profiles/' + firefoxFolder[0] + '/places.sqlite')
+
 
     # Setting the cursor. This is the variable we use to execute the SQL query.
-    cursorChrome = connectionChrome.cursor()
-    cursorFireFox = connectionFirefox.cursor()
+
+
 
     outputList = []  # List for the output. All history entries are stored in here.
 
     # Executing the SQL query and storing the results. Only importing the browsers that the user selected
     if chrome == 1:
+        connectionChrome = sqlite3.connect(pathPart1 + '\AppData\Local\Google\Chrome\User Data\Default\history')
+        cursorChrome = connectionChrome.cursor()
         for row in cursorChrome.execute(sqlSelectChrome):
             listT = ["Chrome", str(row[0]), row[1], str(row[2]), row[3]]  # Storing each result in a list.
             outputList.append(listT)  # Storing the list with results in the output list.
     if firefox == 1:
+        connectionFirefox = sqlite3.connect(pathPart1 + '/AppData/Roaming/Mozilla/Firefox/Profiles/' + firefoxFolder[0] + '/places.sqlite')
+        cursorFireFox = connectionFirefox.cursor()
         for row in cursorFireFox.execute(sqlSelectFirefox):
             listT = ["Firefox", str(row[0]), row[1], str(row[2]), row[3]]  # Storing each result in a list.
             outputList.append(listT)  # Storing the list with results in the output list.
