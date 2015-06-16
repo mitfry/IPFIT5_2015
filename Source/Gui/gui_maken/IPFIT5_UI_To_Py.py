@@ -61,7 +61,7 @@ finalLines = '''
         self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Software.clicked.connect(lambda: self.fill_software_treewidget(Software.software_installed()))
         self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
-        self.btn_Cloud.clicked.connect(lambda: Cloud.CloudSearch())
+        self.btn_Cloud.clicked.connect(lambda: self.fill_software_treewidget(Cloud.cloud()))
 
         # Tab Internet:
         self.btn_Load_Internet_History.clicked.connect(lambda: self.fillBrowserTreewidget())
@@ -90,6 +90,7 @@ finalLines = '''
                 item.setText(row_nr, unicode(row[row_nr]))
 
             self.treew_Software.insertTopLevelItem(passed_list_number, item)
+            # self.treew_Software.resizeColumnToContents(passed_list_number)
             QtGui.qApp.processEvents()
             passed_list_number += 1
 

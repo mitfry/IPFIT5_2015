@@ -120,52 +120,42 @@
           </property>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string/>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
          </widget>

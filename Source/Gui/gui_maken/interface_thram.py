@@ -20,9 +20,9 @@ import Internetgeschiedenis
 
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\Bibliotheken\python\THRAM\Source\Gui\gui_maken\interface_thram.ui'
+# Form implementation generated from reading ui file 'C:\Development\School\IPFIT5_2015\Source\gui\gui_maken\interface_thram.ui'
 #
-# Created: Fri Jun 12 13:04:01 2015
+# Created: Fri Jun 12 14:26:09 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -263,6 +263,14 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Services.setText(_translate("MainWindow", "Services", None))
         self.btn_Software.setText(_translate("MainWindow", "Software", None))
         self.btn_Cloud.setText(_translate("MainWindow", "Cloud", None))
+        self.treew_Software.headerItem().setText(0, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(1, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(2, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(3, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(4, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(5, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(6, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(7, _translate("MainWindow", " ", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Software), _translate("MainWindow", "Software", None))
         self.chk_Mozilla_FireFox.setText(_translate("MainWindow", "Mozilla FireFox", None))
         self.btn_Load_Internet_History.setText(_translate("MainWindow", "Load data", None))
@@ -325,7 +333,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
         self.btn_Software.clicked.connect(lambda: self.fill_software_treewidget(Software.software_installed()))
         self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
-        self.btn_Cloud.clicked.connect(lambda: Cloud.CloudSearch())
+        self.btn_Cloud.clicked.connect(lambda: self.fill_software_treewidget(Cloud.cloud()))
 
         # Tab Internet:
         self.btn_Load_Internet_History.clicked.connect(lambda: self.fillBrowserTreewidget())
@@ -354,6 +362,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
                 item.setText(row_nr, unicode(row[row_nr]))
 
             self.treew_Software.insertTopLevelItem(passed_list_number, item)
+            # self.treew_Software.resizeColumnToContents(passed_list_number)
             QtGui.qApp.processEvents()
             passed_list_number += 1
 
