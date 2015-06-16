@@ -76,6 +76,8 @@ def start():
     window.show()
     window.exec_()
 
-
+# Functie interface in Qt aanpassen, en deze in een terminal naar Python code omzetten met de volgende commando:
+# cd Documents\Github\THRAM\Source\Gui\gui_maken
+# >pyuic4 Functions.ui -o Functions_ui.py
 
 

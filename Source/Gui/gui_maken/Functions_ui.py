@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Functions.ui'
 #
-# Created: Tue Jun 16 14:18:38 2015
+# Created: Tue Jun 16 14:37:07 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,13 +17,11 @@ except AttributeError:
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
-
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
-
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
