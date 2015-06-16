@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import sys
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -23,7 +24,11 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_Dialog(object):
+class Ui_Dialog(QtGui.QDialog):
+    def __init__(self):
+        QtGui.QDialog.__init__(self)
+        self.setupUi(self)
+
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
         Dialog.resize(306, 237)
@@ -70,4 +75,12 @@ class Ui_Dialog(object):
         self.checkBox_6.setText(_translate("Dialog", "Software", None))
         self.pushButton_2.setText(_translate("Dialog", "Cancel", None))
         self.pushButton_1.setText(_translate("Dialog", "Ok", None))
+
+
+if __name__ == '__main__':
+    # QApplication created only here.
+    app = QtGui.QApplication(sys.argv)
+    ex = Ui_Dialog()
+    ex.show()
+    sys.exit(app.exec_())
 
