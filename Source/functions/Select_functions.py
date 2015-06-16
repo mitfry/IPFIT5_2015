@@ -47,14 +47,15 @@ class Ui_Dialog(QtGui.QDialog):
         self.chk_Software.setObjectName(_fromUtf8("chk_Software"))
         self.verticalLayout.addWidget(self.chk_Software)
         self.gridLayout_3.addLayout(self.verticalLayout, 0, 0, 1, 1)
-        self.pushButton_2 = QtGui.QPushButton(Dialog)
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        self.gridLayout_3.addWidget(self.pushButton_2, 3, 2, 1, 1)
-        self.pushButton_1 = QtGui.QPushButton(Dialog)
-        self.pushButton_1.setObjectName(_fromUtf8("pushButton_1"))
-        self.gridLayout_3.addWidget(self.pushButton_1, 3, 1, 1, 1)
+        self.Cancel_Button = QtGui.QPushButton(Dialog)
+        self.Cancel_Button.setObjectName(_fromUtf8("Cancel_Button"))
+        self.gridLayout_3.addWidget(self.Cancel_Button, 3, 2, 1, 1)
+        self.Ok_Button = QtGui.QPushButton(Dialog)
+        self.Ok_Button.setObjectName(_fromUtf8("Ok_Button"))
+        self.gridLayout_3.addWidget(self.Ok_Button, 3, 1, 1, 1)
 
         self.retranslateUi(Dialog)
+        QtCore.QObject.connect(self.Cancel_Button, QtCore.SIGNAL(_fromUtf8("clicked()")), Dialog.close)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -65,8 +66,8 @@ class Ui_Dialog(QtGui.QDialog):
         self.chk_Hash.setText(_translate("Dialog", "Hash", None))
         self.chk_Internet_History.setText(_translate("Dialog", "Internetgeschiedenis", None))
         self.chk_Software.setText(_translate("Dialog", "Software", None))
-        self.pushButton_2.setText(_translate("Dialog", "Cancel", None))
-        self.pushButton_1.setText(_translate("Dialog", "Ok", None))
+        self.Cancel_Button.setText(_translate("Dialog", "Cancel", None))
+        self.Ok_Button.setText(_translate("Dialog", "Ok", None))
 
 def start():
     # QApplication created only here.
