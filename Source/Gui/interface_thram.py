@@ -17,12 +17,13 @@ import Hardware
 import Hash
 import Cloud
 import Internetgeschiedenis
+import Select_functions
 
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'C:\Development\School\IPFIT5_2015\Source\gui\gui_maken\interface_thram.ui'
 #
-# Created: Fri Jun 12 14:26:09 2015
+# Created: Tue Jun 16 13:57:04 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -346,6 +347,9 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
         self.btn_Hash.clicked.connect(
             lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(output_list)))
+
+        # Menu Opties -> Functies
+        self.actionFuncties.triggered.connect(lambda: Select_functions.start())
 
     def fill_software_treewidget(self, passed_list):
         self.treew_Software.clear()

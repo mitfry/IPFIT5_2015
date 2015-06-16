@@ -17,42 +17,42 @@
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QCheckBox" name="checkBox_1">
+      <widget class="QCheckBox" name="chk_Cloud">
        <property name="text">
         <string>Cloud</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_2">
+      <widget class="QCheckBox" name="chk_Email">
        <property name="text">
         <string>Email</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_3">
+      <widget class="QCheckBox" name="chk_Hardware">
        <property name="text">
         <string>Hardware</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_4">
+      <widget class="QCheckBox" name="chk_Hash">
        <property name="text">
         <string>Hash</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_5">
+      <widget class="QCheckBox" name="chk_Internet_History">
        <property name="text">
         <string>Internetgeschiedenis</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_6">
+      <widget class="QCheckBox" name="chk_Software">
        <property name="text">
         <string>Software</string>
        </property>

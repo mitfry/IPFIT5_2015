@@ -40,6 +40,7 @@ import Hardware
 import Hash
 import Cloud
 import Internetgeschiedenis
+import Select_functions
 
 '''
 
@@ -74,6 +75,9 @@ finalLines = '''
         self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
         self.btn_Hash.clicked.connect(
             lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(output_list)))
+
+        # Menu Opties -> Functies
+        self.actionFuncties.triggered.connect(lambda: Select_functions.start())
 
     def fill_software_treewidget(self, passed_list):
         self.treew_Software.clear()
