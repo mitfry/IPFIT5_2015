@@ -57,14 +57,14 @@ class CloudSearch():
 
     def csearch_dropbox(self):
         if os.path.exists("%s\\Dropbox" % programfiles):
-            dropboxres = "Dropbox installation found"
+            dropboxres = "Dropbox installation found in the programfiles"
         elif os.path.exists("%s\\AppData\\Roaming\\Dropbox" % homefolder):
-            dropboxres = "Dropbox installation found"
+            dropboxres = "Dropbox installation found in the AppData Roaming folder"
         else:
             dropboxres = "Dropbox installation not found"
 
         if os.path.exists("%s\\Dropbox" % homefolder):
-            dropboxres2 = "Dropbox folder found"
+            dropboxres2 = "Dropbox folder found in the userfolder"
         else:
             dropboxres2 = "Dropbox folder not found"
 
@@ -76,12 +76,12 @@ class CloudSearch():
 
     def csearch_box(self):
         if os.path.exists("%s\\Box\\Box Sync" % programfiles):
-            boxres = "Box installation found"
+            boxres = "Box installation found in the programfiles"
         else:
             boxres = "Box installation not found"
 
         if os.path.exists("%s\\Box Sync" % homefolder):
-            boxres2 = "Box folder found"
+            boxres2 = "Box folder found in the userfolder"
         else:
             boxres2 = "Box folder found"
 
@@ -93,12 +93,12 @@ class CloudSearch():
 
     def csearch_googled(self):
         if os.path.exists("%s\\Google\\Drive" % programfiles):
-            gores = "Google Drive installation found"
+            gores = "Google Drive installation found in the programfiles"
         else:
             gores = "Google Drive installation not found"
 
         if os.path.exists("%s\\Google Drive" % homefolder):
-            gores2 = "Google Drive folder found"
+            gores2 = "Google Drive folder found in the userfolder"
         else:
             gores2 = "Google Drive folder not found"
 
@@ -110,12 +110,12 @@ class CloudSearch():
 
     def csearch_oned(self):
         if os.path.exists("%s\\Microsoft OneDrive" % programfiles):
-            oneres = "OneDrive installation found"
+            oneres = "OneDrive installation found in the programfiles"
         else:
             oneres = "OneDrive installation not found"
 
         if os.path.exists("%s\\OneDrive" % homefolder):
-            oneres2 = "OneDrive folder found"
+            oneres2 = "OneDrive folder found in the userfolder"
         else:
             oneres2 = "OneDrive folder not found"
 
@@ -127,12 +127,12 @@ class CloudSearch():
 
     def csearch_spidero(self):
         if os.path.exists("%s\\SpiderOak" % programfiles):
-            spires = "SpideOak installation found"
+            spires = "SpideOak installation found in the programfiles"
         else:
             spires = "SpiderOak installation not found"
 
         if os.path.exists("%s\\Desktop\\SpiderOak Hive.*" % homefolder):
-            spires2 = "SpiderOak folder found"
+            spires2 = "SpiderOak folder found in the userfolder"
         else:
             spires2 = "SpiderOak folder not found"
 
@@ -144,12 +144,12 @@ class CloudSearch():
 
     def csearch_mega(self):
         if os.path.exists("%s\\AppData\\Local\\MEGAsync" % homefolder):
-            meres = "Mega installation found"
+            meres = "Mega installation found in the AppData local folder"
         else:
             meres = "Mega installation not found"
 
         if os.path.exists("%s\\Desktop\\MEGAsync.*" % homefolder):
-            meres2 = "Mega folder found"
+            meres2 = "Mega folder found on the desktop"
         else:
             meres2 = "Mega folder not found"
 
@@ -161,12 +161,12 @@ class CloudSearch():
 
     def csearch_copy(self):
         if os.path.exists("%s\\AppData\\Roaming\\Copy" % homefolder):
-            cores = "Copy installation found"
+            cores = "Copy installation found in the AppData roaming folder"
         else:
             cores = "Copy installation not found"
 
         if os.path.exists("%s\\Copy" % homefolder):
-            cores2 = "Copy folder found"
+            cores2 = "Copy folder found in the userfolder"
         else:
             cores2 = "Copy folder not found"
 
