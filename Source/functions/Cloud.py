@@ -1,9 +1,9 @@
 __author__ = 'Tim Duysens'
 """
-Last edited = 9-6-15
+Last edited = 29-6-15
 Deze classes zoeken naar sporen die duiden op het gebruik van Cloudgebruik.
 
-Samenwerkende files: Software.py - Mitchell*
+Samenwerkende files: Software.py - Mitchell
 
 Global return = cloud_found
 
@@ -25,20 +25,30 @@ Het zal zoeken naar de volgende diensten:
 -SpiderOak
 -Mega
 -Copy
+
+Cloudlog houd bij in het logboek wat er gebeurd in het script,
+geprogrammerde niveaus: debug, info
 """
 
 import sys
 import os.path
 from Software import processes
+import logging
 
-
+cloudlog = logging.getLogger("THRAM - Cloud")
+cloudlog.debug("Cloud search imported")
 
 # Get homefolder of user
 homefolder = os.path.expanduser("~")
 programfiles = os.environ['PROGRAMFILES']
 list_cloud_storage_services = [["Cloud Dienst", "Locatie", "Process", ""]]
 
+cloudlog.debug("Vars init: " + homefolder + " " + programfiles + " " + str(list_cloud_storage_services))
+
 def cloud():
+    # Geeft aangemaakte lijst terug aan main
+    cloudlog.debug("Return asked")
+    cloudlog.info("Given list: " + str(list_cloud_storage_services))
     return list_cloud_storage_services
 
 
@@ -52,10 +62,11 @@ class CloudSearch():
         self.csearch_spidero()
         self.csearch_mega()
         self.csearch_copy()
+        cloudlog.debug("Generated list inside module: " + str(list_cloud_storage_services))
 
-        # print self.process_search.Dropproc
-
+        # Defs die zoeken naar standaard install mappen van clouddiensten, wordt teruggegeven aan lijst
     def csearch_dropbox(self):
+        cloudlog.debug("Folder search Dropbox")
         if os.path.exists("%s\\Dropbox" % programfiles):
             dropboxres = "Dropbox installation found in the programfiles"
         elif os.path.exists("%s\\AppData\\Roaming\\Dropbox" % homefolder):
@@ -78,6 +89,7 @@ class CloudSearch():
         return dropboxresultaat
 
     def csearch_box(self):
+        cloudlog.debug("Folder search Box")
         if os.path.exists("%s\\Box\\Box Sync" % programfiles):
             boxres = "Box installation found in the programfiles"
         else:
@@ -97,6 +109,7 @@ class CloudSearch():
         return boxresultaat
 
     def csearch_googled(self):
+        cloudlog.debug("Folder search Google Drive")
         if os.path.exists("%s\\Google\\Drive" % programfiles):
             gores = "Google Drive installation found in the programfiles"
         else:
@@ -116,6 +129,7 @@ class CloudSearch():
         return googleresultaat
 
     def csearch_oned(self):
+        cloudlog.debug("Folder search One Drive")
         if os.path.exists("%s\\Microsoft OneDrive" % programfiles):
             oneres = "OneDrive installation found in the programfiles"
         else:
@@ -135,6 +149,7 @@ class CloudSearch():
         return oneresultaat
 
     def csearch_spidero(self):
+        cloudlog.debug("Folder search SpiderOak")
         if os.path.exists("%s\\SpiderOak" % programfiles):
             spires = "SpideOak installation found in the programfiles"
         else:
@@ -154,6 +169,7 @@ class CloudSearch():
         return spiderresultaat
 
     def csearch_mega(self):
+        cloudlog.debug("Folder search MEGA")
         if os.path.exists("%s\\AppData\\Local\\MEGAsync" % homefolder):
             meres = "Mega installation found in the AppData local folder"
         else:
@@ -173,6 +189,7 @@ class CloudSearch():
         return megaresultaat
 
     def csearch_copy(self):
+        cloudlog.debug("Folder search COPY")
         if os.path.exists("%s\\AppData\\Roaming\\Copy" % homefolder):
             cores = "Copy installation found in the AppData roaming folder"
         else:
@@ -191,7 +208,9 @@ class CloudSearch():
         list_cloud_storage_services.append([str(copyresultaat[0]), copyresultaat[1], str(copyresultaat[2])])
         return copyresultaat
 
+    # Defs die zoeken in de processenlijst van de Software module
     def dropproc(self):
+        cloudlog.debug("Process search Dropbox")
         for process in processes():
             for proc in process:
                 if proc == 'Dropbox.exe':
@@ -201,6 +220,7 @@ class CloudSearch():
         return dropprores
 
     def boxproc(self):
+        cloudlog.debug("Process search Box")
         for process in processes():
             for proc in process:
                 if proc == "BoxSync.exe":
@@ -210,6 +230,7 @@ class CloudSearch():
         return boxproc
 
     def googleproc(self):
+        cloudlog.debug("Process search Google Drive")
         for process in processes():
             for proc in process:
                 if proc == "googledrivesync.exe":
@@ -219,6 +240,7 @@ class CloudSearch():
         return googleproc
 
     def oneproc(self):
+        cloudlog.debug("Process search One Drive")
         for process in processes():
             for proc in process:
                 if proc == "OneDrive.exe" or proc == "SkyDrive.exe":
@@ -228,6 +250,7 @@ class CloudSearch():
         return oneproc
 
     def spiderproc(self):
+        cloudlog.debug("Process search SpiderOak")
         for process in processes():
             for proc in process:
                 if proc == "SpiderOak.exe":
@@ -237,6 +260,7 @@ class CloudSearch():
         return spiderproc
 
     def megaproc(self):
+        cloudlog.debug("Process search MEGA")
         for process in processes():
             for proc in process:
                 if proc == "MEGAsync.exe":
@@ -246,6 +270,7 @@ class CloudSearch():
         return megaproc
 
     def copyproc(self):
+        cloudlog.debug("Process search COPY")
         for process in processes():
             for proc in process:
                 if proc == "CopyAgent.exe":

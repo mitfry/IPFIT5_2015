@@ -1,4 +1,4 @@
-x__author__ = 'Tim Duysens'
+__author__ = 'Tim Duysens'
 """
 Last edited: 9-6-15
 
