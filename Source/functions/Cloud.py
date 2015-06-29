@@ -254,7 +254,3 @@ class CloudSearch():
                     copyproc = "Copy process not found"
         return copyproc
 
-
-CloudSearch()
-
-# print programfiles
