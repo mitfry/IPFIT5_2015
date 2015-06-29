@@ -36,8 +36,7 @@ from Software import processes
 # Get homefolder of user
 homefolder = os.path.expanduser("~")
 programfiles = os.environ['PROGRAMFILES']
-list_cloud_storage_services = [["Cloud Dienst", "Locatie", "", ""]]
-
+list_cloud_storage_services = [["Cloud Dienst", "Locatie", "Process", ""]]
 
 def cloud():
     return list_cloud_storage_services
@@ -53,7 +52,8 @@ class CloudSearch():
         self.csearch_spidero()
         self.csearch_mega()
         self.csearch_copy()
-        self.process_search()
+
+        # print self.process_search.Dropproc
 
     def csearch_dropbox(self):
         if os.path.exists("%s\\Dropbox" % programfiles):
@@ -71,7 +71,10 @@ class CloudSearch():
         dropboxresultaat = []
         dropboxresultaat.append(dropboxres)
         dropboxresultaat.append(dropboxres2)
-        list_cloud_storage_services.append([str(dropboxresultaat[0]), str(dropboxresultaat[1])])
+        dropboxresultaat.append(self.dropproc())
+
+        list_cloud_storage_services.append([str(dropboxresultaat[0]), str(dropboxresultaat[1]), str(dropboxresultaat[2])])
+
         return dropboxresultaat
 
     def csearch_box(self):
@@ -83,12 +86,14 @@ class CloudSearch():
         if os.path.exists("%s\\Box Sync" % homefolder):
             boxres2 = "Box folder found in the userfolder"
         else:
-            boxres2 = "Box folder found"
+            boxres2 = "Box folder not found"
 
         boxresultaat = []
         boxresultaat.append(boxres)
         boxresultaat.append(boxres2)
+        boxresultaat.append(self.boxproc())
 
+        list_cloud_storage_services.append([str(boxresultaat[0]), str(boxresultaat[1]), str(boxresultaat[2])])
         return boxresultaat
 
     def csearch_googled(self):
@@ -105,7 +110,9 @@ class CloudSearch():
         googleresultaat = []
         googleresultaat.append(gores)
         googleresultaat.append(gores2)
+        googleresultaat.append(self.googleproc())
 
+        list_cloud_storage_services.append([str(googleresultaat[0]), str(googleresultaat[1]), str(googleresultaat[2])])
         return googleresultaat
 
     def csearch_oned(self):
@@ -122,7 +129,9 @@ class CloudSearch():
         oneresultaat = []
         oneresultaat.append(oneres)
         oneresultaat.append(oneres2)
+        oneresultaat.append(self.oneproc())
 
+        list_cloud_storage_services.append([str(oneresultaat[0]), str(oneresultaat[1]), str(oneresultaat[2])])
         return oneresultaat
 
     def csearch_spidero(self):
@@ -131,7 +140,7 @@ class CloudSearch():
         else:
             spires = "SpiderOak installation not found"
 
-        if os.path.exists("%s\\Desktop\\SpiderOak Hive.*" % homefolder):
+        if os.path.exists("%s\Documents\SpiderOak Hive" % homefolder):
             spires2 = "SpiderOak folder found in the userfolder"
         else:
             spires2 = "SpiderOak folder not found"
@@ -139,7 +148,9 @@ class CloudSearch():
         spiderresultaat = []
         spiderresultaat.append(spires)
         spiderresultaat.append(spires2)
+        spiderresultaat.append(self.spiderproc())
 
+        list_cloud_storage_services.append([str(spiderresultaat[0]), str(spiderresultaat[1]), str(spiderresultaat[2])])
         return spiderresultaat
 
     def csearch_mega(self):
@@ -148,7 +159,7 @@ class CloudSearch():
         else:
             meres = "Mega installation not found"
 
-        if os.path.exists("%s\\Desktop\\MEGAsync.*" % homefolder):
+        if os.path.exists("%s\\Desktop\\MEGAsync.lnk" % homefolder):
             meres2 = "Mega folder found on the desktop"
         else:
             meres2 = "Mega folder not found"
@@ -156,7 +167,9 @@ class CloudSearch():
         megaresultaat = []
         megaresultaat.append(meres2)
         megaresultaat.append(meres)
+        megaresultaat.append(self.megaproc())
 
+        list_cloud_storage_services.append([str(megaresultaat[0]), str(megaresultaat[1]), str(megaresultaat[2])])
         return megaresultaat
 
     def csearch_copy(self):
@@ -173,35 +186,75 @@ class CloudSearch():
         copyresultaat = []
         copyresultaat.append(cores)
         copyresultaat.append(cores2)
+        copyresultaat.append(self.copyproc())
 
+        list_cloud_storage_services.append([str(copyresultaat[0]), copyresultaat[1], str(copyresultaat[2])])
         return copyresultaat
 
-    def process_search(self):
+    def dropproc(self):
         for process in processes():
             for proc in process:
                 if proc == 'Dropbox.exe':
-                    print "Dropbox is active as process"
+                    dropprores = "Dropbox is active as process"
+                else:
+                    dropprores = "Dropbox process not found"
+        return dropprores
 
-                elif proc == "BoxSync.exe":
-                    print "Box is active as process"
+    def boxproc(self):
+        for process in processes():
+            for proc in process:
+                if proc == "BoxSync.exe":
+                    boxproc = "Box is active as process"
+                else:
+                    boxproc = "Box process not found"
+        return boxproc
 
-                elif proc == "googledrivesync.exe":
-                    print "Google Drive is active as process"
+    def googleproc(self):
+        for process in processes():
+            for proc in process:
+                if proc == "googledrivesync.exe":
+                    googleproc = "Google Drive is active as process"
+                else:
+                    googleproc = "Google Drive processs not found"
+        return googleproc
 
-                elif proc == "OneDrive.exe" or proc == "SkyDrive.exe":
-                    print "OneDrive and/or SkyDrive is active as process"
+    def oneproc(self):
+        for process in processes():
+            for proc in process:
+                if proc == "OneDrive.exe" or proc == "SkyDrive.exe":
+                    oneproc = "OneDrive and/or SkyDrive is active as process"
+                else:
+                    oneproc = "OneDrive and/or SkyDrive process not found"
+        return oneproc
 
-                elif proc == "SpiderOak.exe":
-                    print "SpiderOak is active as process"
+    def spiderproc(self):
+        for process in processes():
+            for proc in process:
+                if proc == "SpiderOak.exe":
+                    spiderproc = "SpiderOak is active as process"
+                else:
+                    spiderproc = "SpiderOak process not found"
+        return spiderproc
 
-                elif proc == "MEGAsync.exe":
-                    print "Mega is active as process"
+    def megaproc(self):
+        for process in processes():
+            for proc in process:
+                if proc == "MEGAsync.exe":
+                    megaproc = "MEGA is active as process"
+                else:
+                    megaproc = "MEGA process not found"
+        return megaproc
 
-                elif proc == "CopyAgent.exe":
-                    print "Copy is active as process"
-
-                    # print homefolder
-                    # print programfiles
+    def copyproc(self):
+        for process in processes():
+            for proc in process:
+                if proc == "CopyAgent.exe":
+                    copyproc = "Copy is active as process"
+                else:
+                    copyproc = "Copy process not found"
+        return copyproc
 
 
 CloudSearch()
+
+# print programfiles
