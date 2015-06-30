@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Newcase</class>
+ <widget class="QDialog" name="Newcase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>521</width>
+    <height>336</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>New Case</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_5">
+   <item row="0" column="0">
+    <widget class="QLabel" name="Casename">
+     <property name="text">
+      <string>Case Name:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="2">
+    <widget class="QLineEdit" name="lineEdit_Casename"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="Investigator">
+     <property name="text">
+      <string>Investigator:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2">
+    <widget class="QLineEdit" name="lineEdit_Investigator"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="Organization">
+     <property name="text">
+      <string>Organization:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="2">
+    <widget class="QLineEdit" name="lineEdit_Organization"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="Contactdetails">
+     <property name="text">
+      <string>Contact Details:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="2">
+    <widget class="QLineEdit" name="lineEdit_ContactDetails"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="Timezone">
+     <property name="text">
+      <string>Timezone:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="2">
+    <widget class="QComboBox" name="comboBox_Timezone"/>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="Drive">
+     <property name="text">
+      <string>Drive:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" colspan="2">
+    <widget class="QComboBox" name="comboBox_Drive"/>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="Casefolder">
+     <property name="text">
+      <string>Case Folder: </string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QRadioButton" name="radioButton_Default">
+     <property name="text">
+      <string>Default Location</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="2">
+    <widget class="QRadioButton" name="radioButton_Custom">
+     <property name="text">
+      <string>Custom Location</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="3">
+    <widget class="QLineEdit" name="lineEdit_Browse"/>
+   </item>
+   <item row="7" column="3">
+    <widget class="QPushButton" name="Browse">
+     <property name="text">
+      <string>Browse</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="3">
+    <widget class="QPushButton" name="Ok">
+     <property name="text">
+      <string>Ok</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="4">
+    <widget class="QPushButton" name="Cancel">
+     <property name="text">
+      <string>Cancel</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+  <zorder>Ok</zorder>
+  <zorder>Cancel</zorder>
+  <zorder>Casename</zorder>
+  <zorder>Investigator</zorder>
+  <zorder>Organization</zorder>
+  <zorder>Contactdetails</zorder>
+  <zorder>Timezone</zorder>
+  <zorder>Drive</zorder>
+  <zorder>Casefolder</zorder>
+  <zorder>comboBox_Timezone</zorder>
+  <zorder>comboBox_Drive</zorder>
+  <zorder>radioButton_Default</zorder>
+  <zorder>radioButton_Custom</zorder>
+  <zorder>lineEdit_Casename</zorder>
+  <zorder>lineEdit_Investigator</zorder>
+  <zorder>lineEdit_Organization</zorder>
+  <zorder>lineEdit_ContactDetails</zorder>
+  <zorder>lineEdit_Browse</zorder>
+  <zorder>Browse</zorder>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>Ok</sender>
+   <signal>clicked()</signal>
+   <receiver>Newcase</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>367</x>
+     <y>300</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>260</x>
+     <y>167</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>Newcase</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>465</x>
+     <y>300</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>260</x>
+     <y>167</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

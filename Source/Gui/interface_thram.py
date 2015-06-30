@@ -18,6 +18,7 @@ import Hash
 import Cloud
 import Internetgeschiedenis
 import Select_functions
+import New_Case_aanmaken
 
 # -*- coding: utf-8 -*-
 
@@ -350,6 +351,9 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
         # Menu Opties -> Functies
         self.actionFuncties.triggered.connect(lambda: Select_functions.start())
+
+        #Menu Bestand -> Nieuw..
+        self.actionNieuw.triggered.connect(lambda: New_Case_aanmaken.start())
 
     def fill_software_treewidget(self, passed_list):
         self.treew_Software.clear()
