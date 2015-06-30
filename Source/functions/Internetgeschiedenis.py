@@ -1,14 +1,3 @@
-# Locaties
-# Chrome historie: C:\Users\Gebruiker\AppData\Local\Google\Chrome\User Data\Default\history
-# C:\Users\Gebruiker\AppData\Local\Google\Chrome\User Data\Default\GPUCache (Nog niet bekeken)
-
-# Informatie over de chrome database
-# http://lowmanio.co.uk/blog/entries/how-google-chrome-stores-web-history/
-# Firefox
-# http://lowmanio.co.uk/blog/entries/how-firefox-stores-web-history/
-# Internet Explorer
-# http://www.lowmanio.co.uk/blog/entries/how-internet-explorer-stores-web-history/
-
 # Imports
 import sqlite3  # This library is used to read the history files.
 from os.path import expanduser  # This library is used to find the location of the history files.
@@ -38,11 +27,16 @@ def loadData(internetExplorer, firefox, chrome):
 
     # Executing the SQL query and storing the results. Only importing the browsers that the user selected
     if chrome == 1:
-        connectionChrome = sqlite3.connect(pathPart1 + '\AppData\Local\Google\Chrome\User Data\Default\history')
-        cursorChrome = connectionChrome.cursor()
-        for row in cursorChrome.execute(sqlSelectChrome):
-            listT = ["Chrome", str(row[0]), row[1], str(row[2]), row[3]]  # Storing each result in a list.
-            outputList.append(listT)  # Storing the list with results in the output list.
+        try:
+            connectionChrome = sqlite3.connect(pathPart1 + '\AppData\Local\Google\Chrome\User Data\Default\history')
+            cursorChrome = connectionChrome.cursor()
+            for row in cursorChrome.execute(sqlSelectChrome):
+                listT = ["Chrome", str(row[0]), row[1], str(row[2]), row[3]]  # Storing each result in a list.
+                outputList.append(listT)  # Storing the list with results in the output list.
+        except sqlite3.OperationalError:
+            listT = ["Chrome", "", "99999", "De Chrome geschiedenis database is in gebruik. Sluit Chrome en probeer het opnieuw.", ""]
+            outputList.append(listT)
+
     if firefox == 1:
         firefoxFolder = os.listdir(pathPart1 + '/AppData/Roaming/Mozilla/Firefox/Profiles')
         connectionFirefox = sqlite3.connect(pathPart1 + '/AppData/Roaming/Mozilla/Firefox/Profiles/' + firefoxFolder[0] + '/places.sqlite')
@@ -73,6 +67,6 @@ def searchData(outputListSorted, searchWord):
             elif searchResult[3].find(searchWord) != -1:
                 searchResults.append(searchResult)
         except AttributeError:
-            pass  # It's possible for a field to be empty. This try statement makes the program skip the entry.
+            pass  # It's possible for a field to be empty. This try statement makes the program skip that entry.
     return searchResults
 
