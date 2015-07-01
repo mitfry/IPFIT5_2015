@@ -12,10 +12,12 @@ from PyQt4.QtGui import QTreeWidgetItem
 sys.path.append(sys.path[0]+"/../functions")
 
 # Custom
-import Software
-import Hardware
-import Hash
+import TheLogger
 import Cloud
+import Software
+# import Hardware
+import System
+import Hash
 import Internetgeschiedenis
 import Select_functions
 import New_Case_aanmaken

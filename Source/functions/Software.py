@@ -44,6 +44,10 @@ class WorkerThread(threading.Thread):
                 list_processes.append([process.ProcessID, str(process.Name)])
         print 'Process list complete! (1/3)\n'
 
+        from Cloud import cloud_search as cl
+        cl()
+        print "cloud"
+
         # Software installed with any windows installer
         # List is incomplete imo
         for software in w.Win32_Product():
@@ -59,3 +63,4 @@ class WorkerThread(threading.Thread):
                 list_services.append([service.ProcessId, service.Caption, service.State])
         print 'Service list complete! (3/3)\n'
         print 'Finished gathering information!\n\nSoftware Tab ready for use :)'
+

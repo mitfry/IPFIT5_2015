@@ -1,6 +1,6 @@
 __author__ = 'Tim Duysens'
 """
-Last edited = 29-6-15
+Last edited = 1-7-15
 Deze classes zoeken naar sporen die duiden op het gebruik van Cloudgebruik.
 
 Samenwerkende files: Software.py - Mitchell
@@ -47,6 +47,9 @@ list_cloud_storage_services = [["Cloud Dienst", "Locatie", "Process", ""]]
 cloudlog.debug("Cloud search imported")
 cloudlog.debug("Vars init: " + homefolder + " " + programfiles + " " + str(list_cloud_storage_services))
 
+def cloud_search():
+    print "cloud yes"
+    CloudSearch()
 
 def cloud():
     # Geeft aangemaakte lijst terug aan main
@@ -108,6 +111,7 @@ class CloudSearch:
         boxresultaat.append(boxres)
         boxresultaat.append(boxres2)
         boxresultaat.append(self.boxproc())
+        self.cloudslog.debug(boxresultaat[2])
 
         list_cloud_storage_services.append([str(boxresultaat[0]), str(boxresultaat[1]), str(boxresultaat[2])])
         return boxresultaat
@@ -214,14 +218,17 @@ class CloudSearch:
 
     # Defs die zoeken in de processenlijst van de Software module
     def dropproc(self):
-        self.cloudslog.debug("Process search Dropbox")
+        self.cloudslog.debug(processes()) #Geeft orginele lijst terug van processes uit Software.py
+        self.cloudslog.info("Process search Dropbox")
         for process in processes():
             for proc in process:
-                if proc == 'Dropbox.exe':
+                if proc == "Dropbox.exe":
                     dropprores = "Dropbox is active as process"
+                    return dropprores
                 else:
                     dropprores = "Dropbox process not found"
         return dropprores
+
 
     def boxproc(self):
         self.cloudslog.debug("Process search Box")
@@ -229,6 +236,7 @@ class CloudSearch:
             for proc in process:
                 if proc == "BoxSync.exe":
                     boxproc = "Box is active as process"
+                    return boxproc
                 else:
                     boxproc = "Box process not found"
         return boxproc
@@ -239,6 +247,7 @@ class CloudSearch:
             for proc in process:
                 if proc == "googledrivesync.exe":
                     googleproc = "Google Drive is active as process"
+                    return googleproc
                 else:
                     googleproc = "Google Drive processs not found"
         return googleproc
@@ -249,6 +258,7 @@ class CloudSearch:
             for proc in process:
                 if proc == "OneDrive.exe" or proc == "SkyDrive.exe":
                     oneproc = "OneDrive and/or SkyDrive is active as process"
+                    return oneproc
                 else:
                     oneproc = "OneDrive and/or SkyDrive process not found"
         return oneproc
@@ -259,6 +269,7 @@ class CloudSearch:
             for proc in process:
                 if proc == "SpiderOak.exe":
                     spiderproc = "SpiderOak is active as process"
+                    return spiderproc
                 else:
                     spiderproc = "SpiderOak process not found"
         return spiderproc
@@ -269,6 +280,7 @@ class CloudSearch:
             for proc in process:
                 if proc == "MEGAsync.exe":
                     megaproc = "MEGA is active as process"
+                    return megaproc
                 else:
                     megaproc = "MEGA process not found"
         return megaproc
@@ -279,9 +291,11 @@ class CloudSearch:
             for proc in process:
                 if proc == "CopyAgent.exe":
                     copyproc = "Copy is active as process"
+                    return copyproc
                 else:
                     copyproc = "Copy process not found"
         return copyproc
+
 
 if __name__ == "__main__":
     CloudSearch()
