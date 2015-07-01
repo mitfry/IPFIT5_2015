@@ -1,6 +1,6 @@
 __author__ = 'Tim Duysens'
 """
-Last edited: 9-6-15
+Last edited: 29-6-15
 
 Deze class zal bij het starten van het programma worden aangeroepen.
 Hierna wordt alles wat in het console komt eveneens in een text bestand opgeslagen.
@@ -48,8 +48,8 @@ logger.info('\n---------\nLog started on %s.\n---------\n' % time.asctime())
 
 logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG, format=formatter)
 
+loggerlog = logging.getLogger("THRAM - Log")
+loggerlog.debug("Logger module imported")
 
 mainlog = logging.getLogger("THRAM - Main")
 mainlog.info("Program has started, Let the search begin")
-mainlog.info("Do something")
-mainlog.info("Program is closed, The search has ended") 
