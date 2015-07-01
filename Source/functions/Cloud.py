@@ -48,7 +48,6 @@ cloudlog.debug("Cloud search imported")
 cloudlog.debug("Vars init: " + homefolder + " " + programfiles + " " + str(list_cloud_storage_services))
 
 def cloud_search():
-    print "cloud yes"
     CloudSearch()
 
 def cloud():

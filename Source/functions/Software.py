@@ -46,7 +46,6 @@ class WorkerThread(threading.Thread):
 
         from Cloud import cloud_search as cl
         cl()
-        print "cloud"
 
         # Software installed with any windows installer
         # List is incomplete imo
