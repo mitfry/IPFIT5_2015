@@ -8,16 +8,20 @@ import os.path
 import time
 
 count = 0
+
 while count < 1:
     count += 1
-    time.sleep(1)
 
     if os.path.isfile(sys.path[0] + "\interface_thram.ui"):
         os.system("cd " + sys.path[0])
         os.system("pyuic4 -o " + sys.path[0] + "\interface_thram.py " + sys.path[0] + "\interface_thram.ui")
-        print "Succesfully created interface_thram.py"
+        print "interface_thram.ui has been found and was converted to interface_thram.py"
     else:
         print "interface_thram.ui is could not be found. Newb."
+
+time.sleep(1)
+print "Gathering all custom code from this script..."
+
 
 # !/usr/bin/env python
 
@@ -44,23 +48,26 @@ import Select_functions
 '''
 
 finalLines = '''
+        # Mitchell
+        # The code below is used to connect methods to the buttons off the interface
+
         # IPFIT5 Buttons, Methods and other code
         self.setWindowTitle(_translate("MainWindow", "THRAM" + u'\u2122' + "- The Ultimate Triage Solution", None))
 
         # Tab Project:
-       # self.btn_Test.clicked.connect(self.test_mijn_functie)
-       #  self.btn_Progressbar.clicked.connect(self.update_progress)
+        # self.btn_Test.clicked.connect(self.test_mijn_functie)
+        # self.btn_Progressbar.clicked.connect(self.update_progress)
 
         # Tab Systeem:
 
         # Tab Software:
-        self.btn_Processen.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
+        self.btn_Processen.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 2000))
         self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
-        self.btn_Services.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
+        self.btn_Services.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 2000))
         self.btn_Services.clicked.connect(lambda: self.fill_software_treewidget(Software.services()))
-        self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
+        self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 2000))
         self.btn_Software.clicked.connect(lambda: self.fill_software_treewidget(Software.software_installed()))
-        self.btn_Software.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 1000))
+        self.btn_Cloud.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 2000))
         self.btn_Cloud.clicked.connect(lambda: self.fill_software_treewidget(Cloud.cloud()))
 
         # Tab Internet:
@@ -77,6 +84,9 @@ finalLines = '''
 
         # Menu Opties -> Functies
         self.actionFuncties.triggered.connect(lambda: Select_functions.start())
+
+    # Mitchell
+    # The method below fills the treeWidget on the software tab according to the button that is clicked.
 
     def fill_software_treewidget(self, passed_list):
         self.treew_Software.clear()
@@ -96,6 +106,8 @@ finalLines = '''
             # self.treew_Software.resizeColumnToContents(passed_list_number)
             QtGui.qApp.processEvents()
             passed_list_number += 1
+
+    # Hugo
 
     def fillBrowserTreewidget(self):
 
@@ -187,6 +199,8 @@ finalLines = '''
             rowNumber += 1
             QtGui.qApp.processEvents()
 
+    # Andre
+
     def fill_searchbar(self, output):
         global output_list
         self.show_Search_From.clear()
@@ -204,6 +218,9 @@ finalLines = '''
                 self.treew_Bestanden.insertTopLevelItem(row_number, item)
                 row_number += 1
             QtGui.qApp.processEvents()
+
+    # Mitchell
+    # The code below includes all methods required to start, pause, and stop the progress bar.
 
     def update_progress(self):
         if not self._active:
@@ -230,34 +247,12 @@ finalLines = '''
         self.btn_Progressbar.setText('Start')
         self._active = False
 
-    # Het is niet te geloven dames!
-
-    global x
-    x = 0
+    # Mitchell
+    # Below is a method that can edit the statusbar on the bottom of the window.
+    # Use like this: status_bar("YOURTEXT", TIME_IN_MILLISECONDS)
 
     def status_bar(self, message, time_in_mills):
         self.statusbar.showMessage(message, time_in_mills)
-
-    def test_mijn_functie(self):
-        global x
-        if x < 2:
-            print "Pauper"
-        elif x < 5:
-            print "Pauperr!"
-        elif x < 9:
-            print "Wat klik je nou nog?!"
-        elif x < 12:
-            print "Noob alert: Application soon exiting..."
-            for i in range(0, 5):
-                i = 5 - i
-                self.status_bar("Exiting in: " + str(i) + " seconds... =3", 0)
-                time.sleep(1)
-
-            print "Laatsnorr.."
-            self.status_bar("Laatsnorr...", 0)
-            time.sleep(1)
-            sys.exit()
-        x += 1
 
 # IPFIT5 constructor
 if __name__ == "__main__":
@@ -292,3 +287,7 @@ f.write(constructorCode)
 f.write(parts[1])
 f.write(finalLines)
 f.close()
+print "Succesfully added all custom code to interface_thram.py\n"
+time.sleep(1)
+print "Interface_thram is ready for use!"
+time.sleep(3)
