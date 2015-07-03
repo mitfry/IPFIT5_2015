@@ -43,7 +43,7 @@
        <enum>Qt::NoContextMenu</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_Project">
        <attribute name="title">
@@ -248,70 +248,101 @@
         <string>Systeem</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="3" column="0">
-         <widget class="QLabel" name="proces_label">
+        <item row="0" column="3">
+         <widget class="QPushButton" name="pushButton">
           <property name="text">
-           <string>Processor</string>
+           <string>Systeem informatie</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="os_label">
-          <property name="text">
-           <string>Besturingssysteem </string>
+        <item row="2" column="3">
+         <widget class="QLineEdit" name="proces_lineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
-        <item row="4" column="1">
-         <widget class="QLineEdit" name="localip_lineEdit"/>
-        </item>
-        <item row="3" column="1">
-         <widget class="QLineEdit" name="proces_lineEdit"/>
-        </item>
-        <item row="2" column="0">
+        <item row="1" column="2">
          <widget class="QLabel" name="mac_label">
           <property name="text">
            <string>MAC-adres</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="compname_lineEdit"/>
-        </item>
-        <item row="0" column="2">
-         <widget class="QLabel" name="accname_label">
-          <property name="text">
-           <string>Accountnaam </string>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="compname_lineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
-        <item row="0" column="0">
+        <item row="1" column="0">
          <widget class="QLabel" name="compname_label">
           <property name="text">
            <string>Computernaam </string>
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="mac_lineEdit"/>
+        <item row="1" column="3">
+         <widget class="QLineEdit" name="mac_lineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
-        <item row="0" column="3">
-         <widget class="QLineEdit" name="accname_lineEdit"/>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="accinf_Button">
+          <property name="text">
+           <string>Account informatie</string>
+          </property>
+         </widget>
         </item>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="os_lineEdit"/>
-        </item>
-        <item row="4" column="0">
+        <item row="3" column="2">
          <widget class="QLabel" name="localip_label">
           <property name="text">
            <string>Lokaal IP-adres</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="3">
-         <widget class="QPushButton" name="showip_Button">
+        <item row="3" column="3">
+         <widget class="QLineEdit" name="localip_lineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QLabel" name="proces_label">
           <property name="text">
-           <string>Laat IP zien</string>
+           <string>Processor</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="accname_lineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="os_lineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="os_label">
+          <property name="text">
+           <string>Besturingssysteem </string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="acname_label">
+          <property name="text">
+           <string>Accountnaam </string>
           </property>
          </widget>
         </item>
