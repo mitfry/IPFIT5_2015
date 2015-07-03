@@ -36,7 +36,7 @@ def calculate_hash_from_multiplee_files(full_path):
             line = str(str(count) + root + '/' + file_name + ' is       ' + hashlib.md5(
                 open(root + '/' + file_name, 'rb').read()).hexdigest() + '\n')
             outputlog.write(line)
-            writer.writerow((file_name, root + '/', 'sha256', hashlib.md5(
+            writer.writerow((file_name, root + '/', 'md5', hashlib.md5(
                 open(root + '/' + file_name, 'rb').read()).hexdigest(), filesize, time.ctime(mtime), time.ctime(atime),
                              time.ctime(ctime)))
     csvFile.close()
