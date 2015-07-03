@@ -12,7 +12,7 @@ from PyQt4.QtGui import QTreeWidgetItem
 sys.path.append(sys.path[0]+"/../functions")
 
 # Custom
-import TheLogger
+#import TheLogger
 import Cloud
 import Software
 # import Hardware
@@ -475,7 +475,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     def fill_hash_treewidget(self, passed_list):
         self.treew_Bestanden.clear()
-        for row in passed_list:
+        for row in reversed(passed_list):
             row_number = 0
             item = QTreeWidgetItem()
             while row_number < 8:

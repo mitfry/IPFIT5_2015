@@ -7,7 +7,7 @@ sys.path.append(sys.path[0]+"/../gui")
 
 def inputfolder():
     full_path = str(
-        QtGui.QFileDialog.getExistingDirectory(None, 'Kies de te doorzoeken map:', 'C:\\', QtGui.QFileDialog.ShowDirsOnly))
+        QtGui.QFileDialog.getExistingDirectory(None, 'Kies de te doorzoeken map:', '../\\', QtGui.QFileDialog.ShowDirsOnly))
     return str(full_path)
 
 def calculate_hash_from_multiplee_files(full_path):
@@ -20,7 +20,7 @@ def calculate_hash_from_multiplee_files(full_path):
     writer = csv.writer(csvFile, delimiter=',', quoting=csv.QUOTE_ALL)
     writer.writerow(('Bestand', 'Locatie', 'Hashvorm', 'Hashwaarde', 'Bestandsgrootte in KB', 'Laatst aangepast', 'Laatst geopend',
                      'Creatiedatum'))
-    outputlog.write("The sha256 files of" + full_path + '  are:\n\n')
+    outputlog.write("The md5 files of" + full_path + '  are:\n\n')
     list_hashes = []
     for root, dirs, files in os.walk(full_path):
         for file_name in files:
@@ -30,13 +30,13 @@ def calculate_hash_from_multiplee_files(full_path):
             (mode, ino, dev, nlink, uid, gid, size, atime,
              mtime, ctime) = os.stat(root + '/' + file_name)
             filesize = str(size/1024)
-            list_hashes.append([file_name, root + '\ ', 'sha256', hashlib.sha256(
+            list_hashes.append([file_name, root + '\ ', 'md5', hashlib.md5(
                 open(root + '/' + file_name, 'rb').read()).hexdigest(), filesize, time.ctime(mtime), time.ctime(atime),
                                 time.ctime(ctime)])
-            line = str(str(count) + root + '/' + file_name + ' is       ' + hashlib.sha256(
+            line = str(str(count) + root + '/' + file_name + ' is       ' + hashlib.md5(
                 open(root + '/' + file_name, 'rb').read()).hexdigest() + '\n')
             outputlog.write(line)
-            writer.writerow((file_name, root + '/', 'sha256', hashlib.sha256(
+            writer.writerow((file_name, root + '/', 'sha256', hashlib.md5(
                 open(root + '/' + file_name, 'rb').read()).hexdigest(), filesize, time.ctime(mtime), time.ctime(atime),
                              time.ctime(ctime)))
     csvFile.close()
