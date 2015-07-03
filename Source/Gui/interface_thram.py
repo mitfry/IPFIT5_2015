@@ -399,7 +399,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
         # Tab Project:
        # self.btn_Test.clicked.connect(self.test_mijn_functie)
-       # self.btn_Progressbar.clicked.connect(self.update_progress)
+       #  self.btn_Progressbar.clicked.connect(self.update_progress)
 
         # Tab Systeem:
 
