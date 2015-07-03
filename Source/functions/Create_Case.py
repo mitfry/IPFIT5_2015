@@ -44,5 +44,5 @@ def write():
 # os.makedirs(path)  # Make the folder
 # print (path)  # Show the folder path
 
-write()
+
 
