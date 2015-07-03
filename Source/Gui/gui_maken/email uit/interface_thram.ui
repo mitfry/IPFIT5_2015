@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>Logo/THRAM_Logo_Geen_Tekst.PNG</normaloff>Logo/THRAM_Logo_Geen_Tekst.PNG</iconset>
+    <normaloff>../Logo/THRAM_Logo_Geen_Tekst.PNG</normaloff>../Logo/THRAM_Logo_Geen_Tekst.PNG</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="enabled">
