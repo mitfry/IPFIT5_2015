@@ -1,3 +1,5 @@
+__author__ = 'Andre'
+
 import hashlib, os
 
 from PyQt4 import QtGui

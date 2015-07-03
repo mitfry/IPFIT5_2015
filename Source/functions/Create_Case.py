@@ -1,6 +1,14 @@
 __author__ = 'Roland'
 
 import os
+import hashlib, os
+
+from PyQt4 import QtGui
+
+def outputfolder():
+    outputfolder = str(
+        QtGui.QFileDialog.getExistingDirectory(None, 'Select output folder', 'C:\\', QtGui.QFileDialog.ShowDirsOnly))
+    return str(outputfolder)
 
 def write():
 

@@ -197,7 +197,7 @@ finalLines = '''
 
     def fill_hash_treewidget(self, passed_list):
         self.treew_Bestanden.clear()
-        for row in passed_list:
+        for row in reversed(passed_list):
             row_number = 0
             item = QTreeWidgetItem()
             while row_number < 8:
