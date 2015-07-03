@@ -36,7 +36,6 @@ sys.path.append(sys.path[0]+"/../functions")
 
 # Custom
 import Software
-import Hardware
 import Hash
 import Cloud
 import Internetgeschiedenis
@@ -49,8 +48,8 @@ finalLines = '''
         self.setWindowTitle(_translate("MainWindow", "THRAM" + u'\u2122' + "- The Ultimate Triage Solution", None))
 
         # Tab Project:
-        self.btn_Test.clicked.connect(self.test_mijn_functie)
-        self.btn_Progressbar.clicked.connect(self.update_progress)
+       # self.btn_Test.clicked.connect(self.test_mijn_functie)
+       #  self.btn_Progressbar.clicked.connect(self.update_progress)
 
         # Tab Systeem:
 
