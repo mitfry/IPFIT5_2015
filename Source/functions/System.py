@@ -1,6 +1,6 @@
 __author__ = 'Tim Duysens'
 """
-Last edited = 29-6-2015
+Last edited = 06-7-2015
 Dit script geeft alle info die in het systeem tab vraagt terug
 - Computernaam
 - Accountnaam
@@ -40,7 +40,7 @@ def bestu():
 def mac():
     macadr = get_mac()
     systemlog.info("MAC-Adress: %s" % macadr)
-    return macadr
+    return str(macadr)
 
 def processor():
     proces = platform.processor()

@@ -18,6 +18,7 @@ import Cloud
 import Internetgeschiedenis
 import Select_functions
 import Create_Case
+import System
 
 # -*- coding: utf-8 -*-
 
@@ -139,9 +140,9 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.tab_System.setObjectName(_fromUtf8("tab_System"))
         self.gridLayout_3 = QtGui.QGridLayout(self.tab_System)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
-        self.pushButton = QtGui.QPushButton(self.tab_System)
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.gridLayout_3.addWidget(self.pushButton, 0, 3, 1, 1)
+        self.sysinfo_Button = QtGui.QPushButton(self.tab_System)
+        self.sysinfo_Button.setObjectName(_fromUtf8("sysinfo_Button"))
+        self.gridLayout_3.addWidget(self.sysinfo_Button, 0, 3, 1, 1)
         self.proces_lineEdit = QtGui.QLineEdit(self.tab_System)
         self.proces_lineEdit.setReadOnly(True)
         self.proces_lineEdit.setObjectName(_fromUtf8("proces_lineEdit"))
@@ -359,7 +360,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.pushCasus.setText(_translate("MainWindow", "Nieuwe Casus", None))
         self.casusOpslaan.setText(_translate("MainWindow", "Opslaan", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Project), _translate("MainWindow", "Project", None))
-        self.pushButton.setText(_translate("MainWindow", "Systeem informatie", None))
+        self.sysinfo_Button.setText(_translate("MainWindow", "Systeem informatie", None))
         self.mac_label.setText(_translate("MainWindow", "MAC-adres", None))
         self.compname_label.setText(_translate("MainWindow", "Computernaam ", None))
         self.accinf_Button.setText(_translate("MainWindow", "Account informatie", None))
@@ -429,7 +430,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
         # Tab Systeem:
         self.tab_System.setEnabled(False)
-
+        self.accinf_Button.clicked.connect(lambda: self.getaccountinfo())
+        self.sysinfo_Button.clicked.connect(lambda: self.getsysinfo())
 
         # Tab Software:
         self.tab_Software.setEnabled(False)
@@ -458,6 +460,20 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
         # Menu Opties -> Functies
         self.actionFuncties.triggered.connect(lambda: Select_functions.start())
+
+
+    # Tim
+    # Functies systeem tab, gets info when clicked on button
+    def getaccountinfo(self):
+        self.compname_lineEdit.setText(System.compn())
+        self.accname_lineEdit.setText(System.accn())
+        self.os_lineEdit.setText(System.bestu())
+
+    def getsysinfo(self):
+        self.mac_lineEdit.setText(System.mac())
+        self.proces_lineEdit.setText(System.processor())
+        self.localip_lineEdit.setText(System.locip())
+
 
     # Mitchell
     # The method below fills the treeWidget on the software tab according to the button that is clicked.
