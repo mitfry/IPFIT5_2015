@@ -44,6 +44,7 @@ import Hash
 import Cloud
 import Internetgeschiedenis
 import Select_functions
+import Create_Case
 
 '''
 
@@ -61,8 +62,11 @@ finalLines = '''
         self.casusOpslaan.clicked.connect(lambda : self.save_casus())
 
         # Tab Systeem:
+        self.tab_System.setEnabled(False)
+
 
         # Tab Software:
+        self.tab_Software.setEnabled(False)
         self.btn_Processen.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 2000))
         self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
         self.btn_Services.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 2000))
@@ -73,6 +77,7 @@ finalLines = '''
         self.btn_Cloud.clicked.connect(lambda: self.fill_software_treewidget(Cloud.cloud()))
 
         # Tab Internet:
+        self.tab_Internet.setEnabled(False)
         self.btn_Load_Internet_History.clicked.connect(lambda: self.fillBrowserTreewidget())
         self.btn_Show_Internet_History.clicked.connect(lambda: self.zoekBrowser())
         self.btn_Search_Internet_History.clicked.connect(lambda: self.zoekWoord())
@@ -80,6 +85,7 @@ finalLines = '''
         # Tab E-mail:
 
         # Tab Bestanden:
+        self.tab_Files.setEnabled(False)
         self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
         self.btn_Hash.clicked.connect(
             lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(output_list, casuslocatie)))
@@ -240,6 +246,10 @@ finalLines = '''
         print casuslocatie
         casustijd = str(self.casusTijd.text())
         Create_Case.save_casus(casuslocatie, casusnaam, computernaam, casustijd)
+        self.tab_System.setEnabled(True)
+        self.tab_Files.setEnabled(True)
+        self.tab_Internet.setEnabled(True)
+        self.tab_Software.setEnabled(True)
         return
 
     def fill_searchbar(self, output):

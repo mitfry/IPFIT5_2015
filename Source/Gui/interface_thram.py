@@ -17,6 +17,7 @@ import Hash
 import Cloud
 import Internetgeschiedenis
 import Select_functions
+import Create_Case
 
 # -*- coding: utf-8 -*-
 
@@ -136,6 +137,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.tab_Menu.addTab(self.tab_Project, _fromUtf8(""))
         self.tab_System = QtGui.QWidget()
         self.tab_System.setObjectName(_fromUtf8("tab_System"))
+        self.tab_System.setEnabled(False)
         self.gridLayout_3 = QtGui.QGridLayout(self.tab_System)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
         self.pushButton = QtGui.QPushButton(self.tab_System)
@@ -606,6 +608,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
         print casuslocatie
         casustijd = str(self.casusTijd.text())
         Create_Case.save_casus(casuslocatie, casusnaam, computernaam, casustijd)
+        self.tab_System
+        self.tab_Files
+        self.tab_Internet
+        self.tab_Software
         return
 
     def fill_searchbar(self, output):
