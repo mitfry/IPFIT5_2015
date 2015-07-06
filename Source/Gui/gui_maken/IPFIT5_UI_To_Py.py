@@ -55,8 +55,10 @@ finalLines = '''
         self.setWindowTitle(_translate("MainWindow", "THRAM" + u'\u2122' + "- The Ultimate Triage Solution", None))
 
         # Tab Project:
-        # self.btn_Test.clicked.connect(self.test_mijn_functie)
-        # self.btn_Progressbar.clicked.connect(self.update_progress)
+        self.pushProject.clicked.connect(lambda: self.project_location(Create_Case.outputfolder()))
+        self.projectOpslaan.clicked.connect(lambda: self.save_project())
+        self.pushCasus.clicked.connect(lambda: self.maakCasus())
+        self.casusOpslaan.clicked.connect(lambda : self.save_casus())
 
         # Tab Systeem:
 
@@ -80,7 +82,7 @@ finalLines = '''
         # Tab Bestanden:
         self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
         self.btn_Hash.clicked.connect(
-            lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(output_list)))
+            lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(output_list, casuslocatie)))
 
         # Menu Opties -> Functies
         self.actionFuncties.triggered.connect(lambda: Select_functions.start())
@@ -200,6 +202,45 @@ finalLines = '''
             QtGui.qApp.processEvents()
 
     # Andre
+
+    # Andre
+    def project_location(self, locatie):
+        global location
+        print self.ProjectNaam.text()
+        self.getProject.setText(_translate("MainWindow", locatie + "\\" + self.ProjectNaam.text(), None))
+        location = str(locatie + "\\" + self.ProjectNaam.text())
+        print location
+        return
+
+    def save_project(self):
+        naamOmderzoeker = self.naamOnderzoeker.text()
+        projectNaam = self.ProjectNaam.text()
+        projectDatum = self.ProjectDatum.text()
+        print  location
+        Create_Case.save_project(location, projectNaam, naamOmderzoeker, projectDatum)
+        self.makeCasus.setEnabled(True)
+        self.makeComputernaam.setEnabled(True)
+        self.casusTijd.setEnabled(True)
+        self.pushCasus.setEnabled(True)
+        self.casusOpslaan.setEnabled(True)
+        return
+
+    def maakCasus(self):
+        global casuslocatie
+        global computernaam
+        global casusnaam
+        casusnaam = str(self.makeCasus.text())
+        self.getCasus.setText(str(location) + "\\" + str(casusnaam))
+        casuslocatie = location + "\\" + casusnaam
+        self.getComputernaam.setText(self.makeComputernaam.text())
+        computernaam = self.getComputernaam.text()
+        print str(casuslocatie)
+
+    def save_casus(self):
+        print casuslocatie
+        casustijd = str(self.casusTijd.text())
+        Create_Case.save_casus(casuslocatie, casusnaam, computernaam, casustijd)
+        return
 
     def fill_searchbar(self, output):
         global output_list

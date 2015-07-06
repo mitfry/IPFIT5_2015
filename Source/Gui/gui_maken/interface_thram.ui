@@ -177,6 +177,9 @@
              <day>1</day>
             </datetime>
            </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
           </widget>
           <widget class="QLabel" name="getProject">
            <property name="enabled">
@@ -433,42 +436,42 @@
           </property>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
           <column>
            <property name="text">
-            <string> </string>
+            <string/>
            </property>
           </column>
          </widget>
@@ -614,7 +617,7 @@
            <bool>false</bool>
           </property>
           <property name="text">
-           <string>Geef een externe doelmap op:</string>
+           <string>Hash!</string>
           </property>
          </widget>
         </item>

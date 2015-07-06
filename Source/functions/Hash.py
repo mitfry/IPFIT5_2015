@@ -12,12 +12,11 @@ def inputfolder():
         QtGui.QFileDialog.getExistingDirectory(None, 'Kies de te doorzoeken map:', '../\\', QtGui.QFileDialog.ShowDirsOnly))
     return str(full_path)
 
-def calculate_hash_from_multiplee_files(full_path):
+def calculate_hash_from_multiplee_files(full_path, casuslocatie):
     full_path = str(full_path)
     count = 0
-    outputfolder = str(
-        QtGui.QFileDialog.getExistingDirectory(None, 'Select output folder', 'C:\\', QtGui.QFileDialog.ShowDirsOnly))
-    outputlog = open(outputfolder + '\log.txt', 'w')
+    outputfolder = str(casuslocatie)
+    outputlog = open(outputfolder + '\hash.txt', 'w')
     csvFile = open(outputfolder + '\ ' + "fileSystemReport.csv", 'wb')
     writer = csv.writer(csvFile, delimiter=',', quoting=csv.QUOTE_ALL)
     writer.writerow(('Bestand', 'Locatie', 'Hashvorm', 'Hashwaarde', 'Bestandsgrootte in KB', 'Laatst aangepast', 'Laatst geopend',

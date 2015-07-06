@@ -10,6 +10,34 @@ def outputfolder():
         QtGui.QFileDialog.getExistingDirectory(None, 'Select output folder', 'C:\\', QtGui.QFileDialog.ShowDirsOnly))
     return str(outputfolder)
 
+def save_project(locatie, project, onderzoeker, datum):
+    dir = os.path.dirname(str(locatie))
+    if os.path.exists(locatie):
+        outputlog = open(locatie + '\Projectgegevens.txt', 'w')
+        outputlog.write("Projectnaam: " + project + "\n" + "Onderzoeker: "+ onderzoeker + "\n" + "datum aangemaakt: " +datum)
+        outputlog.close()
+
+    else:
+        os.makedirs(locatie)
+        outputlog = open(locatie + '\Projectgegevens.txt', 'w')
+        outputlog.write("Projectnaam: " + project + "\n" + "Onderzoeker: "+ onderzoeker + "\n" + "datum aangemaakt: " +datum)
+        outputlog.close()
+
+def save_casus(locatie2, casus, identiteit, tijd):
+    if os.path.exists(locatie2):
+        outputlog = open(locatie2 + '\Casusgegevens.txt', 'w')
+        print type(tijd)
+        outputlog.write("Casusnaam: " + casus + "\n" + "Identificatienummer apparaat: "+ identiteit + "\n" + "Tijd aangemaakt: " + tijd)
+        outputlog.close()
+    else:
+        os.makedirs(locatie2)
+        outputlog = open(locatie2 + '\Casusgegevens.txt', 'w')
+        print type(tijd)
+        outputlog.write("Casusnaam: " + casus + "\n" + "Identificatienummer apparaat: "+ identiteit + "\n" + "Tijd aangemaakt: " + tijd)
+        outputlog.close()
+    return
+
+
 def write():
 
     print 'Creating a new case'

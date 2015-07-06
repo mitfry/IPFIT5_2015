@@ -20,9 +20,9 @@ import Select_functions
 
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Development\School\IPFIT5_2015\Source\Gui\gui_maken\interface_thram.ui'
+# Form implementation generated from reading ui file 'C:\Users\Andre\Documents\GitHub\THRAM\Source\Gui\gui_maken\interface_thram.ui'
 #
-# Created: Fri Jul 03 16:30:30 2015
+# Created: Mon Jul 06 15:04:37 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -104,6 +104,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.ProjectDatum = QtGui.QDateEdit(self.widget)
         self.ProjectDatum.setGeometry(QtCore.QRect(10, 120, 201, 22))
         self.ProjectDatum.setDateTime(QtCore.QDateTime(QtCore.QDate(2015, 1, 1), QtCore.QTime(0, 0, 0)))
+        self.ProjectDatum.setCalendarPopup(True)
         self.ProjectDatum.setObjectName(_fromUtf8("ProjectDatum"))
         self.getProject = QtGui.QLabel(self.widget)
         self.getProject.setEnabled(False)
@@ -370,14 +371,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Services.setText(_translate("MainWindow", "Services", None))
         self.btn_Software.setText(_translate("MainWindow", "Software", None))
         self.btn_Cloud.setText(_translate("MainWindow", "Cloud", None))
-        self.treew_Software.headerItem().setText(0, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(1, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(2, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(3, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(4, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(5, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(6, _translate("MainWindow", " ", None))
-        self.treew_Software.headerItem().setText(7, _translate("MainWindow", " ", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Software), _translate("MainWindow", "Software", None))
         self.chk_Mozilla_FireFox.setText(_translate("MainWindow", "Mozilla FireFox", None))
         self.btn_Load_Internet_History.setText(_translate("MainWindow", "Load data", None))
@@ -396,7 +389,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.browserTreeWidget.headerItem().setText(4, _translate("MainWindow", "URL", None))
         self.chk_Google_Chrome.setText(_translate("MainWindow", "Google Chrome", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Internet), _translate("MainWindow", "Internet", None))
-        self.btn_Hash.setText(_translate("MainWindow", "Geef een externe doelmap op:", None))
+        self.btn_Hash.setText(_translate("MainWindow", "Hash!", None))
         self.treew_Bestanden.headerItem().setText(0, _translate("MainWindow", "Bestand", None))
         self.treew_Bestanden.headerItem().setText(1, _translate("MainWindow", "Locatie", None))
         self.treew_Bestanden.headerItem().setText(2, _translate("MainWindow", "Hashvorm", None))
@@ -428,8 +421,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.setWindowTitle(_translate("MainWindow", "THRAM" + u'\u2122' + "- The Ultimate Triage Solution", None))
 
         # Tab Project:
-        # self.btn_Test.clicked.connect(self.test_mijn_functie)
-        # self.btn_Progressbar.clicked.connect(self.update_progress)
+        self.pushProject.clicked.connect(lambda: self.project_location(Create_Case.outputfolder()))
+        self.projectOpslaan.clicked.connect(lambda: self.save_project())
+        self.pushCasus.clicked.connect(lambda: self.maakCasus())
+        self.casusOpslaan.clicked.connect(lambda : self.save_casus())
 
         # Tab Systeem:
 
@@ -453,7 +448,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         # Tab Bestanden:
         self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
         self.btn_Hash.clicked.connect(
-            lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(output_list)))
+            lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(output_list, casuslocatie)))
 
         # Menu Opties -> Functies
         self.actionFuncties.triggered.connect(lambda: Select_functions.start())
@@ -476,7 +471,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
                 item.setText(row_nr, unicode(row[row_nr]))
 
             self.treew_Software.insertTopLevelItem(passed_list_number, item)
-            self.treew_Software.resizeColumnToContents(passed_list_number)
+            # self.treew_Software.resizeColumnToContents(passed_list_number)
             QtGui.qApp.processEvents()
             passed_list_number += 1
 
@@ -573,6 +568,45 @@ class Ui_MainWindow(QtGui.QMainWindow):
             QtGui.qApp.processEvents()
 
     # Andre
+
+    # Andre
+    def project_location(self, locatie):
+        global location
+        print self.ProjectNaam.text()
+        self.getProject.setText(_translate("MainWindow", locatie + "\" + self.ProjectNaam.text(), None))
+        location = str(locatie + "\" + self.ProjectNaam.text())
+        print location
+        return
+
+    def save_project(self):
+        naamOmderzoeker = self.naamOnderzoeker.text()
+        projectNaam = self.ProjectNaam.text()
+        projectDatum = self.ProjectDatum.text()
+        print  location
+        Create_Case.save_project(location, projectNaam, naamOmderzoeker, projectDatum)
+        self.makeCasus.setEnabled(True)
+        self.makeComputernaam.setEnabled(True)
+        self.casusTijd.setEnabled(True)
+        self.pushCasus.setEnabled(True)
+        self.casusOpslaan.setEnabled(True)
+        return
+
+    def maakCasus(self):
+        global casuslocatie
+        global computernaam
+        global casusnaam
+        casusnaam = str(self.makeCasus.text())
+        self.getCasus.setText(str(location) + "\" + str(casusnaam))
+        casuslocatie = location + "\" + casusnaam
+        self.getComputernaam.setText(self.makeComputernaam.text())
+        computernaam = self.getComputernaam.text()
+        print str(casuslocatie)
+
+    def save_casus(self):
+        print casuslocatie
+        casustijd = str(self.casusTijd.text())
+        Create_Case.save_casus(casuslocatie, casusnaam, computernaam, casustijd)
+        return
 
     def fill_searchbar(self, output):
         global output_list
