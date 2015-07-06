@@ -43,7 +43,7 @@
        <enum>Qt::NoContextMenu</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_Project">
        <attribute name="title">
@@ -297,7 +297,7 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="3">
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="sysinfo_Button">
           <property name="text">
            <string>Systeem informatie</string>
           </property>

@@ -45,6 +45,7 @@ import Cloud
 import Internetgeschiedenis
 import Select_functions
 import Create_Case
+import System
 
 '''
 
@@ -92,6 +93,20 @@ finalLines = '''
 
         # Menu Opties -> Functies
         self.actionFuncties.triggered.connect(lambda: Select_functions.start())
+
+
+    # Tim
+    # Functies systeem tab, gets info when clicked on button
+    def getaccountinfo(self):
+        self.compname_lineEdit.setText(System.compn())
+        self.accname_lineEdit.setText(System.accn())
+        self.os_lineEdit.setText(System.bestu())
+
+    def getsysinfo(self):
+        self.mac_lineEdit.setText(System.mac())
+        self.proces_lineEdit.setText(System.processor())
+        self.localip_lineEdit.setText(System.locip())
+
 
     # Mitchell
     # The method below fills the treeWidget on the software tab according to the button that is clicked.
@@ -213,8 +228,8 @@ finalLines = '''
     def project_location(self, locatie):
         global location
         print self.ProjectNaam.text()
-        self.getProject.setText(_translate("MainWindow", locatie + "\\\" + self.ProjectNaam.text(), None))
-        location = str(locatie + "\\\" + self.ProjectNaam.text())
+        self.getProject.setText(_translate("MainWindow", locatie + "\\" + self.ProjectNaam.text(), None))
+        location = str(locatie + "\\" + self.ProjectNaam.text())
         print location
         return
 
@@ -236,8 +251,8 @@ finalLines = '''
         global computernaam
         global casusnaam
         casusnaam = str(self.makeCasus.text())
-        self.getCasus.setText(str(location) + "\\\" + str(casusnaam))
-        casuslocatie = location + "\\\" + casusnaam
+        self.getCasus.setText(str(location) + "\\" + str(casusnaam))
+        casuslocatie = location + "\\" + casusnaam
         self.getComputernaam.setText(self.makeComputernaam.text())
         computernaam = self.getComputernaam.text()
         print str(casuslocatie)
