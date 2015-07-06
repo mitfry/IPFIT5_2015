@@ -23,7 +23,7 @@ import Create_Case
 
 # Form implementation generated from reading ui file 'C:\Users\Andre\Documents\GitHub\THRAM\Source\Gui\gui_maken\interface_thram.ui'
 #
-# Created: Mon Jul 06 15:04:37 2015
+# Created: Mon Jul 06 15:35:50 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -137,7 +137,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.tab_Menu.addTab(self.tab_Project, _fromUtf8(""))
         self.tab_System = QtGui.QWidget()
         self.tab_System.setObjectName(_fromUtf8("tab_System"))
-        self.tab_System.setEnabled(False)
         self.gridLayout_3 = QtGui.QGridLayout(self.tab_System)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
         self.pushButton = QtGui.QPushButton(self.tab_System)
@@ -429,8 +428,11 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.casusOpslaan.clicked.connect(lambda : self.save_casus())
 
         # Tab Systeem:
+        self.tab_System.setEnabled(False)
+
 
         # Tab Software:
+        self.tab_Software.setEnabled(False)
         self.btn_Processen.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 2000))
         self.btn_Processen.clicked.connect(lambda: self.fill_software_treewidget(Software.processes()))
         self.btn_Services.clicked.connect(lambda: self.status_bar("Lijst vernieuwen...", 2000))
@@ -441,6 +443,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Cloud.clicked.connect(lambda: self.fill_software_treewidget(Cloud.cloud()))
 
         # Tab Internet:
+        self.tab_Internet.setEnabled(False)
         self.btn_Load_Internet_History.clicked.connect(lambda: self.fillBrowserTreewidget())
         self.btn_Show_Internet_History.clicked.connect(lambda: self.zoekBrowser())
         self.btn_Search_Internet_History.clicked.connect(lambda: self.zoekWoord())
@@ -448,6 +451,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         # Tab E-mail:
 
         # Tab Bestanden:
+        self.tab_Files.setEnabled(False)
         self.btn_Search_From.clicked.connect(lambda: self.fill_searchbar(Hash.inputfolder()))
         self.btn_Hash.clicked.connect(
             lambda: self.fill_hash_treewidget(Hash.calculate_hash_from_multiplee_files(output_list, casuslocatie)))
@@ -608,10 +612,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
         print casuslocatie
         casustijd = str(self.casusTijd.text())
         Create_Case.save_casus(casuslocatie, casusnaam, computernaam, casustijd)
-        self.tab_System
-        self.tab_Files
-        self.tab_Internet
-        self.tab_Software
+        self.tab_System.setEnabled(True)
+        self.tab_Files.setEnabled(True)
+        self.tab_Internet.setEnabled(True)
+        self.tab_Software.setEnabled(True)
         return
 
     def fill_searchbar(self, output):
