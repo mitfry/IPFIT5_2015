@@ -207,8 +207,8 @@ finalLines = '''
     def project_location(self, locatie):
         global location
         print self.ProjectNaam.text()
-        self.getProject.setText(_translate("MainWindow", locatie + "\\" + self.ProjectNaam.text(), None))
-        location = str(locatie + "\\" + self.ProjectNaam.text())
+        self.getProject.setText(_translate("MainWindow", locatie + "\\\" + self.ProjectNaam.text(), None))
+        location = str(locatie + "\\\" + self.ProjectNaam.text())
         print location
         return
 
@@ -230,8 +230,8 @@ finalLines = '''
         global computernaam
         global casusnaam
         casusnaam = str(self.makeCasus.text())
-        self.getCasus.setText(str(location) + "\\" + str(casusnaam))
-        casuslocatie = location + "\\" + casusnaam
+        self.getCasus.setText(str(location) + "\\\" + str(casusnaam))
+        casuslocatie = location + "\\\" + casusnaam
         self.getComputernaam.setText(self.makeComputernaam.text())
         computernaam = self.getComputernaam.text()
         print str(casuslocatie)
