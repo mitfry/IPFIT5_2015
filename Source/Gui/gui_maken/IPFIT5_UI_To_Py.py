@@ -83,8 +83,7 @@ finalLines = '''
         self.btn_Load_Internet_History.clicked.connect(lambda: self.fillBrowserTreewidget())
         self.btn_Show_Internet_History.clicked.connect(lambda: self.zoekBrowser())
         self.btn_Search_Internet_History.clicked.connect(lambda: self.zoekWoord())
-
-        # Tab E-mail:
+        self.chk_Internet_Explorer.setEnabled(False)
 
         # Tab Bestanden:
         self.tab_Files.setEnabled(False)
