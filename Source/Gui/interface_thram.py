@@ -22,9 +22,9 @@ import System
 
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\Andre\Documents\GitHub\THRAM\Source\Gui\gui_maken\interface_thram.ui'
+# Form implementation generated from reading ui file 'E:\Bibliotheken\python\THRAM\Source\Gui\gui_maken\interface_thram.ui'
 #
-# Created: Mon Jul 06 15:35:50 2015
+# Created: Wed Jul 08 20:36:19 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -415,7 +415,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.actionTechnical_manual.setText(_translate("MainWindow", "Technische handleiding", None))
         self.actionOver.setText(_translate("MainWindow", "Over", None))
 
-
         # Mitchell
         # The code below is used to connect methods to the buttons off the interface
 
@@ -449,8 +448,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Load_Internet_History.clicked.connect(lambda: self.fillBrowserTreewidget())
         self.btn_Show_Internet_History.clicked.connect(lambda: self.zoekBrowser())
         self.btn_Search_Internet_History.clicked.connect(lambda: self.zoekWoord())
-
-        # Tab E-mail:
+        self.chk_Internet_Explorer.setEnabled(False)
 
         # Tab Bestanden:
         self.tab_Files.setEnabled(False)
@@ -498,9 +496,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
             passed_list_number += 1
 
     # Hugo
-
+    # This method is called when the user uses the first option, which shows all history from the selected browsers.
     def fillBrowserTreewidget(self):
 
+        # These variables are 0 by default and are set to 1 if the associated field is checked.
         getInternetExplorer = 0
         getFirefox = 0
         getChrome = 0
@@ -512,10 +511,22 @@ class Ui_MainWindow(QtGui.QMainWindow):
         if self.chk_Google_Chrome.isChecked():
             getChrome = 1
 
+        # Call the method to load the data. The return is a list with all the results.
         historyList = Internetgeschiedenis.loadData(getInternetExplorer, getFirefox, getChrome)
 
+        # Clearing the treewidget before entering new information.
         self.browserTreeWidget.clear()
         rowNumber = 0
+
+        # 5 empty lists. These are used to store all the results, to send them to the method that writes them to a csv
+        # file.
+        list1 = []
+        list2 = []
+        list3 = []
+        list4 = []
+        list5 = []
+
+        # This for loop inserts all results into the treewidget.
         for row in historyList:
             item = QTreeWidgetItem()
             item.setText(0, unicode(row[0]))
@@ -525,10 +536,22 @@ class Ui_MainWindow(QtGui.QMainWindow):
             item.setText(4, unicode(row[3]))
             self.browserTreeWidget.insertTopLevelItem(rowNumber, item)
             rowNumber += 1
-            QtGui.qApp.processEvents()
 
+            # Adding all results to the lists I created earlier.
+            list1.append(unicode(row[0]))
+            list2.append(unicode(row[4]))
+            list3.append(unicode(row[2]))
+            list4.append(unicode(row[1]))
+            list5.append(unicode(row[3]))
+
+            QtGui.qApp.processEvents()
+        # Sending the 5 lists with all results to the method that stores them in a csv file.
+        Internetgeschiedenis.saveData(casuslocatie, list1, list2, list3, list4, list5)
+
+    # This method is called when the user selects the second option, which shows only a specific number of results.
     def zoekBrowser(self):
 
+        # These variables are 0 by default and are set to 1 if the associated field is checked.
         getInternetExplorer = 0
         getFirefox = 0
         getChrome = 0
@@ -542,10 +565,21 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
         numberOfResults = int(self.txt_Internet_History_Amount.text())
 
+        # Call the method to load the data. The return is a list with the required number of results.
         mostvisited = Internetgeschiedenis.showMostVisited(Internetgeschiedenis.loadData(getInternetExplorer, getFirefox, getChrome), numberOfResults)
+
+        # 5 empty lists. These are used to store all the results, to send them to the method that writes them to a csv
+        # file.
+        list1 = []
+        list2 = []
+        list3 = []
+        list4 = []
+        list5 = []
 
         self.browserTreeWidget.clear()
         rowNumber = 0
+
+        # This for loop inserts all results into the treewidget.
         for row in mostvisited:
             item = QTreeWidgetItem()
             item.setText(0, unicode(row[0]))
@@ -555,10 +589,22 @@ class Ui_MainWindow(QtGui.QMainWindow):
             item.setText(4, unicode(row[3]))
             self.browserTreeWidget.insertTopLevelItem(rowNumber, item)
             rowNumber += 1
-            QtGui.qApp.processEvents()
 
+            # Adding all results to the lists I created earlier.
+            list1.append(unicode(row[0]))
+            list2.append(unicode(row[4]))
+            list3.append(unicode(row[2]))
+            list4.append(unicode(row[1]))
+            list5.append(unicode(row[3]))
+
+            QtGui.qApp.processEvents()
+        # Sending the 5 lists with all results to the method that stores them in a csv file.
+        Internetgeschiedenis.saveData(casuslocatie, list1, list2, list3, list4, list5)
+
+    # This method is called when the user selects the third option, which shows all results that contain a searchword.
     def zoekWoord(self):
 
+        # These variables are 0 by default and are set to 1 if the associated field is checked.
         getInternetExplorer = 0
         getFirefox = 0
         getChrome = 0
@@ -574,10 +620,21 @@ class Ui_MainWindow(QtGui.QMainWindow):
         if self.chk_Internet_History_Search_Capital_Letter.isChecked() == False:
             searchWord = str(searchWord).lower()
 
+        # Call the method to load the data. The return is a list with all results that contain the searchword.
         searchResults = Internetgeschiedenis.searchData(Internetgeschiedenis.loadData(getInternetExplorer, getFirefox, getChrome), searchWord)
+
+        # 5 empty lists. These are used to store all the results, to send them to the method that writes them to a csv
+        # file.
+        list1 = []
+        list2 = []
+        list3 = []
+        list4 = []
+        list5 = []
 
         self.browserTreeWidget.clear()
         rowNumber = 0
+
+        # This for loop inserts all results into the treewidget.
         for row in searchResults:
             item = QTreeWidgetItem()
             item.setText(0, unicode(row[0]))
@@ -587,7 +644,17 @@ class Ui_MainWindow(QtGui.QMainWindow):
             item.setText(4, unicode(row[3]))
             self.browserTreeWidget.insertTopLevelItem(rowNumber, item)
             rowNumber += 1
+
+            # Adding all results to the lists I created earlier.
+            list1.append(unicode(row[0]))
+            list2.append(unicode(row[4]))
+            list3.append(unicode(row[2]))
+            list4.append(unicode(row[1]))
+            list5.append(unicode(row[3]))
+
             QtGui.qApp.processEvents()
+        # Sending the 5 lists with all results to the method that stores them in a csv file.
+        Internetgeschiedenis.saveData(casuslocatie, list1, list2, list3, list4, list5)
 
     # Andre
 
