@@ -12,6 +12,7 @@ from PyQt4.QtGui import QTreeWidgetItem
 sys.path.append(sys.path[0]+"/../functions")
 
 # Custom
+import TheLogger
 import Software
 import Hash
 import Cloud
