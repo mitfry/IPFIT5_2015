@@ -43,7 +43,7 @@
        <enum>Qt::NoContextMenu</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_Project">
        <attribute name="title">
@@ -436,42 +436,42 @@
           </property>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string/>
+            <string> </string>
            </property>
           </column>
          </widget>

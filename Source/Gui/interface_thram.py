@@ -22,9 +22,9 @@ import System
 
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:\Bibliotheken\python\THRAM\Source\Gui\gui_maken\interface_thram.ui'
+# Form implementation generated from reading ui file 'C:\Development\School\IPFIT5_2015\Source\Gui\gui_maken\interface_thram.ui'
 #
-# Created: Wed Jul 08 20:36:19 2015
+# Created: Thu Jul 09 13:35:21 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -373,6 +373,14 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.btn_Services.setText(_translate("MainWindow", "Services", None))
         self.btn_Software.setText(_translate("MainWindow", "Software", None))
         self.btn_Cloud.setText(_translate("MainWindow", "Cloud", None))
+        self.treew_Software.headerItem().setText(0, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(1, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(2, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(3, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(4, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(5, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(6, _translate("MainWindow", " ", None))
+        self.treew_Software.headerItem().setText(7, _translate("MainWindow", " ", None))
         self.tab_Menu.setTabText(self.tab_Menu.indexOf(self.tab_Software), _translate("MainWindow", "Software", None))
         self.chk_Mozilla_FireFox.setText(_translate("MainWindow", "Mozilla FireFox", None))
         self.btn_Load_Internet_History.setText(_translate("MainWindow", "Load data", None))
@@ -415,7 +423,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.actionTechnical_manual.setText(_translate("MainWindow", "Technische handleiding", None))
         self.actionOver.setText(_translate("MainWindow", "Over", None))
 
-        # Mitchell
+
+                # Mitchell
         # The code below is used to connect methods to the buttons off the interface
 
         # IPFIT5 Buttons, Methods and other code
@@ -662,8 +671,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def project_location(self, locatie):
         global location
         print self.ProjectNaam.text()
-        self.getProject.setText(_translate("MainWindow", locatie + "\\" + self.ProjectNaam.text(), None))
-        location = str(locatie + "\\" + self.ProjectNaam.text())
+        self.getProject.setText(_translate("MainWindow", locatie + u'\u005C' + self.ProjectNaam.text(), None))
+        location = str(locatie + u'\u005C' + self.ProjectNaam.text())
         print location
         return
 
@@ -685,8 +694,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
         global computernaam
         global casusnaam
         casusnaam = str(self.makeCasus.text())
-        self.getCasus.setText(str(location) + "\\" + str(casusnaam))
-        casuslocatie = location + "\\" + casusnaam
+        self.getCasus.setText(str(location) + str(casusnaam) + u'\u005C')
+        casuslocatie = location + casusnaam + u'\u005C'
         self.getComputernaam.setText(self.makeComputernaam.text())
         computernaam = self.getComputernaam.text()
         print str(casuslocatie)
