@@ -24,7 +24,7 @@ import System
 
 # Form implementation generated from reading ui file 'C:\Development\School\IPFIT5_2015\Source\Gui\gui_maken\interface_thram.ui'
 #
-# Created: Thu Jul 09 13:35:21 2015
+# Created: Thu Jul 09 13:42:24 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -500,7 +500,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
                 item.setText(row_nr, unicode(row[row_nr]))
 
             self.treew_Software.insertTopLevelItem(passed_list_number, item)
-            # self.treew_Software.resizeColumnToContents(passed_list_number)
+            self.treew_Software.resizeColumnToContents(passed_list_number)
             QtGui.qApp.processEvents()
             passed_list_number += 1
 

@@ -126,7 +126,7 @@ finalLines = '''
                 item.setText(row_nr, unicode(row[row_nr]))
 
             self.treew_Software.insertTopLevelItem(passed_list_number, item)
-            # self.treew_Software.resizeColumnToContents(passed_list_number)
+            self.treew_Software.resizeColumnToContents(passed_list_number)
             QtGui.qApp.processEvents()
             passed_list_number += 1
 
