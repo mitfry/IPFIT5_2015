@@ -21,32 +21,32 @@ import logging
 
 systemlog = logging.getLogger("THRAM - System")
 systemlog.debug("System info imported")
-
+# als deze def wordt aangeroepen zal deze de computernaam teruggeven
 def compn():
     computername = platform.node()
     systemlog.info("Computer name: %s" % computername)
     return computername
-
+# als deze def wordt aangeroepen zal deze de accountnaam teruggeven
 def accn():
     accountname = getpass.getuser()
     systemlog.info("Accountname: %s" % accountname)
     return accountname
-
+# als deze def wordt aangeroepen zal deze het besturingssysteem teruggeven
 def bestu():
     os = platform.system()
     systemlog.info("Opperationsystem: %s" % os)
     return os
-
+# als deze def wordt aangeroepen zal deze het mac-adres teruggeven
 def mac():
     macadr = get_mac()
     systemlog.info("MAC-Adress: %s" % macadr)
     return str(macadr)
-
+# als deze def wordt aangeroepen zal deze de processortype teruggeven
 def processor():
     proces = platform.processor()
     systemlog.info("Processor: %s" % proces)
     return proces
-
+# als deze def wordt aangeroepen zal deze de lokale ip teruggeven
 def locip():
     localip = socket.gethostbyname(socket.gethostname())
     systemlog.info("Local IP: %s" % localip)

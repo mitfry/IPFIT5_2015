@@ -4,7 +4,7 @@ Last edited: 29-6-15
 
 Deze class zal bij het starten van het programma worden aangeroepen.
 Hierna wordt alles wat in het console komt eveneens in een text bestand opgeslagen.
-
+Niveaus: DEBUG, INFO, ERROR, WARNING, CRITICAL
 """
 
 import os
@@ -46,7 +46,7 @@ if needRoll:
 # Add timestamp
 logger.info('\n---------\nLog started on %s.\n---------\n' % time.asctime())
 
-logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG, format=formatter)
+logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO, format=formatter)
 
 loggerlog = logging.getLogger("THRAM - Log")
 loggerlog.debug("Logger module imported")
